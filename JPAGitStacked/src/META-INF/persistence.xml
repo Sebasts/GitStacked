@@ -6,7 +6,11 @@
   <persistence-unit name="GitStacked">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider
     </provider>
-    <!-- List Entities Here -->
+
+    <class>User</class>
+    <class>Workout</class>
+    <class>Exercise</class>
+
     <class></class>
     <properties>
       <property name="javax.persistence.jdbc.url"

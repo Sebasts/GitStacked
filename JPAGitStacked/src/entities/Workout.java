@@ -4,18 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-@Table(name="user")
-public class User {
+public class Workout {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int weight;
-	private int heightFeet;
-	private int heightInch;
-	private String username;
-	private String password;
-	private UserType usertype;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 }
