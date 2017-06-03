@@ -16,10 +16,10 @@
     <properties>
       <property name="javax.persistence.jdbc.url"
         value="jdbc:mysql://localhost:3306/mydb" />
-      <property name="javax.persistence.jdbc.admin"
-        value="student"/>
-      <property name="javax.persistence.jdbc.gitstacked"
-        value="student" />
+      <property name="javax.persistence.jdbc.user"
+        value="admin"/>
+      <property name="javax.persistence.jdbc.password"
+        value="gitstacked" />
       <property name="javax.persistence.jdbc.driver"
         value="com.mysql.jdbc.Driver" />
       <property name="hibernate.show_sql" value="false" />
