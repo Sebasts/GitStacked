@@ -1,8 +1,8 @@
 package unitTests;
 
-import Entities.User;
 import data.PersistenceDAO;
 import data.PersistenceDAOImpl;
+import entities.User;
 
 public class PersistTest {
 
@@ -13,8 +13,13 @@ public class PersistTest {
 		
 		User u = new User();
 		
-		u.
+		u.setWeight(140);
+		u.setHeightInch(140);
+		u.setWeight(140);
+		u.setWeight(140);
+		u.setWeight(140);
+		u.setWeight(140);
 		
-		dao.createNewUser();
+		dao.createNewUser(u);
 	}
 }

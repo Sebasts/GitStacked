@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 @SessionAttributes({"user"})
 @Controller
-public class WorkoutController {
+public class AuthenticationController {
 
+	
 }

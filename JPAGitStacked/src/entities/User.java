@@ -14,14 +14,31 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private String fname;
+	private String lname;
 	private int weight;
 	private int heightFeet;
 	private int heightInch;
 	private String username;
 	private String password;
 	private UserType usertype;
+<<<<<<< HEAD
 	
 	
+=======
+	public String getFname() {
+		return fname;
+	}
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	public String getLname() {
+		return lname;
+	}
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+>>>>>>> 18d578951d2d293e71890a59d5935d61be214be8
 	public int getWeight() {
 		return weight;
 	}
@@ -58,7 +75,12 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", weight=" + weight + ", heightFeet=" + heightFeet + ", heightInch=" + heightInch
-				+ ", username=" + username + ", password=" + password + ", usertype=" + usertype + "]";
+		return "User [id=" + id + ", fname=" + fname + ", lname=" + lname + ", weight=" + weight + ", heightFeet="
+				+ heightFeet + ", heightInch=" + heightInch + ", username=" + username + ", password=" + password
+				+ ", usertype=" + usertype + "]";
 	}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 18d578951d2d293e71890a59d5935d61be214be8
 }
