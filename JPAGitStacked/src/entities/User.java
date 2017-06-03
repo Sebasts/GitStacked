@@ -1,10 +1,12 @@
-package entities;
+package Entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.usertype.UserType;
 
 @Entity
 @Table(name="user")
@@ -17,6 +19,9 @@ public class User {
 	private int heightInch;
 	private String username;
 	private String password;
+	private UserType usertype;
+	
+	
 	public int getWeight() {
 		return weight;
 	}
@@ -47,12 +52,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public UserType getUsertype() {
-		return usertype;
-	}
-	public void setUsertype(UserType usertype) {
-		this.usertype = usertype;
-	}
+
 	public int getId() {
 		return id;
 	}
@@ -61,5 +61,4 @@ public class User {
 		return "User [id=" + id + ", weight=" + weight + ", heightFeet=" + heightFeet + ", heightInch=" + heightInch
 				+ ", username=" + username + ", password=" + password + ", usertype=" + usertype + "]";
 	}
-	private UserType usertype;
 }
