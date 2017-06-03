@@ -1,6 +1,8 @@
 package entities;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,11 +14,27 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private String fname;
+	private String lname;
 	private int weight;
 	private int heightFeet;
 	private int heightInch;
 	private String username;
 	private String password;
+	@Enumerated(EnumType.STRING)
+	private UserType usertype;
+	public String getFname() {
+		return fname;
+	}
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	public String getLname() {
+		return lname;
+	}
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
 	public int getWeight() {
 		return weight;
 	}
@@ -58,8 +76,9 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", weight=" + weight + ", heightFeet=" + heightFeet + ", heightInch=" + heightInch
-				+ ", username=" + username + ", password=" + password + ", usertype=" + usertype + "]";
+		return "User [id=" + id + ", fname=" + fname + ", lname=" + lname + ", weight=" + weight + ", heightFeet="
+				+ heightFeet + ", heightInch=" + heightInch + ", username=" + username + ", password=" + password
+				+ ", usertype=" + usertype + "]";
 	}
-	private UserType usertype;
+	
 }
