@@ -27,9 +27,9 @@ public class User {
 	private int heightInch;
 	private String username;
 	private String password;
-	@Enumerated(EnumType.STRING)
-	@Column(name="usertype")
-	private UserType usertype;
+//	@Enumerated(EnumType.STRING)
+//	@Column(name="usertype")
+//	private UserType usertype;
 	@OneToMany(mappedBy = "user")
 	private List<Workout> workouts;
 
@@ -89,13 +89,13 @@ public class User {
 		this.password = password;
 	}
 
-	public UserType getUsertype() {
-		return usertype;
-	}
-
-	public void setUsertype(UserType usertype) {
-		this.usertype = usertype;
-	}
+//	public UserType getUsertype() {
+//		return usertype;
+//	}
+//
+//	public void setUsertype(UserType usertype) {
+//		this.usertype = usertype;
+//	}
 
 	public int getId() {
 		return id;
@@ -105,6 +105,6 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", fName=" + fName + ", lName=" + lName + ", weight=" + weight + ", heightFeet="
 				+ heightFeet + ", heightInch=" + heightInch + ", username=" + username + ", password=" + password
-				+ ", usertype=" + usertype + "]";
+				+ ", usertype=" + "]";
 	}
 }
