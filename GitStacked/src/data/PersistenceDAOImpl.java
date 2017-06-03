@@ -12,11 +12,15 @@ import entities.User;
 @Transactional
 @Component
 public class PersistenceDAOImpl implements PersistenceDAO {
+	
 	@PersistenceContext
 	private EntityManager em;
 	
 	@Override
 	public void createNewUser(User user) {
+		if(em == null){
+			System.out.println("em is null");
+		}
 		em.persist(user);
 		
 	}
