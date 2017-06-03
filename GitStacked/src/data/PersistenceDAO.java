@@ -1,6 +1,6 @@
 package data;
 
-import entities.User;
+import Entities.User;
 
 public interface PersistenceDAO {
 

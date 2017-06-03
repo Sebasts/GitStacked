@@ -6,7 +6,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import entities.User;
+import Entities.User;
 
 
 @Transactional
@@ -18,6 +18,9 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	
 	@Override
 	public void createNewUser(User user) {
+		if(em == null){
+			System.out.println("em is null");
+		}
 		em.persist(user);
 		
 	}
