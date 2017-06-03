@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.usertype.UserType;
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -103,5 +105,4 @@ public class User {
 				+ heightFeet + ", heightInch=" + heightInch + ", username=" + username + ", password=" + password
 				+ ", usertype=" + usertype + "]";
 	}
-
 }
