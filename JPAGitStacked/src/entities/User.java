@@ -1,9 +1,6 @@
 package entities;
-<<<<<<< HEAD
-=======
 
 import java.util.List;
->>>>>>> 92f3be6dbe19722c3d9b605c7c5a662c8c835ed1
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -31,11 +28,8 @@ public class User {
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private UserType usertype;
-<<<<<<< HEAD
-=======
 	@OneToMany(mappedBy = "user")
 	private List<Workout> workouts;
->>>>>>> 92f3be6dbe19722c3d9b605c7c5a662c8c835ed1
 
 	public String getFname() {
 		return fname;
@@ -52,11 +46,7 @@ public class User {
 	public void setLname(String lname) {
 		this.lname = lname;
 	}
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> 92f3be6dbe19722c3d9b605c7c5a662c8c835ed1
 	public int getWeight() {
 		return weight;
 	}
@@ -116,4 +106,3 @@ public class User {
 				+ ", usertype=" + usertype + "]";
 	}
 }
-
