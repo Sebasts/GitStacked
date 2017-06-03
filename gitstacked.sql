@@ -28,6 +28,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
   `username` VARCHAR(40) NOT NULL,
   `password` VARCHAR(40) NOT NULL,
   `usertype` ENUM('USER', 'ADMIN') NOT NULL COMMENT 'user type is used as ‘admin’ or ‘normal user’, where admin can edit exercises.\n\n',
+  `lName` VARCHAR(100) NOT NULL,
+  `fName` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -82,11 +84,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`exercise` (
   `desc` VARCHAR(1000) NULL,
   `imageUrl` VARCHAR(500) NULL,
   `calories` INT NULL,
-  `muscleGroupId` INT NOT NULL,
+  `muscleGroup` ENUM('ARMS', 'LEGS', 'ABS', 'CHEST', 'BACK', 'SHOULDERS', 'CALVES') NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_exercise_muscle_group1_idx` ON `mydb`.`exercise` (`muscleGroupId` ASC);
+CREATE INDEX `fk_exercise_muscle_group1_idx` ON `mydb`.`exercise` (`muscleGroup` ASC);
 
 
 -- -----------------------------------------------------
