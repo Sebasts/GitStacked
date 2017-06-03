@@ -10,7 +10,7 @@
     <class>User</class>
     <class>Workout</class>
     <class>Exercise</class>
-
+	<class>UserType</class>
     <class></class>
     
     <properties>
