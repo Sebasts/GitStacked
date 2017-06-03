@@ -1,7 +1,8 @@
 package data;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,8 +14,11 @@ import entities.User;
 @Component
 public class PersistenceDAOImpl implements PersistenceDAO {
 	
-	@PersistenceContext
-	private EntityManager em;
+//	@PersistenceContext
+//	private EntityManager em;
+	
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("GitStacked");
+	EntityManager em = emf.createEntityManager();
 	
 	@Override
 	public void createNewUser(User user) {

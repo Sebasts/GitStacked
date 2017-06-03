@@ -15,11 +15,9 @@ public class PersistTest {
 		
 		u.setWeight(140);
 		u.setHeightInch(140);
-		u.setWeight(140);
-		u.setWeight(140);
-		u.setWeight(140);
-		u.setWeight(140);
 		
 		dao.createNewUser(u);
 	}
+	
+	
 }
