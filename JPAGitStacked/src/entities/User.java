@@ -1,4 +1,4 @@
-package Entities;
+package entities;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -25,10 +25,7 @@ public class User {
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private UserType usertype;
-<<<<<<< HEAD
-	
-	
-=======
+
 	public String getFname() {
 		return fname;
 	}
@@ -41,7 +38,7 @@ public class User {
 	public void setLname(String lname) {
 		this.lname = lname;
 	}
->>>>>>> 18d578951d2d293e71890a59d5935d61be214be8
+	
 	public int getWeight() {
 		return weight;
 	}
@@ -82,8 +79,5 @@ public class User {
 				+ heightFeet + ", heightInch=" + heightInch + ", username=" + username + ", password=" + password
 				+ ", usertype=" + usertype + "]";
 	}
-<<<<<<< HEAD
-=======
-	
->>>>>>> 18d578951d2d293e71890a59d5935d61be214be8
 }
+
