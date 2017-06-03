@@ -19,8 +19,8 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String fname;
-	private String lname;
+	private String fName;
+	private String lName;
 	private int weight;
 	private int heightFeet;
 	private int heightInch;
@@ -31,20 +31,20 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Workout> workouts;
 
-	public String getFname() {
-		return fname;
+	public String getFName() {
+		return fName;
 	}
 
-	public void setFname(String fname) {
-		this.fname = fname;
+	public void setFName(String fname) {
+		this.fName = fname;
 	}
 
-	public String getLname() {
-		return lname;
+	public String getLName() {
+		return lName;
 	}
 
-	public void setLname(String lname) {
-		this.lname = lname;
+	public void setLName(String lname) {
+		this.lName = lname;
 	}
 
 	public int getWeight() {
@@ -101,7 +101,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", fname=" + fname + ", lname=" + lname + ", weight=" + weight + ", heightFeet="
+		return "User [id=" + id + ", fName=" + fName + ", lName=" + lName + ", weight=" + weight + ", heightFeet="
 				+ heightFeet + ", heightInch=" + heightInch + ", username=" + username + ", password=" + password
 				+ ", usertype=" + usertype + "]";
 	}
