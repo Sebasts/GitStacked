@@ -12,10 +12,24 @@ INDEX VERSION 1.130+/Users/Paul/SD/Java/stsworkspace/GitStacked/.metadata/.plugi
 3158197321.index
 3720681883.index
 3284654654.index
+<<<<<<< HEAD
 124275899.index
 1297148134.index
 1671852449.index
 1199307414.index
+=======
+3540637853.index
+914154084.index
+1171062390.index
+1591532241.index
+1003544773.index
+554887018.index
+1602761299.index
+808192890.index
+3915472316.index
+2147012667.index
+244610391.index
+>>>>>>> 6e76c89345dd19c4875ca948d991b4d101a506ea
 1526779524.index
 1999298954.index
 2084021475.index
