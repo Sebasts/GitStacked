@@ -5,15 +5,15 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema GitStacked
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `mydb` ;
+DROP SCHEMA IF EXISTS `GitStacked` ;
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema GitStacked
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `GitStacked` DEFAULT CHARACTER SET utf8 ;
+USE `GitStacked` ;
 
 -- -----------------------------------------------------
 -- Table `user`
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `heightInch` INT NOT NULL,
   `username` VARCHAR(40) NOT NULL,
   `password` VARCHAR(40) NOT NULL,
-  `usertype` ENUM('USER', 'ADMIN') NOT NULL COMMENT 'user type is used as ‘admin’ or ‘normal user’, where admin can edit exercises.\n\n',
+  `loginUserType` ENUM('USER', 'ADMIN') NOT NULL COMMENT 'user type is used as ‘admin’ or ‘normal user’, where admin can edit exercises.\n\n',
   `lName` VARCHAR(100) NOT NULL,
   `fName` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -125,7 +125,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `exercise`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydb`;
+USE `GitStacked`;
 INSERT INTO `exercise` (`id`, `name`, `desc`, `imageUrl`, `calories`, `muscleGroup`) VALUES (1, 'Bench Press Narrow Grip', 'Lay down on a bench| the bar is directly over your eyes| the knees form a slight angle and the feet are firmly on the ground. Hold the bar with a narrow grip (around 20cm.). Lead the weight slowly down till the arms are parallel to the floor (elbow: right angle)| press then the bar up. When bringing the bar down| don\'t let it down on your nipples as with the regular bench pressing| but somewhat lower.', 'https://wger.de/media/exercise-images/88/Narrow-grip-bench-press-1.png.200x200_q85.png', 20, 'ARMS');
 INSERT INTO `exercise` (`id`, `name`, `desc`, `imageUrl`, `calories`, `muscleGroup`) VALUES (2, 'Biceps Curl With Cable', 'Stand around 30 - 40cm away from the cable| the feet are firmly on the floor. Take the bar and lift the weight with a fast movements. Lower the weight as with the dumbbell curls slowly and controlled', 'https://wger.de/media/exercise-images/129/Standing-biceps-curl-2.png.200x200_q85.png', 15, 'ARMS');
 INSERT INTO `exercise` (`id`, `name`, `desc`, `imageUrl`, `calories`, `muscleGroup`) VALUES (3, 'Biceps Curls With Barbell', 'Hold the Barbell shoulder-wide| the back is straight| the shoulders slightly back| the arms are streched. Bend the arms| bringing the weight up| with a fast movement. Without pausing| let down the bar with a slow and controlled movement.', 'https://wger.de/media/exercise-images/74/Bicep-curls-2.png.200x200_q85.png', 15, 'ARMS');
