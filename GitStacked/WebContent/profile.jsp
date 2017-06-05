@@ -8,7 +8,7 @@
 </head>
 <body>
 
-
+Welcome, ${user.getFName()}
 
 </body>
 </html>

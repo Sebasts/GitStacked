@@ -37,15 +37,15 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	
 	@Override
 	public User login(User user) {
-		if(em == null){
-			System.out.println("em is null");
-			return user;
+		String qry = "select u from User u where u.username = :username";
+		User u = em.createQuery(qry, User.class).setParameter("username", user.getUsername()).getSingleResult();
+		if (u != null) {
+			if (u.getPassword().equals(user.getPassword())) {
+				return u;
+			}
 		}
-		user.setLoginUsertype(LoginUserType.USER);
-		em.persist(user);
-		System.out.println(user);
-		System.out.println("user created");
-		return user;
+		
+		return null;
 	}
 
 	@Override
