@@ -1,5 +1,7 @@
 package data;
 
+import java.util.List;
+
 import entities.Exercise;
 import entities.User;
 
@@ -12,6 +14,7 @@ public interface PersistenceDAO {
 	void createWorkout(User user);
 	void createWorkoutExercise(User user);
 	Exercise getExerciseByName(String exerciseName);
+	List<Exercise> getListOfExercises();
 	User login(User user);
 		
 }
