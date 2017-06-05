@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,7 +12,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import data.PersistenceDAO;
+import entities.Exercise;
 import entities.User;
+import entities.Workout;
+import entities.WorkoutExercise;
 
 @SessionAttributes({"user"})
 @Controller
@@ -76,15 +81,31 @@ public class WorkoutController {
 	}
 	
 	@RequestMapping(path = "createWorkout.do", method = RequestMethod.GET)
-	public ModelAndView createWorkout() {
+	public ModelAndView createWorkout(@ModelAttribute("user") User user, WorkoutExercise workoutexercise) {
 		ModelAndView mv = new ModelAndView("workoutBuilder.jsp", "exercises", dao.getListOfExercises());
+//		user.getWorkouts().get(0)
 		return mv;
 	}
 	
-//	@RequestMapping(path = "createWorkout.do", method = RequestMethod.POST)
-//	public ModelAndView createWorkout(@RequestParam("")) {
-//		ModelAndView mv = new ModelAndView("workoutBuilder.jsp", "exercise", dao.getListOfExercises());
-//		return mv;
-//	}
+	@RequestMapping(path = "createWorkout.do", method = RequestMethod.POST)
+	public ModelAndView publishWorkout(@RequestParam("exerciseId") int id, @ModelAttribute("user") User user, @RequestParam("reps") String reps, @RequestParam("weight") String weight) {
+		Exercise exercise = dao.getExerciseById(user, id);
+		int r = Integer.parseInt(reps);
+		int w = Integer.parseInt(weight);
+		WorkoutExercise workoutexercise = new WorkoutExercise(exercise, r, w);
+		System.out.println(workoutexercise);
+		Workout workout = new Workout();
+		workout.addWorkoutExercise(workoutexercise);
+		user.addWorkout(workout);
+		List<Workout> userWorkouts = user.getWorkouts();
+//		userWorkouts.add(workout);
+		ModelAndView mv = new ModelAndView("profile.jsp");
+		mv.addObject("userWorkouts", userWorkouts);
+		dao.persistUser(user);
+		for (Workout workout2 : userWorkouts) {
+			System.out.println(workout2);
+		}
+		return mv;
+	}
 	
 }

@@ -31,6 +31,9 @@ public class WorkoutExercise {
 	@ManyToOne
 	@JoinColumn(name="exerciseId")
 	private Exercise exercise;
+	public WorkoutExercise() {}
+	public WorkoutExercise(Exercise exercise2, int reps2, int weight2) {
+	}
 	public int getReps() {
 		return reps;
 	}

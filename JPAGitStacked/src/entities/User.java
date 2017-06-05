@@ -1,7 +1,9 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -29,10 +31,18 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	@Column(name="usertype")
 	public LoginUserType loginUserType;
-	@OneToMany(mappedBy = "user", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "user", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Workout> workouts;
 
-	
+	public void addWorkout(Workout w) {
+		if (workouts == null) {
+			workouts = new ArrayList<>();
+			workouts.add(w);
+		}
+		else {
+			workouts.add(w);
+		}
+	}
 	
 	public List<Workout> getWorkouts() {
 		return workouts;

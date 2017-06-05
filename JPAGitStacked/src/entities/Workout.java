@@ -1,6 +1,7 @@
 package entities;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -24,7 +25,21 @@ public class Workout {
 	private User user;
 	@OneToMany(mappedBy="workout")
 	private List<WorkoutExercise> workoutExercise;
-	
+	public void addWorkoutExercise(WorkoutExercise we) {
+		if (workoutExercise == null) {
+			workoutExercise = new ArrayList<>();
+			workoutExercise.add(we);
+		}
+		else {
+			workoutExercise.add(we);
+		}
+	}
+	public List<WorkoutExercise> getWorkoutExercise() {
+		return workoutExercise;
+	}
+	public void setWorkoutExercise(List<WorkoutExercise> workoutExercise) {
+		this.workoutExercise = workoutExercise;
+	}
 	public Date getDate() {
 		return date;
 	}
