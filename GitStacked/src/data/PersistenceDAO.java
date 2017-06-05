@@ -19,6 +19,10 @@ public interface PersistenceDAO {
 	List<Exercise> getListOfExercises();
 	int getUserIdByUsername(String username);
 	User login(User user);
+
 	List<User> getAllUsers();
+
+	Exercise getExerciseById(User user, int id);
+
 		
 }

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import entities.Exercise;
 import entities.LoginUserType;
 import entities.User;
+import entities.Workout;
 
 @Transactional
 @Component
@@ -104,9 +105,12 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		tempUser.setWorkouts(user.getWorkouts());
 		tempUser.setLoginUsertype(user.getLoginUsertype());
 		
-		em.persist(tempUser);
+		em.merge(user);
+		em.flush();
+		System.out.println(user.getWorkouts().size());
 		return user;
 	}
+
 
 	@Override
 	public List<User> getAllUsers() {
@@ -126,6 +130,15 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	public Exercise createExercise() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Exercise getExerciseById(User user, int id) {
+		
+		String query = "select e from Exercise e where e.id = :id";
+		Exercise exercise = em.createQuery(query, Exercise.class).setParameter("id", id).getSingleResult();
+		return exercise;
+
 	}
 	
 }
