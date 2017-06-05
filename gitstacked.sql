@@ -41,7 +41,7 @@ DROP TABLE IF EXISTS `workout` ;
 
 CREATE TABLE IF NOT EXISTS `workout` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `date` DATE NOT NULL,
+  `date` DATE NULL,
   `userId` INT NOT NULL,
   INDEX `fk_workout_user1_idx` (`userId` ASC),
   PRIMARY KEY (`id`))
