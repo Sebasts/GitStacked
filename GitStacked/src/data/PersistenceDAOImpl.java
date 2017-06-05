@@ -11,6 +11,7 @@ import entities.LoginUserType;
 import entities.User;
 
 
+
 @Transactional
 @Component
 public class PersistenceDAOImpl implements PersistenceDAO {
@@ -23,6 +24,19 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	
 	@Override
 	public User createNewUser(User user) {
+		if(em == null){
+			System.out.println("em is null");
+			return user;
+		}
+		user.setLoginUsertype(LoginUserType.USER);
+		em.persist(user);
+		System.out.println(user);
+		System.out.println("user created");
+		return user;
+	}
+	
+	@Override
+	public User login(User user) {
 		if(em == null){
 			System.out.println("em is null");
 			return user;
