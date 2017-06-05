@@ -84,7 +84,6 @@ CREATE TABLE IF NOT EXISTS `exercise` (
   `imageUrl` VARCHAR(500) NULL,
   `calories` INT NULL,
   `muscleGroup` ENUM('ARMS', 'LEGS', 'ABS', 'CHEST', 'BACK', 'SHOULDERS') NOT NULL,
-  INDEX `fk_exercise_muscle_group1_idx` (`muscleGroup` ASC),
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

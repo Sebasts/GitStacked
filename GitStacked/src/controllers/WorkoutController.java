@@ -64,8 +64,8 @@ public class WorkoutController {
 	
 	@RequestMapping(path = "editUser.do", method = RequestMethod.POST) 
 	public ModelAndView editWeight(@ModelAttribute("user") User user) {
-		dao.updateUserWeight(user, user.getWeight());
-		ModelAndView mv = new ModelAndView("profile.jsp", "user", user);
+		System.out.println(user);
+		ModelAndView mv = new ModelAndView("profile.jsp", "user", dao.persistUser(user));
 		return mv;
 	}
 	
