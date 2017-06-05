@@ -1,8 +1,8 @@
 package unitTests;
 
-import entities.User;
 import data.PersistenceDAO;
 import data.PersistenceDAOImpl;
+import entities.User;
 
 public class PersistTest {
 
