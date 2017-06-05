@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `heightInch` INT NOT NULL,
   `username` VARCHAR(40) NOT NULL,
   `password` VARCHAR(40) NOT NULL,
-  `loginUserType` ENUM('USER', 'ADMIN') NOT NULL COMMENT 'user type is used as ‘admin’ or ‘normal user’, where admin can edit exercises.\n\n',
+  `usertype` ENUM('USER', 'ADMIN') NOT NULL COMMENT 'user type is used as ‘admin’ or ‘normal user’, where admin can edit exercises.\n\n',
   `lName` VARCHAR(100) NOT NULL,
   `fName` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -120,6 +120,16 @@ GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'admin'@'localhost';
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `user`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `GitStacked`;
+INSERT INTO `user` (`id`, `weight`, `heightFeet`, `heightInch`, `username`, `password`, `usertype`, `lName`, `fName`) VALUES (1, 230, 6, 6, 'spop', 'password', 'USER', 'Popinski', 'Soda');
+
+COMMIT;
+
 
 -- -----------------------------------------------------
 -- Data for table `exercise`

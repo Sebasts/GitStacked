@@ -8,11 +8,7 @@
 </head>
 <body>
 
-	<form action = "editUser.do" method ="post">
-		<input type="text" value="${user.weight}" name="weight"><br>
-		<input type="hidden" name="userId" value="${user.id}">
-		<input type="submit" value="Submit">
-	</form>
+
 
 </body>
 </html>
