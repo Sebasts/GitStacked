@@ -27,7 +27,7 @@ public class WorkoutController {
 	@RequestMapping(path = "createUser.do", method = RequestMethod.GET) 
 	public ModelAndView signupForm() {
 		ModelAndView mv = new ModelAndView();
-//		mv.addObject("user", @Ruser);
+//		mv.addObject("user", user);
 		mv.setViewName("signup.jsp");
 		return mv;
 	}

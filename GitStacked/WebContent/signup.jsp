@@ -13,7 +13,7 @@
 <body>
 
 	<div>
-	<form:form action = "createUser.do" method = "POST">
+	<form:form action = "createUser.do" method = "POST" modelAttribute="user">
 	<form:label path = "fName">First Name:</form:label>
 	<form:input path = "fName"/>
 	
@@ -23,8 +23,10 @@
 	<form:label path = "weight">Weight:</form:label>
 	<form:input path = "weight"/>lbs
 	
-	<form:label path = "height">Height:</form:label>
+	<form:label path = "heightFeet">Height (ft):</form:label>
 	<form:input path = "heightFeet"/>
+	
+	<form:label path = "heightInch">Height (in):</form:label>
 	<form:input path = "heightInch"/>
 	
 	<form:label path = "username">Username:</form:label>
@@ -32,6 +34,8 @@
 	
 	<form:label path = "password">Password:</form:label>
 	<form:input path = "password"/>
+	
+	<input type = "submit" value = "Sign Up">
 	
 	</form:form>
 	</div>
