@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -25,6 +26,7 @@ public class User {
 	private String username;
 	private String password;
 	@Enumerated(EnumType.STRING)
+	@Column(name="usertype")
 	public LoginUserType loginUserType;
 	@OneToMany(mappedBy = "user")
 	private List<Workout> workouts;
