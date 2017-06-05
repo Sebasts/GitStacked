@@ -11,6 +11,7 @@ import entities.LoginUserType;
 import entities.User;
 
 
+
 @Transactional
 @Component
 public class PersistenceDAOImpl implements PersistenceDAO {
@@ -32,6 +33,19 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		System.out.println(user);
 		System.out.println("user created");
 		return user;
+	}
+	
+	@Override
+	public User login(User user) {
+		String qry = "select u from User u where u.username = :username";
+		User u = em.createQuery(qry, User.class).setParameter("username", user.getUsername()).getSingleResult();
+		if (u != null) {
+			if (u.getPassword().equals(user.getPassword())) {
+				return u;
+			}
+		}
+		
+		return null;
 	}
 
 	@Override

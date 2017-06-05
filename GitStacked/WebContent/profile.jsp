@@ -8,7 +8,11 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 
+=======
+Welcome, ${user.getFName()}
+>>>>>>> 707dcce05ebb6fa22ead1b72526104ddb4c132ab
 
 </body>
 </html>
