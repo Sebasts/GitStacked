@@ -55,5 +55,16 @@ public class WorkoutController {
 		return mv;
 	}
 	
+	@RequestMapping(path = "createWorkout.do", method = RequestMethod.GET)
+	public ModelAndView createWorkout() {
+		ModelAndView mv = new ModelAndView("workoutBuilder.jsp", "exercises", dao.getListOfExercises());
+		return mv;
+	}
+	
+//	@RequestMapping(path = "createWorkout.do", method = RequestMethod.POST)
+//	public ModelAndView createWorkout(@RequestParam("")) {
+//		ModelAndView mv = new ModelAndView("workoutBuilder.jsp", "exercise", dao.getListOfExercises());
+//		return mv;
+//	}
 	
 }

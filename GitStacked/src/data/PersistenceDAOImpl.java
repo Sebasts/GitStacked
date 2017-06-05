@@ -1,5 +1,7 @@
 package data;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -70,6 +72,11 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		return null;
 	}
 
-	
+	@Override
+	public List<Exercise> getListOfExercises() {
+		String query = "select e from Exercise e";
+		List<Exercise> exercises = em.createQuery(query, Exercise.class).getResultList();
+		return exercises;
+	}
 	
 }
