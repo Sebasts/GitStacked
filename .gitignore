@@ -6,3 +6,4 @@ bin
 .gradle
 Servers
 preferences
+.recommenders
