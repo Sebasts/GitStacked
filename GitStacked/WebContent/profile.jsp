@@ -12,7 +12,29 @@
 	<input type="submit" value="Create Exercise">
 </form>
 
+<div id="nav">
+
+<div>Logout</div>
+<div><a href="account.jsp">Account management</a></div>
+<div>Home</div>
+<----- Navigation Bar ----->
+</div>
+<br>
+<br>
+<br>
 Welcome, ${user.getFName()}
+
+<br>
+<br>
+<br>
+<div><a href="">Create new workout</a></div>
+<div><a href="">Previous workouts</a></div>
+<div><a href="">Planned workouts</a></div>
+<----- Links for other website functionality ----->
+
+<h2>Workouts planned for today</h2>
+<----- This should show all workouts planned for today ------->
+
 
 </body>
 </html>

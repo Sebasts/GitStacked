@@ -12,8 +12,6 @@ import entities.Exercise;
 import entities.LoginUserType;
 import entities.User;
 
-
-
 @Transactional
 @Component
 public class PersistenceDAOImpl implements PersistenceDAO {
