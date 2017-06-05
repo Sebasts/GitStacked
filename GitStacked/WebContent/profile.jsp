@@ -7,8 +7,10 @@
 <title>Your Profile</title>
 </head>
 <body>
+<form action = "createWorkout.do" method = "GET" >
+	<input type="submit" value="Create Exercise">
 
-
+</form>
 
 </body>
 </html>
