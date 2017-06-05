@@ -29,7 +29,7 @@ public class User {
 	private String password;
 	@Enumerated(EnumType.STRING)
 	@Column(name="usertype")
-	private UserType usertype;
+	public LoginUserType loginusertype;
 	@OneToMany(mappedBy = "user")
 	private List<Workout> workouts;
 
@@ -89,12 +89,12 @@ public class User {
 		this.password = password;
 	}
 
-	public UserType getUsertype() {
-		return usertype;
+	public LoginUserType getUsertype() {
+		return loginusertype;
 	}
 
 	public void setUsertype(UserType usertype) {
-		this.usertype = usertype;
+		this.loginusertype = loginusertype;
 	}
 
 	public int getId() {
@@ -105,6 +105,6 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", fName=" + fName + ", lName=" + lName + ", weight=" + weight + ", heightFeet="
 				+ heightFeet + ", heightInch=" + heightInch + ", username=" + username + ", password=" + password
-				+ ", usertype=" + usertype + ", workouts=" + workouts + "]";
+				+ ", loginusertype=" + loginusertype + ", workouts=" + workouts + "]";
 	}
 }
