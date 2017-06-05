@@ -8,6 +8,7 @@ import entities.User;
 public interface PersistenceDAO {
 
 	User createNewUser(User user);
+	User persistUser(User user);
 	User updateUserWeight(User user, int weight);
 	void changePassword(User user, String newPass);
 	void updateUserHeight(User user, int newHeight);
