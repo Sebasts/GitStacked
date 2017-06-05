@@ -14,6 +14,7 @@ public class PersistTest {
 		User u = new User();
 		
 		u.setWeight(140);
+		
 		u.setHeightInch(140);
 		
 		dao.createNewUser(u);
