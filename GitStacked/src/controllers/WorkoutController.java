@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import data.PersistenceDAO;
+import entities.LoginUserType;
 import entities.User;
 
 @SessionAttributes({"user"})
@@ -55,6 +56,11 @@ public class WorkoutController {
 		ModelAndView mv = new ModelAndView();
 		if (dao.login(user) == null) {
 			mv.setViewName("incorrectLogin.jsp");
+			return mv;
+		}
+		if(dao.login(user).getLoginUsertype() == LoginUserType.ADMIN){
+			mv.addObject("user", dao.login(user));
+			mv.setViewName("admin.jsp");
 			return mv;
 		}
 		mv.addObject("user", dao.login(user));
