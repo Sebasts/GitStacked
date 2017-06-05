@@ -26,15 +26,19 @@ public class WorkoutController {
 	
 	@RequestMapping(path = "createUser.do", method = RequestMethod.GET) 
 	public ModelAndView signupForm() {
-		User user = new User();
-		ModelAndView mv = new ModelAndView("signup.jsp", "user", user);
+		ModelAndView mv = new ModelAndView();
+//		mv.addObject("user", @Ruser);
+		mv.setViewName("signup.jsp");
 		return mv;
 	}
 	
 	@RequestMapping(path = "createUser.do", method = RequestMethod.POST) 
 	public ModelAndView createUser(@ModelAttribute("user") User user) {
 		dao.createNewUser(user);
-		ModelAndView mv = new ModelAndView("profile.jsp", "user", user);
+//		ModelAndView mv = new ModelAndView("profile.jsp", "user", user);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("user", user);
+		mv.setViewName("profile.jsp");
 		return mv;
 	}
 	

@@ -52,6 +52,8 @@ dependencies {
     compile group: 'org.hibernate', name: 'hibernate-validator', version:'5.2.4.Final'
     compile "org.springframework:spring-test:$springVersion"
     compile "org.springframework:spring-tx:$springVersion"
+    
+	compile 'org.hibernate:hibernate-validator:5.3.4.Final'
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.hamcrest:hamcrest-junit:2.0.0.0'

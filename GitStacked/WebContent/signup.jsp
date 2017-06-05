@@ -14,11 +14,11 @@
 
 	<div>
 	<form:form action = "createUser.do" method = "POST">
-	<form:label path = "fname">First Name:</form:label>
-	<form:input path = "fname"/>
+	<form:label path = "fName">First Name:</form:label>
+	<form:input path = "fName"/>
 	
-	<form:label path = "lname">Last Name:</form:label>
-	<form:input path = "fname"/>
+	<form:label path = "lName">Last Name:</form:label>
+	<form:input path = "lName"/>
 	
 	<form:label path = "weight">Weight:</form:label>
 	<form:input path = "weight"/>lbs
