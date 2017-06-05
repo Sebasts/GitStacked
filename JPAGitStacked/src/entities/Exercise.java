@@ -22,7 +22,7 @@ public class Exercise {
 	private String imageUrl;
 	private int calories;
 	@Enumerated(EnumType.STRING)
-	private MuscleGroupId muscleGroup;
+	private MuscleGroup muscleGroup;
 	@OneToMany(mappedBy="exercise")
 	private List<WorkoutExercise> workoutExercise;
 	public String getName() {
@@ -49,10 +49,10 @@ public class Exercise {
 	public void setCalories(int calories) {
 		this.calories = calories;
 	}
-	public MuscleGroupId getMuscleGroup() {
+	public MuscleGroup getMuscleGroup() {
 		return muscleGroup;
 	}
-	public void setMuscleGroup(MuscleGroupId muscleGroup) {
+	public void setMuscleGroup(MuscleGroup muscleGroup) {
 		this.muscleGroup = muscleGroup;
 	}
 	public List<WorkoutExercise> getWorkoutExercise() {

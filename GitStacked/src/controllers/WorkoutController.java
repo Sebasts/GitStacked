@@ -34,6 +34,7 @@ public class WorkoutController {
 	
 	@RequestMapping(path = "createUser.do", method = RequestMethod.POST) 
 	public ModelAndView createUser(@ModelAttribute("user") User user) {
+		System.out.println(user);
 		dao.createNewUser(user);
 //		ModelAndView mv = new ModelAndView("profile.jsp", "user", user);
 		ModelAndView mv = new ModelAndView();
