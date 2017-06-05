@@ -20,7 +20,7 @@ public class Workout {
 	private int id;
 	private Date date;
 	@ManyToOne
-	@JoinColumn(name="user_id")
+	@JoinColumn(name="userId")
 	private User user;
 	@OneToMany(mappedBy="workout")
 	private List<WorkoutExercise> workoutExercise;

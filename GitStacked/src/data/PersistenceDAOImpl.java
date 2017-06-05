@@ -90,5 +90,21 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		List<Exercise> exercises = em.createQuery(query, Exercise.class).getResultList();
 		return exercises;
 	}
+
+	@Override
+	public User persistUser(User user) {
+		User tempUser = em.find(user.getClass(), user.getId());
+		
+		tempUser.setFName(user.getFName());
+		tempUser.setLName(user.getLName());
+		tempUser.setHeightFeet(user.getHeightFeet());
+		tempUser.setHeightInch(user.getHeightInch());
+		tempUser.setPassword(user.getPassword());
+		tempUser.setWeight(user.getWeight());
+		tempUser.setWorkouts(user.getWorkouts());
+		
+		em.persist(tempUser);
+		return user;
+	}
 	
 }
