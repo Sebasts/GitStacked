@@ -102,9 +102,30 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		tempUser.setPassword(user.getPassword());
 		tempUser.setWeight(user.getWeight());
 		tempUser.setWorkouts(user.getWorkouts());
+		tempUser.setLoginUsertype(user.getLoginUsertype());
 		
 		em.persist(tempUser);
 		return user;
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		String query = "select u from User u";
+		List<User> users = em.createQuery(query, User.class).getResultList();
+		return users;
+	}
+
+	@Override
+	public int getUserIdByUsername(String username) {
+		String query = "select u from User u where u.username = :username";
+		User tempUser = em.createQuery(query, User.class).setParameter("username", username).getSingleResult();
+		return tempUser.getId();
+	}
+
+	@Override
+	public Exercise createExercise() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

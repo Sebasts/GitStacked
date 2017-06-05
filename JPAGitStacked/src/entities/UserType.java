@@ -1,5 +1,5 @@
 package entities;
 
 public enum UserType {
-	USER, ADMIN
+	USER, ADMIN, NONE
 }

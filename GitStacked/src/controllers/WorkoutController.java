@@ -1,5 +1,8 @@
 package controllers;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +22,9 @@ public class WorkoutController {
 
 	@Autowired
 	private PersistenceDAO dao;
+	
+	@PersistenceContext
+	EntityManager em;
 	
 	@ModelAttribute("user")
 	public User newUser() {
@@ -60,6 +66,7 @@ public class WorkoutController {
 		}
 		if(dao.login(user).getLoginUsertype() == LoginUserType.ADMIN){
 			mv.addObject("user", dao.login(user));
+			mv.addObject("users", dao.getAllUsers());
 			mv.setViewName("admin.jsp");
 			return mv;
 		}
@@ -86,6 +93,26 @@ public class WorkoutController {
 		ModelAndView mv = new ModelAndView("workoutBuilder.jsp", "exercises", dao.getListOfExercises());
 		return mv;
 	}
+	@RequestMapping(path = "updateUserType.do", method = RequestMethod.POST)
+	public ModelAndView createWorkout(@ModelAttribute("user") User user, String username, String choice) {
+		User tempUser = em.find(User.class, dao.getUserIdByUsername(username));
+		if(choice.equals("ADMIN")){
+			tempUser.setLoginUsertype(LoginUserType.ADMIN);
+		} else{
+			tempUser.setLoginUsertype(LoginUserType.USER);
+		}
+		dao.persistUser(tempUser);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("admin.jsp");
+		mv.addObject("users", dao.getAllUsers());
+		mv.addObject("user", user);
+		return mv;
+	}
+	
+	
+	
+	
+	
 	
 //	@RequestMapping(path = "createWorkout.do", method = RequestMethod.POST)
 //	public ModelAndView createWorkout(@RequestParam("")) {
