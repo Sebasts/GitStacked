@@ -9,17 +9,23 @@
 <body>
 Start building your own workout plan
 
+<div>
 Sign Up Now!
 <form action = "createUser.do" method = "GET">
 <input type = "submit" value = "Sign Up">
 </form>
+</div>
 
+Already have an account?
+<a href="login.do">Click here</a>
+
+<div>
 Search for an Exercise
 <form action = "getExercise.do" method = "GET">
 <input type = "text" name = "exerciseName">
 <input type = "submit" value = "Search">
 </form>
-
+</div>
 
 
 </body>

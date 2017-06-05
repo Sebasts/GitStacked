@@ -15,5 +15,6 @@ public interface PersistenceDAO {
 	void createWorkoutExercise(User user);
 	Exercise getExerciseByName(String exerciseName);
 	List<Exercise> getListOfExercises();
+	User login(User user);
 		
 }

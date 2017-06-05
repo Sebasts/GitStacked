@@ -42,6 +42,25 @@ public class WorkoutController {
 		return mv;
 	}
 	
+	@RequestMapping(path = "login.do", method = RequestMethod.GET) 
+	public ModelAndView loginForm() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("login.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path = "login.do", method = RequestMethod.POST) 
+	public ModelAndView login(@ModelAttribute("user") User user) {
+		ModelAndView mv = new ModelAndView();
+		if (dao.login(user) == null) {
+			mv.setViewName("incorrectLogin.jsp");
+			return mv;
+		}
+		mv.addObject("user", dao.login(user));
+		mv.setViewName("profile.jsp");
+		return mv;
+	}
+	
 	@RequestMapping(path = "editUser.do", method = RequestMethod.POST) 
 	public ModelAndView editWeight(@ModelAttribute("user") User user) {
 		dao.updateUserWeight(user, user.getWeight());
