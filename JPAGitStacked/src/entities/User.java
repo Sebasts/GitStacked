@@ -2,7 +2,6 @@ package entities;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.usertype.UserType;
 
 @Entity
 @Table(name = "user")
@@ -28,8 +25,7 @@ public class User {
 	private String username;
 	private String password;
 	@Enumerated(EnumType.STRING)
-	@Column(name="usertype")
-	public LoginUserType loginusertype;
+	public LoginUserType loginUserType;
 	@OneToMany(mappedBy = "user")
 	private List<Workout> workouts;
 
@@ -89,12 +85,12 @@ public class User {
 		this.password = password;
 	}
 
-	public LoginUserType getUsertype() {
-		return loginusertype;
+	public LoginUserType getLoginUsertype() {
+		return loginUserType;
 	}
 
-	public void setUsertype(UserType usertype) {
-		this.loginusertype = loginusertype;
+	public void setLoginUsertype(LoginUserType loginUserType) {
+		this.loginUserType = loginUserType;
 	}
 
 	public int getId() {
@@ -105,6 +101,6 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", fName=" + fName + ", lName=" + lName + ", weight=" + weight + ", heightFeet="
 				+ heightFeet + ", heightInch=" + heightInch + ", username=" + username + ", password=" + password
-				+ ", loginusertype=" + loginusertype + ", workouts=" + workouts + "]";
+				+ ", loginUserType=" + loginUserType + ", workouts=" + workouts + "]";
 	}
 }
