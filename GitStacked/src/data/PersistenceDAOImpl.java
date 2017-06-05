@@ -22,17 +22,17 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	EntityManager em = emf.createEntityManager();
 	
 	@Override
-	public void createNewUser(User user) {
+	public User createNewUser(User user) {
 		if(em == null){
 			System.out.println("em is null");
 		}
 		em.persist(user);
-		
+		return null;
 	}
 
 	@Override
-	public void updateUserWeight(User user, int weight) {
-		// TODO Auto-generated method stub
+	public User updateUserWeight(User user, int weight) {
+		return null;
 		
 	}
 

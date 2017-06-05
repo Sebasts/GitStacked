@@ -16,6 +16,7 @@ Sign Up Now!
 
 Search for an Exercise
 <form action = "getExercise.do" method = "GET">
+<input type = "text" name = "exerciseName">
 <input type = "submit" value = "Search">
 </form>
 
