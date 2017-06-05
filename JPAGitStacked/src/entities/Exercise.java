@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -22,6 +23,7 @@ public class Exercise {
 	private String imageUrl;
 	private int calories;
 	@Enumerated(EnumType.STRING)
+	@Column(name="muscleGroup")
 	private MuscleGroup muscleGroup;
 	@OneToMany(mappedBy="exercise")
 	private List<WorkoutExercise> workoutExercise;

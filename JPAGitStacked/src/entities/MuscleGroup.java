@@ -1,5 +1,5 @@
 package entities;
 
 public enum MuscleGroup {
-	CHEST, BACK, LEGS, ARMS, ABS, SHOULDERS, CALVES,
+	CHEST, BACK, LEGS, ARMS, ABS, SHOULDERS
 }
