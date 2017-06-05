@@ -25,14 +25,16 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	public User createNewUser(User user) {
 		if(em == null){
 			System.out.println("em is null");
+			return user;
 		}
 		em.persist(user);
-		return null;
+		System.out.println("user created");
+		return user;
 	}
 
 	@Override
 	public User updateUserWeight(User user, int weight) {
-		return null;
+		return user;
 		
 	}
 
