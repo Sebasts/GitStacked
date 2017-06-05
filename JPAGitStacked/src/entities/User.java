@@ -23,7 +23,8 @@ public class User {
 	private int id;
 	private String fName;
 	private String lName;
-	private int weight;
+	@Column(name="weight")
+	private int userWeight;
 	private int heightFeet;
 	private int heightInch;
 	private String username;
@@ -31,7 +32,7 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	@Column(name="usertype")
 	public LoginUserType loginUserType;
-	@OneToMany(mappedBy = "user", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "userId", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Workout> workouts;
 
 	public void addWorkout(Workout w) {
@@ -69,11 +70,11 @@ public class User {
 	}
 
 	public int getWeight() {
-		return weight;
+		return userWeight;
 	}
 
 	public void setWeight(int weight) {
-		this.weight = weight;
+		this.userWeight = weight;
 	}
 
 	public int getHeightFeet() {
@@ -122,7 +123,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", fName=" + fName + ", lName=" + lName + ", weight=" + weight + ", heightFeet="
+		return "User [id=" + id + ", fName=" + fName + ", lName=" + lName + ", weight=" + userWeight + ", heightFeet="
 				+ heightFeet + ", heightInch=" + heightInch + ", username=" + username + ", password=" + password
 				+ ", loginUserType=" + loginUserType + ", workouts=" + workouts + "]";
 	}

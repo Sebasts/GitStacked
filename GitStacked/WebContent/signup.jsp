@@ -20,8 +20,8 @@
 	<form:label path = "lName">Last Name:</form:label>
 	<form:input path = "lName"/>
 	
-	<form:label path = "weight">Weight:</form:label>
-	<form:input path = "weight"/>lbs
+	<form:label path = "userWeight">Weight:</form:label>
+	<form:input path = "userWeight"/>lbs
 	
 	<form:label path = "heightFeet">Height (ft):</form:label>
 	<form:input path = "heightFeet"/>

@@ -1,8 +1,8 @@
 package entities;
 
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -24,6 +24,7 @@ public class WorkoutExercise {
 	private Date date;
 	private int weight;
 	@Enumerated(EnumType.STRING)
+	@Column(name="typeId")
 	private Type type;
 	@ManyToOne
 	@JoinColumn(name="workoutId")
@@ -32,7 +33,10 @@ public class WorkoutExercise {
 	@JoinColumn(name="exerciseId")
 	private Exercise exercise;
 	public WorkoutExercise() {}
-	public WorkoutExercise(Exercise exercise2, int reps2, int weight2) {
+	public WorkoutExercise(Exercise exercise, int reps, int weight) {
+		this.exercise = exercise;
+		this.reps = reps;
+		this.weight = weight;
 	}
 	public int getReps() {
 		return reps;

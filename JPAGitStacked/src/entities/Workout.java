@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,10 +21,8 @@ public class Workout {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Date date;
-	@ManyToOne
-	@JoinColumn(name="userId")
-	private User user;
-	@OneToMany(mappedBy="workout")
+	private int userId;
+	@OneToMany(mappedBy="workout", cascade=CascadeType.PERSIST)
 	private List<WorkoutExercise> workoutExercise;
 	public void addWorkoutExercise(WorkoutExercise we) {
 		if (workoutExercise == null) {
@@ -46,17 +45,17 @@ public class Workout {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public User getUser() {
-		return user;
+	public int getUserId() {
+		return userId;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	public int getId() {
 		return id;
 	}
 	@Override
 	public String toString() {
-		return "Workout [id=" + id + ", date=" + date + ", user=" + user + "]";
+		return "Workout [id=" + id + ", date=" + date + ", userId=" + userId + "]";
 	}
 }

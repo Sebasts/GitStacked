@@ -18,7 +18,7 @@ import entities.User;
 import entities.Workout;
 import entities.WorkoutExercise;
 
-@SessionAttributes({"user"})
+@SessionAttributes({"user","workout"})
 @Controller
 public class WorkoutController {
 
@@ -99,15 +99,18 @@ public class WorkoutController {
 		int r = Integer.parseInt(reps);
 		int w = Integer.parseInt(weight);
 		WorkoutExercise workoutexercise = new WorkoutExercise(exercise, r, w);
-		System.out.println(workoutexercise);
 		Workout workout = new Workout();
 		workout.addWorkoutExercise(workoutexercise);
+		workout.setUserId(user.getId());
 		user.addWorkout(workout);
+//		workout.setUser(user);
+		System.out.println(workoutexercise);
+		System.out.println(workout);
+//		dao.persistWorkout(workout);
+		dao.persistUser(user);
 		List<Workout> userWorkouts = user.getWorkouts();
-//		userWorkouts.add(workout);
 		ModelAndView mv = new ModelAndView("profile.jsp");
 		mv.addObject("userWorkouts", userWorkouts);
-		dao.persistUser(user);
 		for (Workout workout2 : userWorkouts) {
 			System.out.println(workout2);
 		}
