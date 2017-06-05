@@ -12,5 +12,7 @@
 
 </form>
 
+Welcome, ${user.getFName()}
+
 </body>
 </html>
