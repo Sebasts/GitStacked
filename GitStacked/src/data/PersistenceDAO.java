@@ -1,5 +1,6 @@
 package data;
 
+import entities.Exercise;
 import entities.User;
 
 public interface PersistenceDAO {
@@ -10,5 +11,6 @@ public interface PersistenceDAO {
 	void updateUserHeight(User user, int newHeight);
 	void createWorkout(User user);
 	void createWorkoutExercise(User user);
+	Exercise getExerciseByName(String exerciseName);
 		
 }

@@ -13,5 +13,13 @@ Sign Up Now!
 <form action = "createUser.do" method = "GET">
 <input type = "submit" value = "Sign Up">
 </form>
+
+Search for an Exercise
+<form action = "getExercise.do" method = "GET">
+<input type = "submit" value = "Search">
+</form>
+
+
+
 </body>
 </html>

@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import entities.Exercise;
 import entities.User;
 
 
@@ -57,6 +58,12 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	public void createWorkoutExercise(User user) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Exercise getExerciseByName(String exerciseName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
