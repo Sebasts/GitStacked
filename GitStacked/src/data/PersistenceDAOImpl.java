@@ -1,13 +1,13 @@
 package data;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import entities.Exercise;
+import entities.LoginUserType;
 import entities.User;
 
 
@@ -15,11 +15,11 @@ import entities.User;
 @Component
 public class PersistenceDAOImpl implements PersistenceDAO {
 	
-//	@PersistenceContext
-//	private EntityManager em;
+	@PersistenceContext
+	private EntityManager em;
 	
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("GitStacked");
-	EntityManager em = emf.createEntityManager();
+//	EntityManagerFactory emf = Persistence.createEntityManagerFactory("GitStacked");
+//	EntityManager em = emf.createEntityManager();
 	
 	@Override
 	public User createNewUser(User user) {
@@ -27,7 +27,9 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 			System.out.println("em is null");
 			return user;
 		}
+		user.setLoginUsertype(LoginUserType.USER);
 		em.persist(user);
+		System.out.println(user);
 		System.out.println("user created");
 		return user;
 	}
