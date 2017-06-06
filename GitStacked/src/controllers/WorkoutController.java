@@ -1,8 +1,5 @@
 package controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -137,8 +134,9 @@ public class WorkoutController {
 		workout.setUser(user);
 		dao.persistWorkouts(workout);
 		ModelAndView mv = new ModelAndView("profile.jsp");
+		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
+		mv.addObject("userWorkouts", userWorkouts);
 		mv.addObject("user", user);
-
 		for (Workout workout2 : user.getWorkouts()) {
 			System.out.println(workout2);
 		}
@@ -153,6 +151,21 @@ public class WorkoutController {
 		mv.setViewName("index.jsp");
 		mv.addObject("user", user);
 		return mv;
+	}
+	
+	@RequestMapping(path = "createExercise.do", method = RequestMethod.POST)
+	public ModelAndView createExercise(Exercise exercise) {
+		System.out.println(exercise);
+		dao.createExercise(exercise);
+		// ModelAndView mv = new ModelAndView("profile.jsp", "user", user);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("exercise", exercise);
+		mv.setViewName("admin.jsp");
+		return mv;
+	}
+	@ModelAttribute("exercise")
+	public Exercise newExercise() {
+		return new Exercise();
 	}
 
 }

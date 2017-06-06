@@ -5,6 +5,7 @@ import java.util.List;
 import entities.Exercise;
 import entities.User;
 import entities.Workout;
+import entities.WorkoutExercise;
 
 public interface PersistenceDAO {
 

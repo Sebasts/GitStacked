@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import entities.Exercise;
 import entities.LoginUserType;
-import entities.MuscleGroup;
 import entities.User;
 import entities.Workout;
+import entities.WorkoutExercise;
 
 @Transactional
 @Component
@@ -195,13 +195,24 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 			System.out.println("em is null");
 //			return exercise;
 		}
-		exercise.setMuscleGroup(exercise.getMuscleGroup());
+//		System.out.println(exercise.getMuscleGroup());
+//		exercise.setMuscleGroup(exercise.getMuscleGroup());
+//		System.out.println(exercise.getMuscleGroup());
 		System.out.println(exercise);
 		em.persist(exercise);
+		em.flush();
 		System.out.println("exercise created");
 //		return exercise;
 		
 	}
-	
+	@Override
+	public List<Workout> getWorkoutsFromUser(User user) {
+
+		String query = "select u from User u join fetch u.workouts where u.id = :id";
+		User userWorkout = em.createQuery(query, User.class).setParameter("id", user.getId()).getSingleResult();
+		List<Workout> userWorkouts = userWorkout.getWorkouts();
+		return userWorkouts;
+	}
+
 }
 
