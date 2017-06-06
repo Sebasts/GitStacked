@@ -10,13 +10,19 @@
 </head>
 <body>
 <div>
-	<form>
-		<select>
+	<form action="createWorkout.do" method="POST" modelAttribute="workoutExercise">
+		<select name="exerciseId">
 			<c:forEach var="e" items="${exercises}">
 				<option value="${e.id}">${e.name}</option>
 			</c:forEach>
-		</select> <input type="submit" value="Create Workout">
+		</select> 
+		Reps:
+		<input type="text" name="reps">
+		Weight:
+		<input type="text" name="weight">
+		<input type="submit" value="Create Workout">
 	</form>
+
 </div>
 </body>
 </html>
