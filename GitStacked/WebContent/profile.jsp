@@ -9,7 +9,7 @@
 <title>Your Profile</title>
 </head>
 <body>
-
+<jsp:include page="navbar.jsp"/> 
 	<form action="createWorkout.do" method="GET">
 		<input type="submit" value="Create Exercise">
 	</form>

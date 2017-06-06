@@ -11,7 +11,7 @@
 <title>Sign Up</title>
 </head>
 <body>
-
+	<jsp:include page="navbar.jsp"/> 
 	<div>
 	<form:form action = "createUser.do" method = "POST" modelAttribute="user">
 	<form:label path = "fName">First Name:</form:label>

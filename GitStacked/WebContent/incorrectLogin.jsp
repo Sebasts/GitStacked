@@ -10,6 +10,7 @@
 <title>Login Error</title>
 </head>
 <body>
+<jsp:include page="navbar.jsp"/> 
 	Click below to enter in correct username/password
 	
 	

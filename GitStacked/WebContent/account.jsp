@@ -4,15 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="navbar.css">
+<title>Account Profile</title>
 </head>
 <body>
-
+<jsp:include page="navbar.jsp"/> 
 	<form action = "editUser.do" method ="post" modelAttribute="user">
 	<label>First Name</label><input type="text" value="${user.getFName()}" name="fName"><br>
 	<label>Last Name</label><input type="text" value="${user.getLName()}" name="lName"><br>
-	<%-- <label>Email</label><input type="text" value="${user.weight}" name="weight"><br> --%>
-	<label>Weight</label><input type="text" value="${user.userWeight}" name="weight"><br>
+	<%-- <label>Email</label><input type="text" value="${user.userWeight}" name="userWeight"><br> --%>
+	<label>Weight</label><input type="text" value="${user.userWeight}" name="userWeight"><br>
 	<label>Height (feet)</label><input type="text" value="${user.heightFeet}" name="heightFeet"><br>
 	<label>Height (inches)</label><input type="text" value="${user.heightInch}" name="heightInch"><br>
 	<label>Password</label><input type="password" value="${user.password}" name="password"><br>
