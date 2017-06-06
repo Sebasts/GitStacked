@@ -132,7 +132,7 @@ public class WorkoutController {
 		System.out.println(workoutexercise);
 		Workout workout = new Workout();
 		workout.addWorkoutExercise(workoutexercise);
-		workout.setUserId(user.getId());
+//		workout.setUserId(user.getId());
 		user.addWorkout(workout);
 //		workout.setUser(user);
 		System.out.println(user.getId());

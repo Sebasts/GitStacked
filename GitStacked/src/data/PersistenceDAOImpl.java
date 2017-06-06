@@ -107,6 +107,7 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	}
 	@Override
 	public User persistUser(User user) {
+		user.getWorkouts().size();
 		User tempUser = em.find(user.getClass(), user.getId());
 		System.out.println(tempUser);
 		System.out.println(tempUser.getWorkouts());
