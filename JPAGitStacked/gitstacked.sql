@@ -5,15 +5,15 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema loginUserType
+-- Schema GitStacked
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `loginUserType` ;
+DROP SCHEMA IF EXISTS `GitStacked` ;
 
 -- -----------------------------------------------------
--- Schema loginUserType
+-- Schema GitStacked
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `loginUserType` DEFAULT CHARACTER SET utf8 ;
-USE `loginUserType` ;
+CREATE SCHEMA IF NOT EXISTS `GitStacked` DEFAULT CHARACTER SET utf8 ;
+USE `GitStacked` ;
 
 -- -----------------------------------------------------
 -- Table `user`
@@ -41,7 +41,7 @@ DROP TABLE IF EXISTS `workout` ;
 
 CREATE TABLE IF NOT EXISTS `workout` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `date` DATE NOT NULL,
+  `date` DATE NULL,
   `userId` INT NOT NULL,
   INDEX `fk_workout_user1_idx` (`userId` ASC),
   PRIMARY KEY (`id`))
@@ -84,7 +84,6 @@ CREATE TABLE IF NOT EXISTS `exercise` (
   `imageUrl` VARCHAR(500) NULL,
   `calories` INT NULL,
   `muscleGroup` ENUM('ARMS', 'LEGS', 'ABS', 'CHEST', 'BACK', 'SHOULDERS') NOT NULL,
-  INDEX `fk_exercise_muscle_group1_idx` (`muscleGroup` ASC),
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -98,9 +97,9 @@ CREATE TABLE IF NOT EXISTS `workoutExercise` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `reps` INT NULL,
   `duration` INT UNSIGNED NULL,
-  `date` DATE NOT NULL,
+  `date` DATE NULL,
   `weight` INT NULL,
-  `typeId` INT NOT NULL,
+  `typeId` INT NULL,
   `workoutId` INT NOT NULL,
   `exerciseId` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -125,7 +124,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `user`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `loginUserType`;
+USE `GitStacked`;
 INSERT INTO `user` (`id`, `weight`, `heightFeet`, `heightInch`, `username`, `password`, `usertype`, `lName`, `fName`) VALUES (1, 230, 6, 6, 'spop', 'password', 'USER', 'Popinski', 'Soda');
 
 COMMIT;
@@ -135,7 +134,7 @@ COMMIT;
 -- Data for table `exercise`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `loginUserType`;
+USE `GitStacked`;
 INSERT INTO `exercise` (`id`, `name`, `desc`, `imageUrl`, `calories`, `muscleGroup`) VALUES (1, 'Bench Press Narrow Grip', 'Lay down on a bench| the bar is directly over your eyes| the knees form a slight angle and the feet are firmly on the ground. Hold the bar with a narrow grip (around 20cm.). Lead the weight slowly down till the arms are parallel to the floor (elbow: right angle)| press then the bar up. When bringing the bar down| don\'t let it down on your nipples as with the regular bench pressing| but somewhat lower.', 'https://wger.de/media/exercise-images/88/Narrow-grip-bench-press-1.png.200x200_q85.png', 20, 'ARMS');
 INSERT INTO `exercise` (`id`, `name`, `desc`, `imageUrl`, `calories`, `muscleGroup`) VALUES (2, 'Biceps Curl With Cable', 'Stand around 30 - 40cm away from the cable| the feet are firmly on the floor. Take the bar and lift the weight with a fast movements. Lower the weight as with the dumbbell curls slowly and controlled', 'https://wger.de/media/exercise-images/129/Standing-biceps-curl-2.png.200x200_q85.png', 15, 'ARMS');
 INSERT INTO `exercise` (`id`, `name`, `desc`, `imageUrl`, `calories`, `muscleGroup`) VALUES (3, 'Biceps Curls With Barbell', 'Hold the Barbell shoulder-wide| the back is straight| the shoulders slightly back| the arms are streched. Bend the arms| bringing the weight up| with a fast movement. Without pausing| let down the bar with a slow and controlled movement.', 'https://wger.de/media/exercise-images/74/Bicep-curls-2.png.200x200_q85.png', 15, 'ARMS');
