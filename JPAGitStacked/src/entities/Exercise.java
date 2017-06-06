@@ -26,6 +26,22 @@ public class Exercise {
 //	@OneToOne(mappedBy="exercise")
 //	private WorkoutExercise workoutExercise;
 	
+	
+//	<form:label path = "name">Name of Exercise:</form:label>
+//	<form:input path = "name"/>[Limited to 100 chars]
+//	
+//	<form:label path = "desc">Description/Instruction:</form:label>
+//	<form:input path = "desc"/>[Limited to 1000 chars]
+//	
+//	<form:label path = "imageUrl">Image Url:</form:label>
+//	<form:input path = "imageUrl"/>
+//	
+//	<form:label path = "calories">Calories per Movement:</form:label>
+//	<form:input path = "calories"/>[Integer]
+//	
+//	<form:label path = "muscleGroup">Muscle Group ENUM:</form:label>
+//	<form:input path = "muscleGroup"/>[ARMS,LEGS,ABS,CHEST,BACK,SHOULDERS]
+	
 	public String getName() {
 		return name;
 	}
