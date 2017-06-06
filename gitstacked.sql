@@ -30,7 +30,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `usertype` ENUM('USER', 'ADMIN') NOT NULL COMMENT 'user type is used as ‘admin’ or ‘normal user’, where admin can edit exercises.\n\n',
   `lName` VARCHAR(100) NOT NULL,
   `fName` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC))
 ENGINE = InnoDB;
 
 
