@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,27 +26,22 @@
 	</div>
 	
 	<div>
-	<!-- <form:form action = "createExercise.do" method = "POST" modelAttribute="exercise"> -->
-	<!-- <form:label path = "id">Unique Id:</form:label>
-	<form:input path = "id"/> -->
+	<form:form action = "createExercise.do" method = "POST" modelAttribute="exercise">s
 	
-<!-- 	<form:label path = "name">Name of Exercise:</form:label>
-	<form:input path = "name"/> -->
+	<form:label path = "name">Name of Exercise:</form:label>
+	<form:input path = "name"/>[Limited to 100 chars]
 	
-<!-- 	<form:label path = "userWeight">Description/Instruction:</form:label>
-	<form:input path = "userWeight"/>lbs
+	<form:label path = "desc">Description/Instruction:</form:label>
+	<form:input path = "desc"/>[Limited to 1000 chars]
 	
-	<form:label path = "heightFeet">Height (ft):</form:label>
-	<form:input path = "heightFeet"/>
+	<form:label path = "imageUrl">Image Url:</form:label>
+	<form:input path = "imageUrl"/>
 	
-	<form:label path = "heightInch">Height (in):</form:label>
-	<form:input path = "heightInch"/>
+	<form:label path = "calories">Calories per Movement:</form:label>
+	<form:input path = "calories"/>[Integer]
 	
-	<form:label path = "username">Username:</form:label>
-	<form:input path = "username"/>
-	
-	<form:label path = "password">Password:</form:label>
-	<form:input path = "password"/> -->
+	<form:label path = "muscleGroup">Muscle Group ENUM:</form:label>
+	<form:input path = "muscleGroup"/>[ARMS,LEGS,ABS,CHEST,BACK,SHOULDERS]
 	
 	<input type = "submit" value = "Create Exercise">
 	
