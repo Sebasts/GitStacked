@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import entities.Exercise;
 import entities.LoginUserType;
-import entities.MuscleGroup;
 import entities.User;
 import entities.Workout;
 
@@ -179,20 +178,24 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 
 	}
 
-//	@Override
-//	public void createExercise(Exercise exercise) {
-//		if(em == null){
-//			System.out.println("em is null");
-////			return exercise;
-//		}
+
+	@Override
+	public void createExercise(Exercise exercise) {
+		if(em == null){
+			System.out.println("em is null");
+//			return exercise;
+		}
+//		System.out.println(exercise.getMuscleGroup());
 //		exercise.setMuscleGroup(exercise.getMuscleGroup());
-////		em.persist(user);
-//		System.out.println(exercise);
-//		System.out.println("exercise created");
-////		return exercise;
-//		
-//	}
-//	
+//		System.out.println(exercise.getMuscleGroup());
+		System.out.println(exercise);
+		em.persist(exercise);
+		em.flush();
+		System.out.println("exercise created");
+//		return exercise;
+		
+	}
+	
 }
 
 //public User persistUser(User user) {
