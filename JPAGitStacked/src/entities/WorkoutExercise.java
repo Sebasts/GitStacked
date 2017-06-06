@@ -49,6 +49,12 @@ public class WorkoutExercise {
 		this.reps = reps;
 		this.weight = weight;
 	}
+	public WorkoutExercise(Exercise exercise, int reps, int weight, int duration) {
+		this.exercise = exercise;
+		this.reps = reps;
+		this.weight = weight;
+		this.duration = duration;
+	}
 	public int getReps() {
 		return reps;
 	}
