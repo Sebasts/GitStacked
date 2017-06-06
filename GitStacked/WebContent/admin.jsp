@@ -31,26 +31,26 @@
 	
 	<div>
 	<h3>Create a New Exercise</h3>
-	<form:form action = "createExercise.do" method = "POST" modelAttribute="exercise">
+	<form action = "createExercise.do" method = "POST">
 	
-	<form:label path = "name">Name of Exercise:</form:label>
-	<form:input path = "name"/>[Limited to 100 chars]<br>
+	Name of Exercise:
+	<input name = "name"/>[Limited to 100 chars]<br>
 	
-	<form:label path = "desc">Description/Instruction:</form:label>
-	<form:input path = "desc"/>[Limited to 1000 chars]<br>
+	Description/Instruction:
+	<input name = "desc"/>[Limited to 1000 chars]<br>
 	
-	<form:label path = "imageUrl">Image Url:</form:label>
-	<form:input path = "imageUrl"/><br>
+	Image Url:
+	<input name = "imageUrl"/><br>
 	
-	<form:label path = "calories">Calories per Movement:</form:label>
-	<form:input path = "calories"/>[Integer]<br>
+	Calories per Movement:
+	<input name = "calories"/>[Integer]<br>
 	
-	<form:label path = "muscleGroup">Muscle Group ENUM:</form:label>
-	<form:input path = "muscleGroup"/>[ARMS,LEGS,ABS,CHEST,BACK,SHOULDERS]<br>
+	Muscle Group ENUM:
+	<input name = "muscleGroup"/>[ARMS,LEGS,ABS,CHEST,BACK,SHOULDERS]<br>
 	
 	<input type = "submit" value = "Create Exercise">
 	
-	</form:form>
+	</form>
 	</div>
 	
 	
