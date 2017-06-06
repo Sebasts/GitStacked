@@ -132,10 +132,10 @@ public class WorkoutController {
 		workout.addWorkoutExercise(workoutexercise);
 		workout.setUserId(user.getId());
 		user.addWorkout(workout);
-//		workout.setUser(user);
+		workout.setUser(user);
 		System.out.println(workoutexercise);
 		System.out.println(workout);
-//		dao.persistWorkout(workout);
+		dao.persistWorkout(workout);
 		dao.persistUser(user);
 		List<Workout> userWorkouts = user.getWorkouts();
 		ModelAndView mv = new ModelAndView("profile.jsp");

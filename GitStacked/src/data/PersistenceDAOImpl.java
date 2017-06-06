@@ -99,8 +99,8 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 			tempWorkout.setDate(workout.getDate());
 		}
 		System.out.println(tempWorkout);
-		tempWorkout.setUserId(workout.getUserId());
-		tempWorkout.setWorkoutExercise(workout.getWorkoutExercise());
+//		tempWorkout.setUserId(workout.getUserId());
+//		tempWorkout.setWorkoutExercise(workout.getWorkoutExercise());
 		em.merge(workout);
 		em.flush();
 		return workout;
