@@ -28,6 +28,7 @@ public interface PersistenceDAO {
 	
 	Workout persistWorkout(Workout workout);
 	User persistWorkouts(Workout w);
+	List<Workout> getWorkoutsFromUser(User user);
 
 		
 }
