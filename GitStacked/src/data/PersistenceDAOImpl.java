@@ -182,9 +182,12 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 			System.out.println("em is null");
 //			return exercise;
 		}
-		exercise.setMuscleGroup(exercise.getMuscleGroup());
+//		System.out.println(exercise.getMuscleGroup());
+//		exercise.setMuscleGroup(exercise.getMuscleGroup());
+//		System.out.println(exercise.getMuscleGroup());
 		System.out.println(exercise);
 		em.persist(exercise);
+		em.flush();
 		System.out.println("exercise created");
 //		return exercise;
 		

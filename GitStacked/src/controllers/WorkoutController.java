@@ -153,7 +153,7 @@ public class WorkoutController {
 	}
 	
 	@RequestMapping(path = "createExercise.do", method = RequestMethod.POST)
-	public ModelAndView createExercise(@ModelAttribute("exercise") Exercise exercise) {
+	public ModelAndView createExercise(Exercise exercise) {
 		System.out.println(exercise);
 		dao.createExercise(exercise);
 		// ModelAndView mv = new ModelAndView("profile.jsp", "user", user);
@@ -161,6 +161,10 @@ public class WorkoutController {
 		mv.addObject("exercise", exercise);
 		mv.setViewName("admin.jsp");
 		return mv;
+	}
+	@ModelAttribute("exercise")
+	public Exercise newExercise() {
+		return new Exercise();
 	}
 
 }
