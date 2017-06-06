@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import entities.Exercise;
 import entities.LoginUserType;
-import entities.MuscleGroup;
 import entities.User;
 import entities.Workout;
 
