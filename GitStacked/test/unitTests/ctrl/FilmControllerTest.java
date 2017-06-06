@@ -1,4 +1,4 @@
-package unitTests;
+package unitTests.ctrl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -21,28 +21,29 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
+import controllers.WorkoutController;
 import data.PersistenceDAO;
 import entities.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"/WEB-INF/Test-context.xml"})
+@ContextConfiguration(locations={"../WEB-INF/Test-context.xml"})
 @WebAppConfiguration
 @Transactional // you will need this if you are using DAO methods with transactions
 
-public class PersistenceTest {
+public class FilmControllerTest {
   @Autowired
   private WebApplicationContext wac;
 
   private MockMvc mockMvc;
 
-//  @Autowired
-//  private FilmController controller;
+  @Autowired
+  private WorkoutController controller;
   
   private PersistenceDAO dao;
 
   @Before
   public void setUp() throws Exception {
-    dao = (PersistenceDAO) wac.getBean("filmDAO");
+    dao = (PersistenceDAO) wac.getBean("dao");
 //    controller.setFilmDAO(dao);
     this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
   }
@@ -51,18 +52,22 @@ public class PersistenceTest {
   public void test_get_film_returns_film_view_and_model(){
     try {
       // Use MockMVC to create a request to the test servlet and get a response
-      MvcResult response = mockMvc.perform(get("login.do"))
+      MvcResult response = mockMvc.perform(get("/GetFilm.do?id=1"))
                             .andExpect(
                                 status().isOk()
                             ).andReturn();
+
       // Extract the returned ModelAndView from the response
       ModelAndView mv = response.getModelAndView();
+
       // Extract the Model from the ModelAndView
       ModelMap map = mv.getModelMap();
+
       // Cast the Object value paired to the "film" key to a Film object
       User f = (User) map.get("user");
+
       // Check the values with JUnit tests
-      assertEquals("profile.jsp", mv.getViewName());
+      assertEquals("film.jsp", mv.getViewName());
       assertEquals("ACADEMY DINOSAUR", f.getFName());
 
     } catch (Exception e) {
@@ -72,6 +77,7 @@ public class PersistenceTest {
 
   @After
   public void tearDown() throws Exception {
+    controller = null;
     mockMvc = null;
     wac = null;
   }

@@ -69,11 +69,11 @@ public class User {
 		this.lName = lname;
 	}
 
-	public int getWeight() {
+	public int getUserWeight() {
 		return userWeight;
 	}
 
-	public void setWeight(int weight) {
+	public void setUserWeight(int weight) {
 		this.userWeight = weight;
 	}
 

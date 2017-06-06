@@ -11,10 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="workoutExercise")
+@Table(name="workoutexercise")
 public class WorkoutExercise {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,18 +24,28 @@ public class WorkoutExercise {
 	private int duration;
 	private Date date;
 	private int weight;
+	
 	@Enumerated(EnumType.STRING)
 	@Column(name="typeId")
 	private Type type;
+	
 	@ManyToOne
 	@JoinColumn(name="workoutId")
 	private Workout workout;
-	@ManyToOne
+	
+//	@OneToOne
+//	@JoinColumn(name="exerciseId", referencedColumnName = "id")
+//	private int exerciseId;
+	
+	@OneToOne
 	@JoinColumn(name="exerciseId")
 	private Exercise exercise;
+	
+	
 	public WorkoutExercise() {}
 	public WorkoutExercise(Exercise exercise, int reps, int weight) {
 		this.exercise = exercise;
+//		this.exerciseId = exercise.getId();
 		this.reps = reps;
 		this.weight = weight;
 	}
@@ -74,6 +85,7 @@ public class WorkoutExercise {
 	public void setWorkout(Workout workout) {
 		this.workout = workout;
 	}
+	
 	public Exercise getExercise() {
 		return exercise;
 	}
@@ -86,6 +98,7 @@ public class WorkoutExercise {
 	@Override
 	public String toString() {
 		return "WorkoutExercise [id=" + id + ", reps=" + reps + ", duration=" + duration + ", date=" + date
-				+ ", weight=" + weight + ", type=" + type + "]";
+				+ ", weight=" + weight + ", type=" + type + ", workout=" + workout + ", exercise=" + exercise + "]";
 	}
+	
 }
