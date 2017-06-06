@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,7 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,8 +23,9 @@ public class Exercise {
 	@Enumerated(EnumType.STRING)
 	@Column(name="muscleGroup")
 	private MuscleGroup muscleGroup;
-	@OneToMany(mappedBy="exercise")
-	private List<WorkoutExercise> workoutExercise;
+//	@OneToOne(mappedBy="exercise")
+//	private WorkoutExercise workoutExercise;
+	
 	public String getName() {
 		return name;
 	}
@@ -57,12 +56,12 @@ public class Exercise {
 	public void setMuscleGroup(MuscleGroup muscleGroup) {
 		this.muscleGroup = muscleGroup;
 	}
-	public List<WorkoutExercise> getWorkoutExercise() {
-		return workoutExercise;
-	}
-	public void setWorkoutExercise(List<WorkoutExercise> workoutExercise) {
-		this.workoutExercise = workoutExercise;
-	}
+//	public WorkoutExercise getWorkoutExercise() {
+//		return workoutExercise;
+//	}
+//	public void setWorkoutExercise(WorkoutExercise workoutExercise) {
+//		this.workoutExercise = workoutExercise;
+//	}
 	public int getId() {
 		return id;
 	}

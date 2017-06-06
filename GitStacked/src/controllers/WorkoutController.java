@@ -125,21 +125,25 @@ public class WorkoutController {
 	@RequestMapping(path = "createWorkout.do", method = RequestMethod.POST)
 	public ModelAndView publishWorkout(@RequestParam("exerciseId") int id, @ModelAttribute("user") User user, @RequestParam("reps") String reps, @RequestParam("weight") String weight) {
 		Exercise exercise = dao.getExerciseById(user, id);
+		System.out.println("************excercise***********" + exercise);
 		int r = Integer.parseInt(reps);
 		int w = Integer.parseInt(weight);
 		WorkoutExercise workoutexercise = new WorkoutExercise(exercise, r, w);
+		System.out.println(workoutexercise);
 		Workout workout = new Workout();
 		workout.addWorkoutExercise(workoutexercise);
 		workout.setUserId(user.getId());
 		user.addWorkout(workout);
 //		workout.setUser(user);
+		System.out.println(user.getId());
 		System.out.println(workoutexercise);
-		System.out.println(workout);
+		System.out.println(workout.getWorkoutExercise().get(0));
 //		dao.persistWorkout(workout);
 		dao.persistUser(user);
 		List<Workout> userWorkouts = user.getWorkouts();
 		ModelAndView mv = new ModelAndView("profile.jsp");
 		mv.addObject("userWorkouts", userWorkouts);
+		mv.addObject("user", user);
 		for (Workout workout2 : userWorkouts) {
 			System.out.println(workout2);
 		}

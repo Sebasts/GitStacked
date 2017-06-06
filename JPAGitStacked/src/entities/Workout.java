@@ -22,8 +22,9 @@ public class Workout {
 	private int id;
 	private Date date;
 	private int userId;
-	@OneToMany(mappedBy="workout", cascade=CascadeType.PERSIST)
+	@OneToMany(mappedBy="workout")
 	private List<WorkoutExercise> workoutExercise;
+	
 	public void addWorkoutExercise(WorkoutExercise we) {
 		if (workoutExercise == null) {
 			workoutExercise = new ArrayList<>();

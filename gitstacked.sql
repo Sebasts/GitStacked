@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `exercise` (
   `desc` VARCHAR(1000) NULL,
   `imageUrl` VARCHAR(500) NULL,
   `calories` INT NULL,
-  `muscleGroup` ENUM('ARMS', 'LEGS', 'ABS', 'CHEST', 'BACK', 'SHOULDERS') NOT NULL,
+  `muscleGroup` ENUM('ARMS', 'LEGS', 'ABS', 'CHEST', 'BACK', 'SHOULDERS') NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
