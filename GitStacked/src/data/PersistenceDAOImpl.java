@@ -177,17 +177,6 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 
 	}
 	
-	@Override
-	public List<Workout> getWorkoutsFromUser(User user) {
-		
-		String query = "select w from Workout w where w.userId = :id";
-		List<Workout> userWorkoutList = em.createQuery(query, Workout.class).setParameter("id", 1).getResultList();
-		for (Workout workout : userWorkoutList) {
-			System.out.println(workout);
-		}
-		return userWorkoutList;
-		
-	}
 
 	@Override
 	public void createExercise(Exercise exercise) {
