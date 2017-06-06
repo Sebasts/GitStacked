@@ -20,10 +20,53 @@
 			<option>ADMIN</option>
 			<option>USER</option>
 		</select>
-
 		<button type="submit">Make Change</button>
 	</form>
 	</div>
+	
+	<div>
+	<!-- <form:form action = "createExercise.do" method = "POST" modelAttribute="exercise"> -->
+	<!-- <form:label path = "id">Unique Id:</form:label>
+	<form:input path = "id"/> -->
+	
+<!-- 	<form:label path = "name">Name of Exercise:</form:label>
+	<form:input path = "name"/> -->
+	
+<!-- 	<form:label path = "userWeight">Description/Instruction:</form:label>
+	<form:input path = "userWeight"/>lbs
+	
+	<form:label path = "heightFeet">Height (ft):</form:label>
+	<form:input path = "heightFeet"/>
+	
+	<form:label path = "heightInch">Height (in):</form:label>
+	<form:input path = "heightInch"/>
+	
+	<form:label path = "username">Username:</form:label>
+	<form:input path = "username"/>
+	
+	<form:label path = "password">Password:</form:label>
+	<form:input path = "password"/> -->
+	
+	<input type = "submit" value = "Create Exercise">
+	
+	</form:form>
+	</div>
+	
+	
+	<%-- 	<div>
+	<h3>Create Exercise</h3>
+	<form action="deleteExercise.do" method="post">
+		<select name="username">
+			<c:forEach var="u" items="${users}">
+				<option>${u.username}</option>
+			</c:forEach>
+		</select> <select name="choice">
+			<option>ADMIN</option>
+			<option>USER</option>
+		</select>
+		<button type="submit">Make Change</button>
+	</form>
+	</div> --%>
 	
 </body>
 </html>
