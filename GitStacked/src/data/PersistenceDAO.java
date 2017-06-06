@@ -27,6 +27,7 @@ public interface PersistenceDAO {
 	Exercise getExerciseById(User user, int id);
 	
 	Workout persistWorkout(Workout workout);
+	User persistWorkouts(Workout w);
 
 		
 }

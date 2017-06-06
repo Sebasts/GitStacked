@@ -21,10 +21,20 @@ public class Workout {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Date date;
-	private int userId;
-	@OneToMany(mappedBy="workout")
+	
+	@ManyToOne
+	@JoinColumn(name="userId")
+	private User user;
+	
+	@OneToMany(mappedBy="workout", cascade=CascadeType.ALL)
 	private List<WorkoutExercise> workoutExercise;
 	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public void addWorkoutExercise(WorkoutExercise we) {
 		if (workoutExercise == null) {
 			workoutExercise = new ArrayList<>();
@@ -46,17 +56,12 @@ public class Workout {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+	
 	public int getId() {
 		return id;
 	}
 	@Override
 	public String toString() {
-		return "Workout [id=" + id + ", date=" + date + ", userId=" + userId + "]";
+		return "Workout [id=" + id + ", date=" + date + "]";
 	}
 }
