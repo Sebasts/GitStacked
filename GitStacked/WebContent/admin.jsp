@@ -27,7 +27,7 @@
 	</div>
 	
 	<br>
-	<br>
+	
 	
 	<div>
 	<h3>Create a New Exercise</h3>
@@ -53,17 +53,33 @@
 	</form>
 	</div>
 	
+	<br>
 	
 	<div>
 	<h3>Make an Exercise Inactive</h3>
 	<form action="deleteExercise.do" method="post">
 		<select name="name">
 			<c:forEach var="exercise" items="${id}">
-				<option>${exercise.new}</option>
+				<option>${exercise.name}</option>
 			</c:forEach>
 		</select> <select name="choice">
 			<option>ACTIVE</option>
 			<option>INACTIVE</option>
+		</select>
+		<button type="submit">Make Change</button>
+	</form>
+	</div>
+	
+	<div>
+	<h3>Change user account type</h3>
+	<form action="updateUserType.do" method="post">
+		<select name="username">
+			<c:forEach var="u" items="${users}">
+				<option>${u.username}</option>
+			</c:forEach>
+		</select> <select name="choice">
+			<option>ADMIN</option>
+			<option>USER</option>
 		</select>
 		<button type="submit">Make Change</button>
 	</form>
