@@ -101,7 +101,7 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		}
 		System.out.println(tempWorkout);
 
-		//tempWorkout.setUser(workout.getUserId());
+		tempWorkout.setUserId(workout.getUserId());
 		tempWorkout.setWorkoutExercise(workout.getWorkoutExercise());
 
 		em.merge(workout);
@@ -130,8 +130,8 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		return user;
 	}
 
-	@Override
-	public User persistWorkouts(Workout w) {
+//	@Override
+//	public User persistWorkouts(Workout w) {
 //		User tempUser = em.find(w.getUser().getClass(), w.getUser().getId());
 //		System.out.println(tempUser);
 //		System.out.println(tempUser.getWorkouts());
@@ -144,12 +144,12 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 //		tempUser.setWorkouts(user.getWorkouts());
 //		tempUser.setLoginUsertype(user.getLoginUsertype());
 		
-		em.persist(w);
-		em.flush();
+//		em.persist(w);
+//		em.flush();
 //		em.persist(tempUser);
 //		System.out.println(user.getWorkouts().size());
-		return w.getUserId();
-	}
+//		return w.getUserId();
+//	}
 	@Override
 	public List<User> getAllUsers() {
 		String query = "select u from User u";
@@ -179,20 +179,20 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 
 	}
 
-	@Override
-	public void createExercise(Exercise exercise) {
-		if(em == null){
-			System.out.println("em is null");
-//			return exercise;
-		}
-		exercise.setMuscleGroup(exercise.getMuscleGroup());
-//		em.persist(user);
-		System.out.println(exercise);
-		System.out.println("exercise created");
-//		return exercise;
-		
-	}
-	
+//	@Override
+//	public void createExercise(Exercise exercise) {
+//		if(em == null){
+//			System.out.println("em is null");
+////			return exercise;
+//		}
+//		exercise.setMuscleGroup(exercise.getMuscleGroup());
+////		em.persist(user);
+//		System.out.println(exercise);
+//		System.out.println("exercise created");
+////		return exercise;
+//		
+//	}
+//	
 }
 
 //public User persistUser(User user) {
