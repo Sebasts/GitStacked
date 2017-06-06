@@ -49,9 +49,9 @@
 
 	<h2>Workouts planned for today</h2>
 	<----- This should show all workouts planned for today ------->
-	<c:forEach var="w" items="${workouts}">
-		<option value="${w.id}">${w.date}</option>
-	</c:forEach>
+	<%-- <c:forEach var="e" items="${userExercises}">
+		<option value="${e.id}">${e.name}</option>
+	</c:forEach> --%>
 
 </body>
 </html>

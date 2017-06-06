@@ -32,7 +32,7 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	@Column(name="usertype")
 	public LoginUserType loginUserType;
-	@OneToMany(mappedBy = "userId", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "user", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Workout> workouts;
 
 	public void addWorkout(Workout w) {
