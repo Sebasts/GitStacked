@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ public class Workout {
 	@JoinColumn(name="userId")
 	private User user;
 	
-	@OneToMany(mappedBy="workout", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="workout", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<WorkoutExercise> workoutExercise;
 	
 	public User getUser() {

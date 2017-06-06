@@ -5,6 +5,7 @@ import java.util.List;
 import entities.Exercise;
 import entities.User;
 import entities.Workout;
+import entities.WorkoutExercise;
 
 public interface PersistenceDAO {
 
@@ -28,6 +29,7 @@ public interface PersistenceDAO {
 	
 	Workout persistWorkout(Workout workout);
 	User persistWorkouts(Workout w);
+	List<Workout> getWorkoutsFromUser(User user);
 
 		
 }
