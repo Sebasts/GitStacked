@@ -154,5 +154,28 @@ public class WorkoutController {
 		mv.addObject("user", user);
 		return mv;
 	}
+	@ModelAttribute("exercise")
+	public Exercise newExercise() {
+		return new Exercise();
+	}
+
+//	@RequestMapping(path = "createExercise.do", method = RequestMethod.GET)
+//	public ModelAndView signupForm() {
+//		ModelAndView mv = new ModelAndView();
+//		// mv.addObject("exercise", exercise);
+//		mv.setViewName("admin.jsp");
+//		return mv;
+//	}
+
+	@RequestMapping(path = "createExercise.do", method = RequestMethod.POST)
+	public ModelAndView createExercise(@ModelAttribute("exercise") Exercise exercise) {
+		System.out.println(exercise);
+		dao.createExercise(exercise);
+		// ModelAndView mv = new ModelAndView("profile.jsp", "user", user);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("exercise", exercise);
+		mv.setViewName("admin.jsp");
+		return mv;
+	}
 
 }
