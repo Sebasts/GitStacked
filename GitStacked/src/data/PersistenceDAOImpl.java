@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import entities.Exercise;
 import entities.LoginUserType;
+import entities.MuscleGroup;
 import entities.User;
 import entities.Workout;
 
@@ -107,6 +108,7 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	}
 	@Override
 	public User persistUser(User user) {
+		user.getWorkouts().size();
 		User tempUser = em.find(user.getClass(), user.getId());
 		System.out.println(tempUser);
 		System.out.println(tempUser.getWorkouts());
@@ -155,5 +157,39 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		return exercise;
 
 	}
+
+	@Override
+	public void createExercise(Exercise exercise) {
+		if(em == null){
+			System.out.println("em is null");
+//			return exercise;
+		}
+		exercise.setMuscleGroup(exercise.getMuscleGroup());
+//		em.persist(user);
+		System.out.println(exercise);
+		System.out.println("exercise created");
+//		return exercise;
+		
+	}
 	
 }
+
+//public User persistUser(User user) {
+//	User tempUser = em.find(user.getClass(), user.getId());
+//	System.out.println(tempUser);
+//	System.out.println(tempUser.getWorkouts());
+//	tempUser.setFName(user.getFName());
+//	tempUser.setLName(user.getLName());
+//	tempUser.setHeightFeet(user.getHeightFeet());
+//	tempUser.setHeightInch(user.getHeightInch());
+//	tempUser.setPassword(user.getPassword());
+//	tempUser.setUserWeight(user.getUserWeight());
+//	tempUser.setWorkouts(user.getWorkouts());
+//	tempUser.setLoginUsertype(user.getLoginUsertype());
+//	
+//	em.merge(tempUser);
+//	em.flush();
+////	em.persist(tempUser);
+//	System.out.println(user.getWorkouts().size());
+//	return user;
+//}

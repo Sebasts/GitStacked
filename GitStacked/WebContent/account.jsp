@@ -12,10 +12,10 @@
 	<label>First Name</label><input type="text" value="${user.getFName()}" name="fName"><br>
 	<label>Last Name</label><input type="text" value="${user.getLName()}" name="lName"><br>
 	<%-- <label>Email</label><input type="text" value="${user.weight}" name="weight"><br> --%>
-	<label>Weight</label><input type="text" value="${user.weight}" name="weight"><br>
+	<label>Weight</label><input type="text" value="${user.userWeight}" name="weight"><br>
 	<label>Height (feet)</label><input type="text" value="${user.heightFeet}" name="heightFeet"><br>
 	<label>Height (inches)</label><input type="text" value="${user.heightInch}" name="heightInch"><br>
-	<label>Password</label><input type="password" value="${user.password}" name="heightInch"><br>
+	<label>Password</label><input type="password" value="${user.password}" name="password"><br>
 		<input type="hidden" name="userId" value="${user.id}">
 		<input type="submit" value="Submit">
 	</form>
