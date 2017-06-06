@@ -98,6 +98,7 @@ public class WorkoutExercise {
 	@Override
 	public String toString() {
 		return "WorkoutExercise [id=" + id + ", reps=" + reps + ", duration=" + duration + ", date=" + date
-				+ ", weight=" + weight + ", type=" + type + "]";
+				+ ", weight=" + weight + ", type=" + type + ", workout=" + workout + ", exercise=" + exercise + "]";
 	}
+	
 }
