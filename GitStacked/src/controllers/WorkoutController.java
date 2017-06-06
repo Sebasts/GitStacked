@@ -1,9 +1,10 @@
 package controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -126,18 +127,15 @@ public class WorkoutController {
 		WorkoutExercise workoutexercise = new WorkoutExercise(exercise, r, w);
 		System.out.println(workoutexercise);
 		Workout workout = new Workout();
+		List<Workout> userWorkouts = new ArrayList<>();
 		workout.addWorkoutExercise(workoutexercise);
-//		workout.setUserId(user.getId());
 		user.addWorkout(workout);
-		// workout.setUser(user);
 		System.out.println(user.getId());
 		System.out.println(workoutexercise);
 		System.out.println(workout.getWorkoutExercise().get(0));
-		// dao.persistWorkout(workout);
 		dao.persistUser(user);
-		List<Workout> userWorkouts = user.getWorkouts();
 		ModelAndView mv = new ModelAndView("profile.jsp");
-		mv.addObject("userWorkouts", userWorkouts);
+		mv.addObject("workouts", user.getWorkouts());
 		mv.addObject("user", user);
 		for (Workout workout2 : userWorkouts) {
 			System.out.println(workout2);
