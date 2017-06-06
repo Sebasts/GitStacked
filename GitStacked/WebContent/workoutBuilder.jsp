@@ -22,6 +22,8 @@
 		<input type="text" name="weight">
 		Duration:
 		<input type="text" name="duration">
+		Create a name for your workout:
+		<input type="text" name="name">
 		<input type="submit" value="Create Workout">
 	</form>
 

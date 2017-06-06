@@ -41,7 +41,6 @@ public class WorkoutExercise {
 	public WorkoutExercise() {}
 	public WorkoutExercise(Exercise exercise, int reps, int weight) {
 		this.exercise = exercise;
-//		this.exerciseId = exercise.getId();
 		this.reps = reps;
 		this.weight = weight;
 	}

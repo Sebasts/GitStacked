@@ -31,10 +31,10 @@ public class Exercise {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDesc() {
+	public String getDescription() {
 		return description;
 	}
-	public void setDesc(String desc) {
+	public void setDescription(String desc) {
 		this.description = desc;
 	}
 	public String getImageUrl() {
@@ -66,7 +66,7 @@ public class Exercise {
 	}
 	@Override
 	public String toString() {
-		return "Exercise [id=" + id + ", name=" + name + ", desc=" + description + ", imageUrl=" + imageUrl + ", calories="
+		return "Exercise [id=" + id + ", name=" + name + ", description=" + description + ", imageUrl=" + imageUrl + ", calories="
 				+ calories + ", muscleGroup=" + muscleGroup + "]";
 	}
 }

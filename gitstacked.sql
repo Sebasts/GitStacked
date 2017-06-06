@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `workout` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` DATE NULL,
   `userId` INT NOT NULL,
+  `name` VARCHAR(100) NULL,
   INDEX `fk_workout_user1_idx` (`userId` ASC),
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
