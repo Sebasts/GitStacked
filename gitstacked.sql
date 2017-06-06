@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `exercise` (
   `desc` VARCHAR(1000) NULL,
   `imageUrl` VARCHAR(500) NULL,
   `calories` INT NULL,
-  `muscleGroup` ENUM('ARMS', 'LEGS', 'ABS', 'CHEST', 'BACK', 'SHOULDERS') NULL,
+  `muscleGroup` ENUM('ARMS', 'LEGS', 'ABS', 'CHEST', 'BACK', 'SHOULDERS') NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -127,6 +127,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `GitStacked`;
 INSERT INTO `user` (`id`, `weight`, `heightFeet`, `heightInch`, `username`, `password`, `usertype`, `lName`, `fName`) VALUES (1, 230, 6, 6, 'spop', 'password', 'USER', 'Popinski', 'Soda');
+INSERT INTO `user` (`id`, `weight`, `heightFeet`, `heightInch`, `username`, `password`, `usertype`, `lName`, `fName`) VALUES (2, 1, 1, 2, 'gjaw', 'password', 'ADMIN', 'Joe', 'Glass');
 
 COMMIT;
 
