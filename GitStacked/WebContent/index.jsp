@@ -7,6 +7,7 @@
 <title>Git Stacked - Homepage</title>
 </head>
 <body>
+<jsp:include page="navbar.jsp"/> 
 Start building your own workout plan
 
 <div>

@@ -148,7 +148,7 @@ public class WorkoutController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "logout.do", method = RequestMethod.POST)
+	@RequestMapping(path = "logout.do")
 	public ModelAndView logoutUser(@ModelAttribute("user") User user) {
 		ModelAndView mv = new ModelAndView();
 		User u = new User();

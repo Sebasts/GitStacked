@@ -11,7 +11,7 @@
 <title>Login to Your Profile</title>
 </head>
 <body>
-
+<jsp:include page="navbar.jsp"/> 
 	<form:form action = "login.do" method = "POST" modelAttribute="user">
 	<form:label path="username">Username:</form:label>
 	<form:input path="username" />

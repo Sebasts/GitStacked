@@ -9,6 +9,7 @@
 <title>Build Workout</title>
 </head>
 <body>
+<jsp:include page="navbar.jsp"/> 
 <div>
 	<form action="createWorkout.do" method="POST" modelAttribute="workoutExercise">
 		<select name="exerciseId">
