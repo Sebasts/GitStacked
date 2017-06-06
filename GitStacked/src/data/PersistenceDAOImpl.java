@@ -100,7 +100,7 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 			tempWorkout.setDate(workout.getDate());
 		}
 		System.out.println(tempWorkout);
-		tempWorkout.setUserId(workout.getUserId());
+		tempWorkout.setUser(workout.getUser());
 		tempWorkout.setWorkoutExercise(workout.getWorkoutExercise());
 		em.merge(workout);
 		em.flush();
@@ -121,14 +121,33 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		tempUser.setWorkouts(user.getWorkouts());
 		tempUser.setLoginUsertype(user.getLoginUsertype());
 		
-		em.merge(tempUser);
+		em.merge(user);
 		em.flush();
 //		em.persist(tempUser);
 		System.out.println(user.getWorkouts().size());
 		return user;
 	}
 
-
+	@Override
+	public User persistWorkouts(Workout w) {
+//		User tempUser = em.find(w.getUser().getClass(), w.getUser().getId());
+//		System.out.println(tempUser);
+//		System.out.println(tempUser.getWorkouts());
+//		tempUser.setFName(user.getFName());
+//		tempUser.setLName(user.getLName());
+//		tempUser.setHeightFeet(user.getHeightFeet());
+//		tempUser.setHeightInch(user.getHeightInch());
+//		tempUser.setPassword(user.getPassword());
+//		tempUser.setUserWeight(user.getUserWeight());
+//		tempUser.setWorkouts(user.getWorkouts());
+//		tempUser.setLoginUsertype(user.getLoginUsertype());
+		
+		em.persist(w);
+		em.flush();
+//		em.persist(tempUser);
+//		System.out.println(user.getWorkouts().size());
+		return w.getUser();
+	}
 	@Override
 	public List<User> getAllUsers() {
 		String query = "select u from User u";

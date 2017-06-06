@@ -2,6 +2,7 @@ package entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -33,14 +34,9 @@ public class WorkoutExercise {
 	@JoinColumn(name="workoutId")
 	private Workout workout;
 	
-//	@OneToOne
-//	@JoinColumn(name="exerciseId", referencedColumnName = "id")
-//	private int exerciseId;
-	
 	@OneToOne
 	@JoinColumn(name="exerciseId")
 	private Exercise exercise;
-	
 	
 	public WorkoutExercise() {}
 	public WorkoutExercise(Exercise exercise, int reps, int weight) {
@@ -48,6 +44,12 @@ public class WorkoutExercise {
 //		this.exerciseId = exercise.getId();
 		this.reps = reps;
 		this.weight = weight;
+	}
+	public WorkoutExercise(Exercise exercise, int reps, int weight, int duration) {
+		this.exercise = exercise;
+		this.reps = reps;
+		this.weight = weight;
+		this.duration = duration;
 	}
 	public int getReps() {
 		return reps;
@@ -85,7 +87,6 @@ public class WorkoutExercise {
 	public void setWorkout(Workout workout) {
 		this.workout = workout;
 	}
-	
 	public Exercise getExercise() {
 		return exercise;
 	}
