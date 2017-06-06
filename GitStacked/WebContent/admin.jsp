@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,23 +26,27 @@
 	</form>
 	</div>
 	
+	<br>
+	<br>
+	
 	<div>
-	<form:form action = "createExercise.do" method = "POST" modelAttribute="exercise">s
+	<h3>Create a New Exercise</h3>
+	<form:form action = "createExercise.do" method = "POST" modelAttribute="exercise">
 	
 	<form:label path = "name">Name of Exercise:</form:label>
-	<form:input path = "name"/>[Limited to 100 chars]
+	<form:input path = "name"/>[Limited to 100 chars]<br>
 	
 	<form:label path = "desc">Description/Instruction:</form:label>
-	<form:input path = "desc"/>[Limited to 1000 chars]
+	<form:input path = "desc"/>[Limited to 1000 chars]<br>
 	
 	<form:label path = "imageUrl">Image Url:</form:label>
-	<form:input path = "imageUrl"/>
+	<form:input path = "imageUrl"/><br>
 	
 	<form:label path = "calories">Calories per Movement:</form:label>
-	<form:input path = "calories"/>[Integer]
+	<form:input path = "calories"/>[Integer]<br>
 	
 	<form:label path = "muscleGroup">Muscle Group ENUM:</form:label>
-	<form:input path = "muscleGroup"/>[ARMS,LEGS,ABS,CHEST,BACK,SHOULDERS]
+	<form:input path = "muscleGroup"/>[ARMS,LEGS,ABS,CHEST,BACK,SHOULDERS]<br>
 	
 	<input type = "submit" value = "Create Exercise">
 	

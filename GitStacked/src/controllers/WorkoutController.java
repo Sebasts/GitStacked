@@ -119,16 +119,33 @@ public class WorkoutController {
 
 	@RequestMapping(path = "createWorkout.do", method = RequestMethod.POST)
 	public ModelAndView publishWorkout(@RequestParam("exerciseId") int id, @ModelAttribute("user") User user,
-			@RequestParam("reps") String reps, @RequestParam("weight") String weight) {
+			@RequestParam("reps") String reps, @RequestParam("weight") String weight,
+			@RequestParam(value = "duration", required = false) int duration) {
 		Exercise exercise = dao.getExerciseById(user, id);
 		int r = Integer.parseInt(reps);
 		int w = Integer.parseInt(weight);
 		WorkoutExercise workoutexercise = new WorkoutExercise(exercise, r, w);
+		WorkoutExercise workoutexercise = null;
+		if (duration != 0) {
+			workoutexercise = new WorkoutExercise(exercise, r, w);
+		} else {
+			workoutexercise = new WorkoutExercise(exercise, r, w, duration);
+		}
+		System.out.println(workoutexercise);
 		Workout workout = new Workout();
 		workoutexercise.setWorkout(workout);
 		workout.addWorkoutExercise(workoutexercise);
 		workout.setUser(user);
 		dao.persistWorkouts(workout);
+		// workout.setUserId(user.getId());
+		user.addWorkout(workout);
+		// workout.setUser(user);
+		System.out.println(user.getId());
+		System.out.println(workoutexercise);
+		System.out.println(workout.getWorkoutExercise().get(0));
+		// dao.persistWorkout(workout);
+		dao.persistUser(user);
+		List<Workout> userWorkouts = user.getWorkouts();
 		ModelAndView mv = new ModelAndView("profile.jsp");
 		mv.addObject("user", user);
 
@@ -145,6 +162,29 @@ public class WorkoutController {
 		user = u;
 		mv.setViewName("index.jsp");
 		mv.addObject("user", user);
+		return mv;
+	}
+	@ModelAttribute("exercise")
+	public Exercise newExercise() {
+		return new Exercise();
+	}
+
+//	@RequestMapping(path = "createExercise.do", method = RequestMethod.GET)
+//	public ModelAndView signupForm() {
+//		ModelAndView mv = new ModelAndView();
+//		// mv.addObject("exercise", exercise);
+//		mv.setViewName("admin.jsp");
+//		return mv;
+//	}
+
+	@RequestMapping(path = "createExercise.do", method = RequestMethod.POST)
+	public ModelAndView createExercise(@ModelAttribute("exercise") Exercise exercise) {
+		System.out.println(exercise);
+		dao.createExercise(exercise);
+		// ModelAndView mv = new ModelAndView("profile.jsp", "user", user);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("exercise", exercise);
+		mv.setViewName("admin.jsp");
 		return mv;
 	}
 

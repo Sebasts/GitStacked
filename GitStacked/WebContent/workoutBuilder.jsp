@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Build Workout</title>
 </head>
 <body>
 <div>
@@ -20,6 +20,8 @@
 		<input type="text" name="reps">
 		Weight:
 		<input type="text" name="weight">
+		Duration:
+		<input type="text" name="duration">
 		<input type="submit" value="Create Workout">
 	</form>
 
