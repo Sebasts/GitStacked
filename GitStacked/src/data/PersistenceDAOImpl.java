@@ -165,8 +165,8 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 //			return exercise;
 		}
 		exercise.setMuscleGroup(exercise.getMuscleGroup());
-//		em.persist(user);
 		System.out.println(exercise);
+		em.persist(exercise);
 		System.out.println("exercise created");
 //		return exercise;
 		
