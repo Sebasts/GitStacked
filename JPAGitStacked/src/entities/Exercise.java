@@ -15,6 +15,13 @@ public class Exercise {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private int active;
+	public int getActive() {
+		return active;
+	}
+	public void setActive(int active) {
+		this.active = active;
+	}
 	private String name;
 	private String description;
 	private String imageUrl;
@@ -66,7 +73,7 @@ public class Exercise {
 	}
 	@Override
 	public String toString() {
-		return "Exercise [id=" + id + ", name=" + name + ", description=" + description + ", imageUrl=" + imageUrl + ", calories="
-				+ calories + ", muscleGroup=" + muscleGroup + "]";
+		return "Exercise [id=" + id + ", active=" + active + ", name=" + name + ", description=" + description
+				+ ", imageUrl=" + imageUrl + ", calories=" + calories + ", muscleGroup=" + muscleGroup + "]";
 	}
 }

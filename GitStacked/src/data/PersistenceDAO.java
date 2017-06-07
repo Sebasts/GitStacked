@@ -22,17 +22,16 @@ public interface PersistenceDAO {
 	int getUserIdByUsername(String username);
 	User login(User user);
 	void createExercise(Exercise exercise);
-	void deleteExercise(Exercise exercise);
+	void deleteExercise(Exercise exercise, String choice);
 	int getExerciseIdByName(String name);
-
 	List<User> getAllUsers();
-
 	Exercise getExerciseById(User user, int id);
-	
 	Workout persistWorkout(Workout workout);
 	User persistWorkouts(Workout w);
 	List<Workout> getWorkoutsFromUser(User user);
+	void removeWorkout(int id);
 	List<Exercise> getAllExercises();
+	int getCaloriesByWorkout(Workout workout);
 
 		
 }
