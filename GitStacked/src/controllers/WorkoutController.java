@@ -36,6 +36,7 @@ public class WorkoutController {
 	public Exercise newExercise() {
 		return new Exercise();
 	}
+
 	@ModelAttribute("user")
 	public User newUser() {
 		return new User();
@@ -65,7 +66,7 @@ public class WorkoutController {
 	}
 
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
-	public ModelAndView loginForm() {
+	public ModelAndView loginForm(@ModelAttribute("user") User user) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("login.jsp");
 		return mv;
@@ -85,11 +86,18 @@ public class WorkoutController {
 			mv.setViewName("admin.jsp");
 			return mv;
 		}
-		mv.addObject("user", dao.login(user));
-		List<Workout> userWorkouts = dao.getWorkoutsFromUser(dao.login(user));
-		mv.addObject("userWorkouts", userWorkouts);
-		mv.setViewName("profile.jsp");
-		return mv;
+		try {
+			mv.addObject("user", dao.login(user));
+			List<Workout> userWorkouts = dao.getWorkoutsFromUser(dao.login(user));
+			mv.addObject("userWorkouts", userWorkouts);
+			mv.setViewName("profile.jsp");
+			return mv;
+		} catch (Exception e) {
+			List<Workout> userWorkouts = new ArrayList<>();
+			mv.addObject("userWorkouts", userWorkouts);
+			mv.setViewName("profile.jsp");
+			return mv;
+		}
 	}
 
 	@RequestMapping(path = "editUser.do", method = RequestMethod.POST)
@@ -130,7 +138,8 @@ public class WorkoutController {
 
 	@RequestMapping(path = "createWorkout.do", method = RequestMethod.POST)
 	public ModelAndView publishWorkout(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user,
-			@RequestParam("reps") Integer reps, @RequestParam("name") String name, @RequestParam("weight") Integer weight,
+			@RequestParam("reps") Integer reps, @RequestParam("name") String name,
+			@RequestParam("weight") Integer weight,
 			@RequestParam(value = "duration", required = false) Integer duration) {
 		Exercise exercise = dao.getExerciseById(user, id);
 		WorkoutExercise workoutexercise = null;
@@ -217,7 +226,7 @@ public class WorkoutController {
 		mv.setViewName("workoutBuilder.jsp");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "logout.do")
 	public ModelAndView logoutUser(@ModelAttribute("user") User user) {
 		ModelAndView mv = new ModelAndView();
@@ -227,7 +236,7 @@ public class WorkoutController {
 		mv.addObject("user", user);
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "createExercise.do", method = RequestMethod.POST)
 	public ModelAndView createExercise(Exercise exercise) {
 		System.out.println(exercise);
@@ -239,6 +248,19 @@ public class WorkoutController {
 		mv.setViewName("admin.jsp");
 		return mv;
 	}
+
+	@RequestMapping(path = "removeWorkout.do", method = RequestMethod.POST)
+	public ModelAndView removeWorkout(@ModelAttribute("user") User user, Integer id) {
+		dao.removeWorkout(id);
+		System.out.println("%%%%%%%%%%%%%%%%%" + id);
+		ModelAndView mv = new ModelAndView();
+		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
+		System.out.println("^^^^^^^^^^^^^^^^^^^^" + userWorkouts);
+		mv.addObject("userWorkouts", userWorkouts);
+		mv.setViewName("profile.jsp");
+		return mv;
+	}
+
 	
 //	@RequestMapping(path = "deleteExercise.do", method = RequestMethod.POST)
 //	public ModelAndView deleteExercise(Exercise exercise) {

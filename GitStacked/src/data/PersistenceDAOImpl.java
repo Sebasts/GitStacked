@@ -127,7 +127,15 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		System.out.println(user.getWorkouts().size());
 		return user;
 	}
-
+	
+	@Override
+	public void removeWorkout(int id) {
+		System.out.println("***********"+id);
+		Workout workout = em.find(Workout.class, id);
+		System.out.println("&&&&&&&&&&&&"+workout);
+		em.remove(workout);
+	}
+	
 	@Override
 	public User persistWorkouts(Workout w) {
 //		User tempUser = em.find(w.getUser().getClass(), w.getUser().getId());
@@ -148,6 +156,8 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 //		System.out.println(user.getWorkouts().size());
 		return w.getUser();
 	}
+	
+	
 	@Override
 	public List<User> getAllUsers() {
 		String query = "select u from User u";
@@ -177,7 +187,6 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 
 	@Override
 	public Exercise getExerciseById(User user, int id) {
-		
 		String query = "select e from Exercise e where e.id = :id";
 		Exercise exercise = em.createQuery(query, Exercise.class).setParameter("id", id).getSingleResult();
 		return exercise;
@@ -196,14 +205,15 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 
 		
 	}
+	
 	@Override
 	public List<Workout> getWorkoutsFromUser(User user) {
 		String query = "select u from User u join fetch u.workouts where u.id = :id";
-		System.out.println("user "+ user +"query "+ query);
 		User userWorkout = em.createQuery(query, User.class).setParameter("id", user.getId()).getSingleResult();
 		List<Workout> userWorkouts = userWorkout.getWorkouts();
 		return userWorkouts;
 	}
+
 
 	@Override
 	public void deleteExercise(Exercise exercise) {
