@@ -2,9 +2,9 @@
 
 * {
 	font-family: 'Droid Sans', sans-serif;
-	font-style: bold;
 }
 
-img {
-	size: 40%;
+input {
+	width: 50%;
 }
+

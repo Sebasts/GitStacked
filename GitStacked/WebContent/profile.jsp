@@ -5,6 +5,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Your Profile</title>
 </head>
@@ -44,7 +48,8 @@
 	<div>
 		<a href="">Planned workouts</a>
 	</div>
-	<----- Links for other website functionality ----->
+	<----- Links for other website functionality -----><br>
+	<label>Search Through Workouts: <input id="search" type="text"></label>
 
 	<h2>Your List Of Workouts:</h2>
 	<c:forEach var="w" items="${userWorkouts}">
@@ -66,6 +71,6 @@
 			</table>
 		</c:forEach>
 	</c:forEach>
-
+<script src="test.js"></script> 
 </body>
 </html>
