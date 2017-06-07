@@ -10,7 +10,7 @@
 <title>Admin Portal</title>
 </head>
 <body>
-	<jsp:include page="navbar.jsp"/>
+	<%-- <jsp:include page="navbar.jsp"/> --%>
 	<div>
 	<h3>Change User Account Type</h3>
 	<form action="updateUserType.do" method="post">
@@ -53,7 +53,7 @@
 	</form>
 	</div>
 
-	<br>
+	
 
 	<div>
 	<h3>Make an Exercise Inactive</h3>

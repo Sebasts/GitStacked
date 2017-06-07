@@ -177,21 +177,16 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 
 	}
 	
-
 	@Override
 	public void createExercise(Exercise exercise) {
 		if(em == null){
 			System.out.println("em is null");
-//			return exercise;
 		}
-//		System.out.println(exercise.getMuscleGroup());
-//		exercise.setMuscleGroup(exercise.getMuscleGroup());
-//		System.out.println(exercise.getMuscleGroup());
 		System.out.println(exercise);
 		em.persist(exercise);
 		em.flush();
 		System.out.println("exercise created");
-//		return exercise;
+
 		
 	}
 	@Override
@@ -201,6 +196,12 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		User userWorkout = em.createQuery(query, User.class).setParameter("id", user.getId()).getSingleResult();
 		List<Workout> userWorkouts = userWorkout.getWorkouts();
 		return userWorkouts;
+	}
+
+	@Override
+	public void deleteExercise(Exercise exercise) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
