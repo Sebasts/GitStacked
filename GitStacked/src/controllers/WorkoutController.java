@@ -80,6 +80,8 @@ public class WorkoutController {
 			return mv;
 		}
 		mv.addObject("user", dao.login(user));
+		List<Workout> userWorkouts = dao.getWorkoutsFromUser(dao.login(user));
+		mv.addObject("userWorkouts", userWorkouts);
 		mv.setViewName("profile.jsp");
 		return mv;
 	}
