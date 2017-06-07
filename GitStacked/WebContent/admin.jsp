@@ -49,7 +49,8 @@
 	<input name = "muscleGroup"/>[ARMS,LEGS,ABS,CHEST,BACK,SHOULDERS]<br>
 
 	<input type = "submit" value = "Create Exercise">
-
+	
+<!-- 	<input name = "active" value="1" type=hidden> -->
 	</form>
 	</div>
 
