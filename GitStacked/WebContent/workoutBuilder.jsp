@@ -11,7 +11,7 @@
 <body>
 	<jsp:include page="navbar.jsp" />
 	<div>
-		<form name="createWorkout" action="createWorkoutList.do" method="POST">
+		<form name="createWorkout" action="createWorkout.do" method="POST">
 				<select name="exerciseId">
 					<c:forEach var="e" items="${exercises}">
 						<option value="${e.id}">${e.name}</option>
@@ -21,15 +21,15 @@
 				Weight: <input type="text" name="weight"> 
 				Duration: <input type="text" name="duration"> 
 				Create a name for your workout: <input type="text" name="name">
-				<input type = "submit" value="Add Exercise">
+				<input type = "submit" value="Complete Workout">
 		<!-- <button type="button" id="btnAddForm"
 			onclick="CloneForm('createWorkout');">Add</button> -->
 			
-			</form>
+			<%-- </form>
 			
 			<form name="createWorkout" action="completeWorkout.do" method="POST">
 			<input type="submit" value="Complete Workout">
-			</form>
+			</form> --%>
 			
 <!-- 		<script type="text/javascript">
 			function CloneForm(formName) {

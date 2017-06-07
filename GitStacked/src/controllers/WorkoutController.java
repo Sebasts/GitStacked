@@ -22,7 +22,7 @@ import entities.User;
 import entities.Workout;
 import entities.WorkoutExercise;
 
-@SessionAttributes({ "user", "workout", "userWorkoutExercises"})
+@SessionAttributes({ "user", "workout", "userWorkoutExercises", "workoutExercise"})
 @Controller
 public class WorkoutController {
 
@@ -40,6 +40,10 @@ public class WorkoutController {
 	@ModelAttribute("user")
 	public User newUser() {
 		return new User();
+	}
+	@ModelAttribute("workoutExercise")
+	public WorkoutExercise newWorkoutExercise() {
+		return new WorkoutExercise();
 	}
 	@ModelAttribute("userWorkoutExercises")
 	public List<WorkoutExercise> newUserWorkoutExercises() {
@@ -162,48 +166,49 @@ public class WorkoutController {
 	
 	//user adds exercise to their workout list
 	@RequestMapping(path = "createWorkoutList.do", method = RequestMethod.POST)
-	public String addExerciseToWorkoutList(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user, WorkoutExercise workoutExercise, @ModelAttribute("userWorkoutExercises") List<WorkoutExercise> userWorkoutExercises) {
+	public String addExerciseToWorkoutList(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user, @ModelAttribute("workoutExercise") WorkoutExercise workoutExercise, @ModelAttribute("userWorkoutExercises") List<WorkoutExercise> userWorkoutExercises) {
 		Exercise exercise = dao.getExerciseById(user, id);
-//		WorkoutExercise workoutexercise = null;
 		workoutExercise.setExercise(exercise);
 		userWorkoutExercises.add(workoutExercise);
 		System.out.println("in create Workout List");
 		System.out.println(workoutExercise);
-//		Workout workout = new Workout();
-//		workoutexercise.setWorkout(workout);
-//		workout.addWorkoutExercise(workoutexercise);
-//		workout.setName(name);
-//		workout.setUser(user);
-//		dao.persistWorkouts(workout);
+		Workout workout = new Workout();
+		workout.addWorkoutExercise(workoutExercise);
+		workout.setUser(user);
+		workoutExercise.setWorkout(workout);
+		dao.persistWorkouts(workout);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject(userWorkoutExercises);
-//		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
-//		mv.addObject("userWorkouts", userWorkouts);
-//		mv.addObject("user", user);
-//		for (Workout workout2 : user.getWorkouts()) {
-//			System.out.println(workout2);
-//		}
+
 		return "redirect:redirect.do";
+		
+		
+		
+//		System.out.println("Names: " + workoutExerciseCO.getName());
+//		System.out.println("Duration: " + workoutExerciseCO.getDuration());
+//		System.out.println("Reps: " + workoutExerciseCO.getReps());
+//		System.out.println("ExerciseId: " + workoutExerciseCO.getExerciseId());
+//		String[] names = workoutExerciseCO.getName().get(0).split(",");
+//		String[] duration = workoutExerciseCO.getDuration().get(0).split(",");
+//		for(int i=0; i<names.length;i++){
+//			WorkoutExercise w = new WorkoutExercise();
+//			w.setDuration(duration[i]);
+//			w.setReps(reps[i]);
+//			dao.persist(w);
+//		}
 	}
 	
 	//user completes building their workout and this list is persisted
 	@RequestMapping(path = "completeWorkout.do", method = RequestMethod.POST)
 	public ModelAndView publishWorkout(@ModelAttribute("user") User user, @ModelAttribute("userWorkoutExercises") List<WorkoutExercise> userWorkoutExercises) {
-//		Exercise exercise = dao.getExerciseById(user, id);
-//		WorkoutExercise workoutexercise = null;
 		System.out.println("in complete Workout");
-//		System.out.println(workoutExercise);
 		Workout workout = new Workout();
 		workout.setWorkoutExercise(userWorkoutExercises);
 		System.out.println("Getting user workouts");
 		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
 		userWorkouts.add(workout);
 		user.setWorkouts(userWorkouts);
-//		workoutexercise.setWorkout(workout);
-//		workout.addWorkoutExercise(workoutexercise);
-//		workout.setName(name);
-//		workout.setUser(user);
-//		dao.persistWorkouts(workout);
+		workout.setUser(user);
 		ModelAndView mv = new ModelAndView("profile.jsp");
 		mv.addObject("userWorkouts", userWorkouts);
 		mv.addObject("user", user);

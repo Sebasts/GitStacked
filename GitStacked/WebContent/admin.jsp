@@ -54,8 +54,6 @@
 	</form>
 	</div>
 
-	
-
 	<div>
 	<h3>Make an Exercise Inactive</h3>
 	<form action="deleteExercise.do" method="post">

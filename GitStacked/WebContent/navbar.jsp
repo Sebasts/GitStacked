@@ -14,7 +14,9 @@
 <body>
 <nav>
 <ul>
+	<c:if test="${sessionScope.user.username != null }">
 	<li><a href="profile.jsp">Home</a></li>
+	</c:if>
 	<c:if test="${sessionScope.user.username == null }">
 	<li><a href="login.do">Sign in</a></li>
 	</c:if>
