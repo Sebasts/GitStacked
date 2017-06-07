@@ -177,6 +177,7 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		return exercise;
 
 	}
+	
 
 
 	@Override
@@ -212,22 +213,3 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 
 }
 
-//public User persistUser(User user) {
-//	User tempUser = em.find(user.getClass(), user.getId());
-//	System.out.println(tempUser);
-//	System.out.println(tempUser.getWorkouts());
-//	tempUser.setFName(user.getFName());
-//	tempUser.setLName(user.getLName());
-//	tempUser.setHeightFeet(user.getHeightFeet());
-//	tempUser.setHeightInch(user.getHeightInch());
-//	tempUser.setPassword(user.getPassword());
-//	tempUser.setUserWeight(user.getUserWeight());
-//	tempUser.setWorkouts(user.getWorkouts());
-//	tempUser.setLoginUsertype(user.getLoginUsertype());
-//	
-//	em.merge(tempUser);
-//	em.flush();
-////	em.persist(tempUser);
-//	System.out.println(user.getWorkouts().size());
-//	return user;
-//}

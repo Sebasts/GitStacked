@@ -10,9 +10,9 @@
 <title>Admin Portal</title>
 </head>
 <body>
-	
+	<jsp:include page="navbar.jsp"/>
 	<div>
-	<h3>Change user account type</h3>
+	<h3>Change User Account Type</h3>
 	<form action="updateUserType.do" method="post">
 		<select name="username">
 			<c:forEach var="u" items="${users}">
@@ -25,38 +25,54 @@
 		<button type="submit">Make Change</button>
 	</form>
 	</div>
-	
+
 	<br>
-	<br>
-	
+
+
 	<div>
 	<h3>Create a New Exercise</h3>
 	<form action = "createExercise.do" method = "POST">
-	
+
 	Name of Exercise:
 	<input name = "name"/>[Limited to 100 chars]<br>
-	
+
 	Description/Instruction:
 	<input name = "desc"/>[Limited to 1000 chars]<br>
-	
+
 	Image Url:
 	<input name = "imageUrl"/><br>
-	
+
 	Calories per Movement:
 	<input name = "calories"/>[Integer]<br>
-	
+
 	Muscle Group ENUM:
 	<input name = "muscleGroup"/>[ARMS,LEGS,ABS,CHEST,BACK,SHOULDERS]<br>
-	
+
 	<input type = "submit" value = "Create Exercise">
-	
+
 	</form>
 	</div>
-	
-	
-	<%-- 	<div>
-	<h3>Create Exercise</h3>
+
+	<br>
+
+	<div>
+	<h3>Make an Exercise Inactive</h3>
 	<form action="deleteExercise.do" method="post">
+		<select name="name">
+			<c:forEach var="e" items="${exercises}">
+				<option>${e.name}</option>
+			</c:forEach>
+		</select> <select name="choice">
+			<option>ACTIVE</option>
+			<option>INACTIVE</option>
+		</select>
+		<button type="submit">Make Change</button>
+	</form>
+	</div>
+
+<%-- 		<div>
+	<h3>Change user account type</h3>
+	<form action="updateUserType.do" method="post">
 		<select name="username">
 			<c:forEach var="u" items="${users}">
 				<option>${u.username}</option>
@@ -68,6 +84,6 @@
 		<button type="submit">Make Change</button>
 	</form>
 	</div> --%>
-	
+
 </body>
 </html>

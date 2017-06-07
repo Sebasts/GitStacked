@@ -22,7 +22,7 @@ public class Workout {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Date date;
-	
+	private String name;
 	@ManyToOne
 	@JoinColumn(name="userId")
 	private User user;
@@ -30,6 +30,12 @@ public class Workout {
 	@OneToMany(mappedBy="workout", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<WorkoutExercise> workoutExercise;
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public User getUser() {
 		return user;
 	}

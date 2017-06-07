@@ -9,6 +9,7 @@
 <title>Build Workout</title>
 </head>
 <body>
+<jsp:include page="navbar.jsp"/> 
 <div>
 	<form action="createWorkout.do" method="POST" modelAttribute="workoutExercise">
 		<select name="exerciseId">
@@ -22,6 +23,8 @@
 		<input type="text" name="weight">
 		Duration:
 		<input type="text" name="duration">
+		Create a name for your workout:
+		<input type="text" name="name">
 		<input type="submit" value="Create Workout">
 	</form>
 
