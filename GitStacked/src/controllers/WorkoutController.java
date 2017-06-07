@@ -272,27 +272,5 @@ public class WorkoutController {
 		mv.setViewName("admin.jsp");
 		return mv;
 	}
-
-//	@RequestMapping(path = "deleteExercise.do", method = RequestMethod.POST)
-//	public ModelAndView deleteExercise(@ModelAttribute("user") User user, String username, String choice) {
-//		Name tempName = em.find(User.class, dao.getExerciseIdByName(name));
-//		if (choice.equals("INACTIVE")) {
-//			tempName.setLoginUsertype(LoginUserType.ADMIN);  //make active method
-//		} else {
-//			tempName.setLoginUsertype(LoginUserType.USER);  //turn to make inactive method
-//		}
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("admin.jsp");
-//		mv.addObject("users", dao.getAllUsers());
-//		mv.addObject("user", user);
-//		return mv;
-//	}
-	
-//	@RequestMapping(path = "createWorkout.do", method = RequestMethod.GET)
-//	public ModelAndView createWorkout(@ModelAttribute("user") User user, WorkoutExercise workoutexercise) {
-//		ModelAndView mv = new ModelAndView("workoutBuilder.jsp", "exercises", dao.getListOfExercises());
-//		// user.getWorkouts().get(0)
-//		return mv;
-//	}
 	
 }

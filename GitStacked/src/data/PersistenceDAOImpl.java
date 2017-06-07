@@ -12,7 +12,6 @@ import entities.Exercise;
 import entities.LoginUserType;
 import entities.User;
 import entities.Workout;
-import entities.WorkoutExercise;
 
 @Transactional
 @Component
@@ -219,9 +218,9 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	public void deleteExercise(Exercise exercise, String choice) {
 		if (choice.equals("ACTIVE")) {
 			Exercise ex = em.find(Exercise.class, exercise.getId());
-			//then JDBC to make inactive to id of ex
+			//then JDBC to make inactive to id of ex  //make new column, then add not inative 
 		} else {
-			//then JDBC to make active to id of ex
+			//then JDBC to make active to id of ex  //handle it at the JSP level
 		}
 	}
 
