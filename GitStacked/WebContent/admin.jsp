@@ -10,7 +10,7 @@
 <title>Admin Portal</title>
 </head>
 <body>
-	<jsp:include page="navbar.jsp"/> 
+	<jsp:include page="navbar.jsp"/>
 	<div>
 	<h3>Change User Account Type</h3>
 	<form action="updateUserType.do" method="post">
@@ -25,36 +25,36 @@
 		<button type="submit">Make Change</button>
 	</form>
 	</div>
-	
+
 	<br>
-	
-	
+
+
 	<div>
 	<h3>Create a New Exercise</h3>
 	<form action = "createExercise.do" method = "POST">
-	
+
 	Name of Exercise:
 	<input name = "name"/>[Limited to 100 chars]<br>
-	
+
 	Description/Instruction:
 	<input name = "desc"/>[Limited to 1000 chars]<br>
-	
+
 	Image Url:
 	<input name = "imageUrl"/><br>
-	
+
 	Calories per Movement:
 	<input name = "calories"/>[Integer]<br>
-	
+
 	Muscle Group ENUM:
 	<input name = "muscleGroup"/>[ARMS,LEGS,ABS,CHEST,BACK,SHOULDERS]<br>
-	
+
 	<input type = "submit" value = "Create Exercise">
-	
+
 	</form>
 	</div>
-	
+
 	<br>
-	
+
 	<div>
 	<h3>Make an Exercise Inactive</h3>
 	<form action="deleteExercise.do" method="post">
@@ -69,7 +69,7 @@
 		<button type="submit">Make Change</button>
 	</form>
 	</div>
-	
+
 <%-- 		<div>
 	<h3>Change user account type</h3>
 	<form action="updateUserType.do" method="post">
@@ -84,6 +84,6 @@
 		<button type="submit">Make Change</button>
 	</form>
 	</div> --%>
-	
+
 </body>
 </html>

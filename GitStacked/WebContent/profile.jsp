@@ -32,7 +32,6 @@
 	<br>
 	<br>
 	<br> Welcome, ${user.getFName()}
-
 	<br>
 	<br>
 	<br>
@@ -47,11 +46,16 @@
 	</div>
 	<----- Links for other website functionality ----->
 
-	<h2>Workouts planned for today</h2>
-	<----- This should show all workouts planned for today ------->
+	<h2>Workouts planned for today:</h2>
 	<c:forEach var="w" items="${userWorkouts}">
+		${w.name}
 		<c:forEach var="we" items="${w.workoutExercise}">
-			<h1>${we.exercise.name}</h1>
+			<table>
+				<td>
+				<tr>${we.exercise.name}</tr>
+				<tr><img src="${we.exercise.imageUrl}" alt="exercise image"/></tr>
+				</td>
+			</table>
 		</c:forEach>
 	</c:forEach>
 
