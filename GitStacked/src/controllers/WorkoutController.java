@@ -81,6 +81,7 @@ public class WorkoutController {
 		if (dao.login(user).getLoginUsertype() == LoginUserType.ADMIN) {
 			mv.addObject("user", dao.login(user));
 			mv.addObject("users", dao.getAllUsers());
+			mv.addObject("exercises", dao.getAllExercises());
 			mv.setViewName("admin.jsp");
 			return mv;
 		}
@@ -223,8 +224,40 @@ public class WorkoutController {
 		dao.createExercise(exercise);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("exercise", exercise);
+		mv.addObject("users", dao.getAllUsers());
+		mv.addObject("exercises", dao.getAllExercises());
 		mv.setViewName("admin.jsp");
 		return mv;
 	}
-
+	
+//	@RequestMapping(path = "deleteExercise.do", method = RequestMethod.POST)
+//	public ModelAndView deleteExercise(Exercise exercise) {
+//		dao.deleteExercise(exercise);
+//		ModelAndView mv = new ModelAndView();
+//		mv.("exercise", exercise);
+//		mv.setViewName("admin.jsp");
+//		return mv;
+//	}
+//	@RequestMapping(path = "deleteExercise.do", method = RequestMethod.POST)
+//	public ModelAndView deleteExercise(@ModelAttribute("user") User user, String username, String choice) {
+//		Name tempName = em.find(User.class, dao.getExerciseIdByName(name));
+//		if (choice.equals("INACTIVE")) {
+//			tempName.setLoginUsertype(LoginUserType.ADMIN);  //make active method
+//		} else {
+//			tempName.setLoginUsertype(LoginUserType.USER);  //turn to make inactive method
+//		}
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("admin.jsp");
+//		mv.addObject("users", dao.getAllUsers());
+//		mv.addObject("user", user);
+//		return mv;
+//	}
+	
+//	@RequestMapping(path = "createWorkout.do", method = RequestMethod.GET)
+//	public ModelAndView createWorkout(@ModelAttribute("user") User user, WorkoutExercise workoutexercise) {
+//		ModelAndView mv = new ModelAndView("workoutBuilder.jsp", "exercises", dao.getListOfExercises());
+//		// user.getWorkouts().get(0)
+//		return mv;
+//	}
+	
 }
