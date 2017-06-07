@@ -152,8 +152,13 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		// tempUser.setUserWeight(user.getUserWeight());
 		// tempUser.setWorkouts(user.getWorkouts());
 		// tempUser.setLoginUsertype(user.getLoginUsertype());
+//		Workout tempWorkout = em.find(Workout.class,w.getId());
+//		System.out.println(tempWorkout);
+//		tempWorkout.setName(w.getName());
+//		tempWorkout.setUser(w.getUser());
+//		tempWorkout.setWorkoutExercise(w.getWorkoutExercise());
 
-		em.persist(w);
+		em.merge(w);
 		em.flush();
 		// em.persist(tempUser);
 		// System.out.println(user.getWorkouts().size());
