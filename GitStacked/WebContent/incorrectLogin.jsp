@@ -20,8 +20,8 @@
 
 	<form:label path="password">Password:</form:label>
 	<form:input path="password" />
-	</form:form>
 
 	<input type="submit" value="Sign in">
+	</form:form>
 </body>
 </html>

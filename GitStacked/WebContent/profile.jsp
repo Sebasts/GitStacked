@@ -9,7 +9,7 @@
 <title>Your Profile</title>
 </head>
 <body>
-<jsp:include page="navbar.jsp"/> 
+	<jsp:include page="navbar.jsp" />
 	<form action="createWorkout.do" method="GET">
 		<input type="submit" value="Create Exercise">
 	</form>
@@ -46,15 +46,23 @@
 	</div>
 	<----- Links for other website functionality ----->
 
-	<h2>Workouts planned for today:</h2>
+	<h2>Your List Of Workouts:</h2>
 	<c:forEach var="w" items="${userWorkouts}">
-		${w.name}
+	<h4>${w.name}</h4>
 		<c:forEach var="we" items="${w.workoutExercise}">
 			<table>
+				<tr>
+					<th>Exercise Name</th>
+					<th>Image</th>
+					<th>Description</th>
+				</tr>
+				<tr>
+				<td>${we.exercise.name}</td>
 				<td>
-				<tr>${we.exercise.name}</tr>
-				<tr><img src="${we.exercise.imageUrl}" alt="exercise image"/></tr>
+					<img src="${we.exercise.imageUrl}" alt="exercise image" />
 				</td>
+				<td>${we.exercise.description}</td>
+				</tr>
 			</table>
 		</c:forEach>
 	</c:forEach>
