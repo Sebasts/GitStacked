@@ -21,8 +21,9 @@
 				Weight: <input type="text" name="weight"> 
 				Duration: <input type="text" name="duration"> 
 				Create a name for your workout: <input type="text" name="name">
-		<button type="button" id="btnAddForm"
-			onclick="CloneForm('createWorkout');">Add</button>
+				<input type = "submit" value="Add Exercise">
+		<!-- <button type="button" id="btnAddForm"
+			onclick="CloneForm('createWorkout');">Add</button> -->
 			
 			</form>
 			
