@@ -154,6 +154,13 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		List<User> users = em.createQuery(query, User.class).getResultList();
 		return users;
 	}
+	
+	@Override
+	public List<Exercise> getAllExercises() {
+		String query = "select e from Exercise e";
+		List<Exercise> exercises = em.createQuery(query, Exercise.class).getResultList();
+		return exercises;
+	}
 
 	@Override
 	public int getUserIdByUsername(String username) {
@@ -203,6 +210,14 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public int getExerciseIdByName(String name) {
+		String query = "select e from Exercise e where e.name = :name";
+		Exercise tempName = em.createQuery(query, Exercise.class).setParameter("name", name).getSingleResult();
+		return tempName.getId();
+	}
+
 
 }
 
