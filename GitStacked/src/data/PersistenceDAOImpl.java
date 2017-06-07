@@ -1,5 +1,6 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -207,9 +208,19 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	
 	@Override
 	public List<Workout> getWorkoutsFromUser(User user) {
+		List<Workout> userWorkouts = new ArrayList<>();
+		try {
 		String query = "select u from User u join fetch u.workouts where u.id = :id";
+		System.out.println(user);
 		User userWorkout = em.createQuery(query, User.class).setParameter("id", user.getId()).getSingleResult();
-		List<Workout> userWorkouts = userWorkout.getWorkouts();
+		System.out.println(userWorkout);
+		userWorkouts = userWorkout.getWorkouts();
+		}
+		catch (Exception e){
+		User tempUser = em.find(User.class, user.getId());
+		tempUser.setWorkouts(new ArrayList<Workout>());
+		userWorkouts = tempUser.getWorkouts();
+		}
 		return userWorkouts;
 	}
 

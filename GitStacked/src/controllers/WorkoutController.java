@@ -74,6 +74,7 @@ public class WorkoutController {
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public ModelAndView login(@ModelAttribute("user") User user) {
+		System.out.println("**************"+user);
 		ModelAndView mv = new ModelAndView();
 		if (dao.login(user) == null) {
 			mv.setViewName("incorrectLogin.jsp");
@@ -86,18 +87,12 @@ public class WorkoutController {
 			mv.setViewName("admin.jsp");
 			return mv;
 		}
-		try {
 			mv.addObject("user", dao.login(user));
+			
 			List<Workout> userWorkouts = dao.getWorkoutsFromUser(dao.login(user));
 			mv.addObject("userWorkouts", userWorkouts);
 			mv.setViewName("profile.jsp");
 			return mv;
-		} catch (Exception e) {
-			List<Workout> userWorkouts = new ArrayList<>();
-			mv.addObject("userWorkouts", userWorkouts);
-			mv.setViewName("profile.jsp");
-			return mv;
-		}
 	}
 
 	@RequestMapping(path = "editUser.do", method = RequestMethod.POST)
