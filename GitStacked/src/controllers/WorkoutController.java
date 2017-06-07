@@ -22,7 +22,7 @@ import entities.User;
 import entities.Workout;
 import entities.WorkoutExercise;
 
-@SessionAttributes({ "user", "workout" })
+@SessionAttributes({ "user", "workout", "userWorkoutExercises"})
 @Controller
 public class WorkoutController {
 
@@ -40,6 +40,10 @@ public class WorkoutController {
 	@ModelAttribute("user")
 	public User newUser() {
 		return new User();
+	}
+	@ModelAttribute("userWorkoutExercises")
+	public List<WorkoutExercise> newUserWorkoutExercises() {
+		return new ArrayList<>();
 	}
 
 	@RequestMapping(path = "createUser.do", method = RequestMethod.GET)
@@ -78,6 +82,7 @@ public class WorkoutController {
 		if (dao.login(user).getLoginUsertype() == LoginUserType.ADMIN) {
 			mv.addObject("user", dao.login(user));
 			mv.addObject("users", dao.getAllUsers());
+			mv.addObject("exercises", dao.getAllExercises());
 			mv.setViewName("admin.jsp");
 			return mv;
 		}
@@ -161,25 +166,56 @@ public class WorkoutController {
 	}
 
 	@RequestMapping(path = "createWorkout2.do", method = RequestMethod.POST)
-	public ModelAndView publishWorkout(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user,
-			WorkoutExercise workoutExercise) {
-		Exercise exercise = dao.getExerciseById(user, id);
-		// WorkoutExercise workoutexercise = null;
 
+	public ModelAndView publishWorkout(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user, @ModelAttribute("userWorkoutExercises") List<WorkoutExercise> userWorkoutExercises) {
+//		Exercise exercise = dao.getExerciseById(user, id);
+//		WorkoutExercise workoutexercise = null;
+	
+//		System.out.println(workoutExercise);
+		Workout workout = new Workout();
+//		workoutexercise.setWorkout(workout);
+//		workout.addWorkoutExercise(workoutexercise);
+//		workout.setName(name);
+//		workout.setUser(user);
+//		dao.persistWorkouts(workout);
+		ModelAndView mv = new ModelAndView("profile.jsp");
+//		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
+//		mv.addObject("userWorkouts", userWorkouts);
+//		mv.addObject("user", user);
+//		for (Workout workout2 : user.getWorkouts()) {
+//			System.out.println(workout2);
+//		}
+		return mv;
+	}
+	@RequestMapping(path = "createWorkoutList.do", method = RequestMethod.POST)
+	public String addExerciseToWorkoutList(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user, WorkoutExercise workoutExercise, @ModelAttribute("userWorkoutExercises") List<WorkoutExercise> userWorkoutExercises) {
+		Exercise exercise = dao.getExerciseById(user, id);
+//		WorkoutExercise workoutexercise = null;
+		userWorkoutExercises.add(workoutExercise);
+		
 		System.out.println(workoutExercise);
 		Workout workout = new Workout();
-		// workoutexercise.setWorkout(workout);
-		// workout.addWorkoutExercise(workoutexercise);
-		// workout.setName(name);
-		// workout.setUser(user);
-		// dao.persistWorkouts(workout);
-		ModelAndView mv = new ModelAndView("profile.jsp");
-		// List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
-		// mv.addObject("userWorkouts", userWorkouts);
-		// mv.addObject("user", user);
-		// for (Workout workout2 : user.getWorkouts()) {
-		// System.out.println(workout2);
-		// }
+//		workoutexercise.setWorkout(workout);
+//		workout.addWorkoutExercise(workoutexercise);
+//		workout.setName(name);
+//		workout.setUser(user);
+//		dao.persistWorkouts(workout);
+		ModelAndView mv = new ModelAndView("workoutBuilder.jsp");
+		mv.addObject(userWorkoutExercises);
+//		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
+//		mv.addObject("userWorkouts", userWorkouts);
+//		mv.addObject("user", user);
+//		for (Workout workout2 : user.getWorkouts()) {
+//			System.out.println(workout2);
+//		}
+		return "redirect:redirect.do";
+	}
+	
+	@RequestMapping(path= "redirect.do", method = RequestMethod.POST) 
+	public ModelAndView redirect(@ModelAttribute("user") User user, @ModelAttribute("userWorkoutExercises") List<WorkoutExercise> userWorkoutExercises) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject(userWorkoutExercises);
+		mv.setViewName("workoutBuilder.jsp");
 		return mv;
 	}
 
@@ -199,6 +235,8 @@ public class WorkoutController {
 		dao.createExercise(exercise);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("exercise", exercise);
+		mv.addObject("users", dao.getAllUsers());
+		mv.addObject("exercises", dao.getAllExercises());
 		mv.setViewName("admin.jsp");
 		return mv;
 	}
@@ -215,4 +253,35 @@ public class WorkoutController {
 		return mv;
 	}
 
+	
+//	@RequestMapping(path = "deleteExercise.do", method = RequestMethod.POST)
+//	public ModelAndView deleteExercise(Exercise exercise) {
+//		dao.deleteExercise(exercise);
+//		ModelAndView mv = new ModelAndView();
+//		mv.("exercise", exercise);
+//		mv.setViewName("admin.jsp");
+//		return mv;
+//	}
+//	@RequestMapping(path = "deleteExercise.do", method = RequestMethod.POST)
+//	public ModelAndView deleteExercise(@ModelAttribute("user") User user, String username, String choice) {
+//		Name tempName = em.find(User.class, dao.getExerciseIdByName(name));
+//		if (choice.equals("INACTIVE")) {
+//			tempName.setLoginUsertype(LoginUserType.ADMIN);  //make active method
+//		} else {
+//			tempName.setLoginUsertype(LoginUserType.USER);  //turn to make inactive method
+//		}
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("admin.jsp");
+//		mv.addObject("users", dao.getAllUsers());
+//		mv.addObject("user", user);
+//		return mv;
+//	}
+	
+//	@RequestMapping(path = "createWorkout.do", method = RequestMethod.GET)
+//	public ModelAndView createWorkout(@ModelAttribute("user") User user, WorkoutExercise workoutexercise) {
+//		ModelAndView mv = new ModelAndView("workoutBuilder.jsp", "exercises", dao.getListOfExercises());
+//		// user.getWorkouts().get(0)
+//		return mv;
+//	}
+	
 }
