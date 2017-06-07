@@ -12,7 +12,6 @@ import entities.Exercise;
 import entities.LoginUserType;
 import entities.User;
 import entities.Workout;
-import entities.WorkoutExercise;
 
 @Transactional
 @Component
@@ -101,8 +100,8 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		}
 		System.out.println(tempWorkout);
 
-		tempWorkout.setUserId(workout.getUserId());
-		tempWorkout.setWorkoutExercise(workout.getWorkoutExercise());
+//		tempWorkout.setUserId(workout.getUserId());
+//		tempWorkout.setWorkoutExercise(workout.getWorkoutExercise());
 
 		em.merge(workout);
 		em.flush();
@@ -203,6 +202,12 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		User userWorkout = em.createQuery(query, User.class).setParameter("id", user.getId()).getSingleResult();
 		List<Workout> userWorkouts = userWorkout.getWorkouts();
 		return userWorkouts;
+	}
+
+	@Override
+	public User persistWorkouts(Workout w) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
