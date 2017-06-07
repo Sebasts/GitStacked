@@ -216,9 +216,14 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 
 
 	@Override
-	public void deleteExercise(Exercise exercise) {
-		String query = "select e from Exercise e where e.name = :name";
-		
+	public void deleteExercise(Exercise exercise, String choice) {  //if active then make get exercise id
+		if (choice.equals("ACTIVE")) {
+			Exercise ex = em.find(Exercise.class, exercise.getId());
+			ex.set
+		} else {
+			//then JDBC to make inactive 
+		}
+		//persist if inactive
 	}
 
 	@Override
