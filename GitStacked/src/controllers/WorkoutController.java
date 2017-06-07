@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -21,7 +22,7 @@ import entities.User;
 import entities.Workout;
 import entities.WorkoutExercise;
 
-@SessionAttributes({ "user", "workout" })
+@SessionAttributes({ "user", "workout", "userWorkoutExercises"})
 @Controller
 public class WorkoutController {
 
@@ -38,6 +39,10 @@ public class WorkoutController {
 	@ModelAttribute("user")
 	public User newUser() {
 		return new User();
+	}
+	@ModelAttribute("userWorkoutExercises")
+	public List<WorkoutExercise> newUserWorkoutExercises() {
+		return new ArrayList<>();
 	}
 
 	@RequestMapping(path = "createUser.do", method = RequestMethod.GET)
@@ -150,8 +155,8 @@ public class WorkoutController {
 		return mv;
 	}
 	@RequestMapping(path = "createWorkout2.do", method = RequestMethod.POST)
-	public ModelAndView publishWorkout(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user, WorkoutExercise workoutExercise) {
-		Exercise exercise = dao.getExerciseById(user, id);
+	public ModelAndView publishWorkout(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user, @ModelAttribute("userWorkoutExercises") List<WorkoutExercise> userWorkoutExercises) {
+//		Exercise exercise = dao.getExerciseById(user, id);
 //		WorkoutExercise workoutexercise = null;
 	
 		System.out.println(workoutExercise);
@@ -161,13 +166,44 @@ public class WorkoutController {
 //		workout.setName(name);
 //		workout.setUser(user);
 //		dao.persistWorkouts(workout);
-//		ModelAndView mv = new ModelAndView("profile.jsp");
+		ModelAndView mv = new ModelAndView("profile.jsp");
 //		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
 //		mv.addObject("userWorkouts", userWorkouts);
 //		mv.addObject("user", user);
 //		for (Workout workout2 : user.getWorkouts()) {
 //			System.out.println(workout2);
 //		}
+		return mv;
+	}
+	@RequestMapping(path = "createWorkoutList.do", method = RequestMethod.POST)
+	public String addExerciseToWorkoutList(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user, WorkoutExercise workoutExercise, @ModelAttribute("userWorkoutExercises") List<WorkoutExercise> userWorkoutExercises) {
+		Exercise exercise = dao.getExerciseById(user, id);
+//		WorkoutExercise workoutexercise = null;
+		userWorkoutExercises.add(workoutExercise);
+		
+		System.out.println(workoutExercise);
+		Workout workout = new Workout();
+//		workoutexercise.setWorkout(workout);
+//		workout.addWorkoutExercise(workoutexercise);
+//		workout.setName(name);
+//		workout.setUser(user);
+//		dao.persistWorkouts(workout);
+		ModelAndView mv = new ModelAndView("workoutBuilder.jsp");
+		mv.addObject(userWorkoutExercises);
+//		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
+//		mv.addObject("userWorkouts", userWorkouts);
+//		mv.addObject("user", user);
+//		for (Workout workout2 : user.getWorkouts()) {
+//			System.out.println(workout2);
+//		}
+		return "redirect:redirect.do";
+	}
+	
+	@RequestMapping(path= "redirect.do", method = RequestMethod.POST) 
+	public ModelAndView redirect(@ModelAttribute("user") User user, @ModelAttribute("userWorkoutExercises") List<WorkoutExercise> userWorkoutExercises) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject(userWorkoutExercises);
+		mv.setViewName("workoutBuilder.jsp");
 		return mv;
 	}
 	
