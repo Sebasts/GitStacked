@@ -207,7 +207,7 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 
 	@Override
 	public void deleteExercise(Exercise exercise) {
-		// TODO Auto-generated method stub
+		String query = "select e from Exercise e where e.name = :name";
 		
 	}
 
