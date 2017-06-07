@@ -12,7 +12,7 @@
 <body>
 	<jsp:include page="navbar.jsp"/> 
 	<div>
-	<h3>Change user account type</h3>
+	<h3>Change User Account Type</h3>
 	<form action="updateUserType.do" method="post">
 		<select name="username">
 			<c:forEach var="u" items="${users}">
@@ -59,8 +59,8 @@
 	<h3>Make an Exercise Inactive</h3>
 	<form action="deleteExercise.do" method="post">
 		<select name="name">
-			<c:forEach var="exercise" items="${id}">
-				<option>${exercise.name}</option>
+			<c:forEach var="e" items="${exercises}">
+				<option>${e.name}</option>
 			</c:forEach>
 		</select> <select name="choice">
 			<option>ACTIVE</option>
@@ -70,7 +70,7 @@
 	</form>
 	</div>
 	
-	<div>
+<%-- 		<div>
 	<h3>Change user account type</h3>
 	<form action="updateUserType.do" method="post">
 		<select name="username">
@@ -83,7 +83,7 @@
 		</select>
 		<button type="submit">Make Change</button>
 	</form>
-	</div>
+	</div> --%>
 	
 </body>
 </html>
