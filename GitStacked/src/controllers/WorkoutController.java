@@ -74,6 +74,7 @@ public class WorkoutController {
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public ModelAndView login(@ModelAttribute("user") User user) {
+		System.out.println("**************"+user);
 		ModelAndView mv = new ModelAndView();
 		if (dao.login(user) == null) {
 			mv.setViewName("incorrectLogin.jsp");
@@ -86,18 +87,12 @@ public class WorkoutController {
 			mv.setViewName("admin.jsp");
 			return mv;
 		}
-		try {
 			mv.addObject("user", dao.login(user));
+			
 			List<Workout> userWorkouts = dao.getWorkoutsFromUser(dao.login(user));
 			mv.addObject("userWorkouts", userWorkouts);
 			mv.setViewName("profile.jsp");
 			return mv;
-		} catch (Exception e) {
-			List<Workout> userWorkouts = new ArrayList<>();
-			mv.addObject("userWorkouts", userWorkouts);
-			mv.setViewName("profile.jsp");
-			return mv;
-		}
 	}
 
 	@RequestMapping(path = "editUser.do", method = RequestMethod.POST)
@@ -277,34 +272,15 @@ public class WorkoutController {
 	}
 
 	
-//	@RequestMapping(path = "deleteExercise.do", method = RequestMethod.POST)
-//	public ModelAndView deleteExercise(Exercise exercise) {
-//		dao.deleteExercise(exercise);
-//		ModelAndView mv = new ModelAndView();
-//		mv.("exercise", exercise);
-//		mv.setViewName("admin.jsp");
-//		return mv;
-//	}
-//	@RequestMapping(path = "deleteExercise.do", method = RequestMethod.POST)
-//	public ModelAndView deleteExercise(@ModelAttribute("user") User user, String username, String choice) {
-//		Name tempName = em.find(User.class, dao.getExerciseIdByName(name));
-//		if (choice.equals("INACTIVE")) {
-//			tempName.setLoginUsertype(LoginUserType.ADMIN);  //make active method
-//		} else {
-//			tempName.setLoginUsertype(LoginUserType.USER);  //turn to make inactive method
-//		}
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("admin.jsp");
-//		mv.addObject("users", dao.getAllUsers());
-//		mv.addObject("user", user);
-//		return mv;
-//	}
-	
-//	@RequestMapping(path = "createWorkout.do", method = RequestMethod.GET)
-//	public ModelAndView createWorkout(@ModelAttribute("user") User user, WorkoutExercise workoutexercise) {
-//		ModelAndView mv = new ModelAndView("workoutBuilder.jsp", "exercises", dao.getListOfExercises());
-//		// user.getWorkouts().get(0)
-//		return mv;
-//	}
+	@RequestMapping(path = "deleteExercise.do", method = RequestMethod.POST)
+	public ModelAndView deleteExercise(@ModelAttribute("user")User user, Exercise exercise, String choice) {
+		dao.deleteExercise(exercise, choice);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("user", user);
+		mv.addObject("users", dao.getAllUsers());
+		mv.addObject("exercises", dao.getAllExercises());
+		mv.setViewName("admin.jsp");
+		return mv;
+	}
 	
 }
