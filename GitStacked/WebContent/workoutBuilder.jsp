@@ -9,25 +9,32 @@
 <title>Build Workout</title>
 </head>
 <body>
-<jsp:include page="navbar.jsp"/> 
-<div>
-	<form action="createWorkout.do" method="POST" modelAttribute="workoutExercise">
-		<select name="exerciseId">
-			<c:forEach var="e" items="${exercises}">
-				<option value="${e.id}">${e.name}</option>
-			</c:forEach>
-		</select> 
-		Reps:
-		<input type="text" name="reps">
-		Weight:
-		<input type="text" name="weight">
-		Duration:
-		<input type="text" name="duration">
-		Create a name for your workout:
-		<input type="text" name="name">
-		<input type="submit" value="Create Workout">
-	</form>
+	<jsp:include page="navbar.jsp" />
+	<div>
+		<form name="createWorkout" action="createWorkout2.do" method="POST"
+			modelAttribute="workoutExercise">
+			<select name="exerciseId">
+				<c:forEach var="e" items="${exercises}">
+					<option value="${e.id}">${e.name}</option>
+				</c:forEach>
+			</select> Reps: <input type="text" name="reps"> Weight: <input
+				type="text" name="weight"> Duration: <input type="text"
+				name="duration"> Create a name for your workout: <input
+				type="text" name="name"> <input type="submit"
+				value="Create Workout">
+		</form>
+		<button type="button" id="btnAddForm"
+			onclick="CloneForm('createWorkout');">Add</button>
+		<script type="text/javascript">
+			function CloneForm(formName) {
+				var formCount = document.forms.length;
+				var oForm = document.forms[formName];
+				var clone = oForm.cloneNode(true);
+				clone.name += "_" + formCount;
+				document.body.appendChild(clone);
+			}
+		</script>
 
-</div>
+	</div>
 </body>
 </html>

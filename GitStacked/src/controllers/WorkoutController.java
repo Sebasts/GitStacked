@@ -147,6 +147,27 @@ public class WorkoutController {
 		}
 		return mv;
 	}
+	@RequestMapping(path = "createWorkout2.do", method = RequestMethod.POST)
+	public ModelAndView publishWorkout(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user, WorkoutExercise workoutExercise) {
+		Exercise exercise = dao.getExerciseById(user, id);
+//		WorkoutExercise workoutexercise = null;
+	
+		System.out.println(workoutExercise);
+		Workout workout = new Workout();
+//		workoutexercise.setWorkout(workout);
+//		workout.addWorkoutExercise(workoutexercise);
+//		workout.setName(name);
+//		workout.setUser(user);
+//		dao.persistWorkouts(workout);
+//		ModelAndView mv = new ModelAndView("profile.jsp");
+//		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
+//		mv.addObject("userWorkouts", userWorkouts);
+//		mv.addObject("user", user);
+//		for (Workout workout2 : user.getWorkouts()) {
+//			System.out.println(workout2);
+//		}
+		return mv;
+	}
 	
 	@RequestMapping(path = "logout.do")
 	public ModelAndView logoutUser(@ModelAttribute("user") User user) {

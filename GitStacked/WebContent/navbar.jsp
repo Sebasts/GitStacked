@@ -8,6 +8,7 @@
 <head>
 <link rel="stylesheet" href="navbar.css">
 <link rel="stylesheet" href="master.css">
+<link rel="stylesheet" href="forms.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
