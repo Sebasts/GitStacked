@@ -22,7 +22,7 @@ import entities.User;
 import entities.Workout;
 import entities.WorkoutExercise;
 
-@SessionAttributes({ "user", "workout", "userWorkoutExercises"})
+@SessionAttributes({ "user", "workout", "userWorkoutExercises", "workoutExercise"})
 @Controller
 public class WorkoutController {
 
@@ -40,6 +40,10 @@ public class WorkoutController {
 	@ModelAttribute("user")
 	public User newUser() {
 		return new User();
+	}
+	@ModelAttribute("workoutExercise")
+	public WorkoutExercise newWorkoutExercise() {
+		return new WorkoutExercise();
 	}
 	@ModelAttribute("userWorkoutExercises")
 	public List<WorkoutExercise> newUserWorkoutExercises() {
@@ -162,7 +166,7 @@ public class WorkoutController {
 	
 	//user adds exercise to their workout list
 	@RequestMapping(path = "createWorkoutList.do", method = RequestMethod.POST)
-	public String addExerciseToWorkoutList(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user, WorkoutExercise workoutExercise, @ModelAttribute("userWorkoutExercises") List<WorkoutExercise> userWorkoutExercises) {
+	public String addExerciseToWorkoutList(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user, @ModelAttribute("workoutExercise") WorkoutExercise workoutExercise, @ModelAttribute("userWorkoutExercises") List<WorkoutExercise> userWorkoutExercises) {
 		Exercise exercise = dao.getExerciseById(user, id);
 //		WorkoutExercise workoutexercise = new WorkoutExercise();
 		workoutExercise.setExercise(exercise);
@@ -170,7 +174,7 @@ public class WorkoutController {
 		System.out.println("in create Workout List");
 		System.out.println(workoutExercise);
 		Workout workout = new Workout();
-//		workout.addWorkoutExercise(workoutexercise);
+		workout.addWorkoutExercise(workoutExercise);
 //		workout.setName(name);
 		workout.setUser(user);
 		workoutExercise.setWorkout(workout);
@@ -218,7 +222,7 @@ public class WorkoutController {
 //		workout.addWorkoutExercise(workoutexercise);
 //		workout.setName(name);
 		workout.setUser(user);
-		dao.persistWorkouts(workout);
+//		dao.persistUser(user);
 		ModelAndView mv = new ModelAndView("profile.jsp");
 		mv.addObject("userWorkouts", userWorkouts);
 		mv.addObject("user", user);
