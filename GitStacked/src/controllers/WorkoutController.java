@@ -137,6 +137,7 @@ public class WorkoutController {
 		mv.setViewName("admin.jsp");
 		mv.addObject("users", dao.getAllUsers());
 		mv.addObject("user", user);
+		mv.addObject("exercises", dao.getAllExercises());
 		return mv;
 	}
 
@@ -279,8 +280,9 @@ public class WorkoutController {
 	}
 
 	@RequestMapping(path = "deleteExercise.do", method = RequestMethod.POST)
-	public ModelAndView deleteExercise(@ModelAttribute("user") User user, Exercise exercise, String choice) {
-		dao.deleteExercise(exercise, choice);
+	public ModelAndView deleteExercise(@ModelAttribute("user")User user, Exercise name, String choice) {
+		System.out.println(name+"AAAAAAAAAHHHHHHHHHHHHHHHHHHHH");
+		dao.deleteExercise(name, choice);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("user", user);
 		mv.addObject("users", dao.getAllUsers());

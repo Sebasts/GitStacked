@@ -10,7 +10,7 @@
 <title>Admin Portal</title>
 </head>
 <body>
-	<jsp:include page="navbar.jsp"/>
+	<%-- <jsp:include page="navbar.jsp"/> --%>
 	<div>
 	<h3>Change User Account Type</h3>
 	<form action="updateUserType.do" method="post">
@@ -49,14 +49,13 @@
 	<input name = "muscleGroup"/>[ARMS,LEGS,ABS,CHEST,BACK,SHOULDERS]<br>
 
 	<input type = "submit" value = "Create Exercise">
-
+	
+<!-- 	<input name = "active" value="1" type=hidden> -->
 	</form>
 	</div>
 
-	
-
 	<div>
-	<h3>Make an Exercise Inactive</h3>
+	<h3>Make an Exercise Inactive/Active</h3>
 	<form action="deleteExercise.do" method="post">
 		<select name="name">
 			<c:forEach var="e" items="${exercises}">

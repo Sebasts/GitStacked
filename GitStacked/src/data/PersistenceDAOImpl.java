@@ -232,11 +232,17 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	@Override
 	public void deleteExercise(Exercise exercise, String choice) {
 		if (choice.equals("ACTIVE")) {
-			Exercise ex = em.find(Exercise.class, exercise.getId());
-			// then JDBC to make inactive to id of ex //make new column, then
-			// add not inative
+
+			Exercise ex = em.find(Exercise.class, getExerciseIdByName(exercise.getName()));
+			System.out.println(ex);
+			ex.setActive(1);
+			em.merge(ex);
+			//UPDATE exercise SET active = 0 WHERE id = 43;
 		} else {
-			// then JDBC to make active to id of ex //handle it at the JSP level
+			Exercise ex = em.find(Exercise.class, getExerciseIdByName(exercise.getName()));
+			System.out.println(ex);
+			ex.setActive(0);
+			em.merge(ex);
 		}
 	}
 
