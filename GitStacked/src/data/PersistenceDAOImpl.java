@@ -238,7 +238,6 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 			System.out.println(ex);
 			ex.setActive(0);
 			em.merge(ex);
-		
 		}
 	}
 
