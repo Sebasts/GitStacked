@@ -132,6 +132,7 @@ public class WorkoutController {
 		mv.setViewName("admin.jsp");
 		mv.addObject("users", dao.getAllUsers());
 		mv.addObject("user", user);
+		mv.addObject("exercises", dao.getAllExercises());
 		return mv;
 	}
 
