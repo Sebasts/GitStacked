@@ -226,9 +226,13 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 
 
 	@Override
-	public void deleteExercise(Exercise exercise) {
-		// TODO Auto-generated method stub
-		
+	public void deleteExercise(Exercise exercise, String choice) {
+		if (choice.equals("ACTIVE")) {
+			Exercise ex = em.find(Exercise.class, exercise.getId());
+			//then JDBC to make inactive to id of ex
+		} else {
+			//then JDBC to make active to id of ex
+		}
 	}
 
 	@Override

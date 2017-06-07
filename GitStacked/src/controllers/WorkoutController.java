@@ -257,14 +257,17 @@ public class WorkoutController {
 	}
 
 	
-//	@RequestMapping(path = "deleteExercise.do", method = RequestMethod.POST)
-//	public ModelAndView deleteExercise(Exercise exercise) {
-//		dao.deleteExercise(exercise);
-//		ModelAndView mv = new ModelAndView();
-//		mv.("exercise", exercise);
-//		mv.setViewName("admin.jsp");
-//		return mv;
-//	}
+	@RequestMapping(path = "deleteExercise.do", method = RequestMethod.POST)
+	public ModelAndView deleteExercise(@ModelAttribute("user")User user, Exercise exercise, String choice) {
+		dao.deleteExercise(exercise, choice);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("user", user);
+		mv.addObject("users", dao.getAllUsers());
+		mv.addObject("exercises", dao.getAllExercises());
+		mv.setViewName("admin.jsp");
+		return mv;
+	}
+
 //	@RequestMapping(path = "deleteExercise.do", method = RequestMethod.POST)
 //	public ModelAndView deleteExercise(@ModelAttribute("user") User user, String username, String choice) {
 //		Name tempName = em.find(User.class, dao.getExerciseIdByName(name));

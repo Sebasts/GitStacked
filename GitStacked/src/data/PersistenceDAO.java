@@ -22,7 +22,7 @@ public interface PersistenceDAO {
 	int getUserIdByUsername(String username);
 	User login(User user);
 	void createExercise(Exercise exercise);
-	void deleteExercise(Exercise exercise);
+	void deleteExercise(Exercise exercise, String choice);
 	int getExerciseIdByName(String name);
 	List<User> getAllUsers();
 	Exercise getExerciseById(User user, int id);
