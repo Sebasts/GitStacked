@@ -8,3 +8,17 @@
 img {
 	size: 40%;
 }
+
+.left {
+	float:left;
+	width: 50%;
+}
+
+.right {
+	float:left;
+	width: 50%;
+}
+
+.right img {
+	size:10%;
+}

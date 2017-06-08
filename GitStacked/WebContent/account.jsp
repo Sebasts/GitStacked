@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="navbar.css">
+<link rel="stylesheet" href="form.css">
 <title>Account Profile</title>
 </head>
 <body>
