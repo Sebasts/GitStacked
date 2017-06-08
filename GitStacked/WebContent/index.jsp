@@ -10,17 +10,17 @@
 <jsp:include page="navbar.jsp"/> 
 Start building your own workout plan
 
-<div>
+<div class="left">
 Sign Up Now!
 <form action = "createUser.do" method = "GET">
 <input type = "submit" value = "Sign Up">
 </form>
-</div>
-
 Already have an account?
 <a href="login.do">Click here</a>
+</div>
 
-<div>
+
+<div class="left">
 Search for an Exercise
 <form action = "getExercise.do" method = "GET">
 <input type = "text" name = "exerciseName">
@@ -28,6 +28,9 @@ Search for an Exercise
 </form>
 </div>
 
+<div class="frontPage">
+Start Getting In Shape
+</div>
 
 </body>
 </html>
