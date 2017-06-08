@@ -144,7 +144,7 @@ public class WorkoutController {
 	@RequestMapping(path = "createWorkout.do", method = RequestMethod.POST)
 	public ModelAndView publishWorkout(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user,
 			@RequestParam("reps") Integer reps, @RequestParam("weight") Integer weight,
-			@RequestParam("workoutName") String workoutName, @RequestParam(value = "newWorkoutName", required = false) String newWorkoutName,
+			@RequestParam(value = "workoutName", required = false) String workoutName, @RequestParam(value = "newWorkoutName", required = false) String newWorkoutName,
 			@RequestParam(value = "duration", required = false) Integer duration) {
 		// check to see if workout exists
 
