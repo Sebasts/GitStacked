@@ -1,11 +1,9 @@
 package entities;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /*
  * WorkoutExercise Command Object for constructing multiple WorkoutExercises
- * Takes in String[] from jsp form and creates command objects
+ * Takes in String from jsp form and creates command objects
  */
 
 public class WorkoutExerciseCO {
@@ -13,8 +11,9 @@ public class WorkoutExerciseCO {
 	private String reps;
 	private String weight;
 	private String duration;
-	private String name;
+	private String newWorkoutName;
 	private String exerciseId;
+	
 	public String getReps() {
 		return reps;
 	}
@@ -33,11 +32,12 @@ public class WorkoutExerciseCO {
 	public void setDuration(String duration) {
 		this.duration = duration;
 	}
-	public String getName() {
-		return name;
+
+	public String getNewWorkoutName() {
+		return newWorkoutName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNewWorkoutName(String newWorkoutName) {
+		this.newWorkoutName = newWorkoutName;
 	}
 	public String getExerciseId() {
 		return exerciseId;

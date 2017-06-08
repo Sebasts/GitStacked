@@ -21,6 +21,7 @@ import entities.LoginUserType;
 import entities.User;
 import entities.Workout;
 import entities.WorkoutExercise;
+import entities.WorkoutExerciseCO;
 
 @SessionAttributes({ "user", "workout", "userWorkoutExercises", "workoutExercise" })
 @Controller
@@ -107,7 +108,7 @@ public class WorkoutController {
 		mv.addObject("userWorkouts", dao.getWorkoutsFromUser(user));
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "home.do")
 	public ModelAndView goHome(@ModelAttribute("user") User user) {
 		ModelAndView mv = new ModelAndView("profile.jsp", "user", dao.persistUser(user));
@@ -148,17 +149,14 @@ public class WorkoutController {
 		return mv;
 	}
 
-	//Route to create workout from workoutBuilder jsp
-	//Checks for changes to existing workout or build a new workout
+	// Route to create workout from workoutBuilder jsp
+	// Checks for changes to existing workout or build a new workout
 	@RequestMapping(path = "createWorkout.do", method = RequestMethod.POST)
-	public ModelAndView publishWorkout(@RequestParam("exerciseId") Integer id, 
-			@ModelAttribute("user") User user,
-			@RequestParam("reps") Integer reps, 
-			@RequestParam("weight") Integer weight,
+	public ModelAndView publishWorkout(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user,
+			@RequestParam("reps") Integer reps, @RequestParam("weight") Integer weight,
 			@RequestParam(value = "workoutName", required = false) String workoutName,
 			@RequestParam(value = "newWorkoutName", required = false) String newWorkoutName,
-			@RequestParam(value = "duration", required = false) Integer duration) 
-	{
+			@RequestParam(value = "duration", required = false) Integer duration) {
 		Workout workout = new Workout();
 		if (newWorkoutName.equals("")) {
 			for (Workout w : dao.getWorkoutsFromUser(user)) {
@@ -182,14 +180,14 @@ public class WorkoutController {
 		dao.persistWorkouts(workout);
 		ModelAndView mv = new ModelAndView("profile.jsp");
 		if (dao.getWorkoutsFromUser(user) != null) {
-		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
-		mv.addObject("userWorkouts", userWorkouts);
+			List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
+			mv.addObject("userWorkouts", userWorkouts);
 		}
 		mv.addObject("user", user);
 		return mv;
 	}
 
-	//User adds WorkoutExercise and redirected to workoutBuilder jsp
+	// User adds WorkoutExercise and redirected to workoutBuilder jsp
 	@RequestMapping(path = "createWorkoutList.do", method = RequestMethod.POST)
 	public String addExerciseToWorkoutList(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user,
 			@ModelAttribute("workoutExercise") WorkoutExercise workoutExercise,
@@ -223,7 +221,53 @@ public class WorkoutController {
 		// }
 	}
 
-	//Workout is persisted to database and User forwarded to profile page
+	@RequestMapping(path = "createWorkout2.do", method = RequestMethod.POST)
+	public ModelAndView createWorkout(@RequestParam(value = "workoutName", required = false) String workoutName,
+			@RequestParam("exerciseId") Integer id,
+			@RequestParam(value = "newWorkoutName", required = false) String newWorkoutName,
+			@ModelAttribute("user") User user, WorkoutExerciseCO workoutExerciseCO) {
+		ModelAndView mv = new ModelAndView();
+
+		Workout workout = new Workout();
+		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
+
+		String[] name = null;
+		if (newWorkoutName.equals("")) {
+			for (Workout w : userWorkouts) {
+				if (workoutName.equals(w.getName())) {
+					workout = w;
+				}
+			}
+		} else {
+			name = workoutExerciseCO.getNewWorkoutName().split(",");
+			workout.setName(name[0]);
+		}
+
+		String[] exercise = workoutExerciseCO.getExerciseId().split(",");
+		String[] reps = workoutExerciseCO.getReps().split(",");
+		String[] weight = workoutExerciseCO.getWeight().split(",");
+		String[] duration = workoutExerciseCO.getDuration().split(",");
+
+		for (int i = 0; i < reps.length; i++) {
+			WorkoutExercise we = new WorkoutExercise();
+			Exercise e = dao.getExerciseById(user, Integer.parseInt(exercise[i]));
+			we.setExercise(e);
+			we.setReps(Integer.parseInt(reps[i]));
+			we.setWeight(Integer.parseInt(weight[i]));
+			we.setDuration(Integer.parseInt(duration[i]));
+			we.setWorkout(workout);
+			workout.addWorkoutExercise(we);
+			workout.setUser(user);
+		}
+		dao.persistWorkouts(workout);
+
+		mv.setViewName("profile.jsp");
+		mv.addObject("userWorkouts", dao.getWorkoutsFromUser(user));
+		return mv;
+
+	}
+
+	// Workout is persisted to database and User forwarded to profile page
 	@RequestMapping(path = "completeWorkout.do", method = RequestMethod.POST)
 	public ModelAndView publishWorkout(@ModelAttribute("user") User user,
 			@ModelAttribute("userWorkoutExercises") List<WorkoutExercise> userWorkoutExercises) {

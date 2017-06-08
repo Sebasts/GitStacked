@@ -10,47 +10,48 @@
 </head>
 <body>
 	<jsp:include page="navbar.jsp" />
-	<div>
 	Choose from existing workout: 
-	<form name="createWorkout" action="createWorkout.do" method="POST">
+	<form name="createWorkout" action="createWorkout2.do" method="POST">
+	<div id="formelements">
 	<select name="workoutName">
 					<c:forEach var="w" items="${userWorkouts}">
 						<option value="${w.name}">${w.name}</option>
 					</c:forEach>
 				</select> 
-	
+	<br>
 	Or create a new workout<input type="text" name="newWorkoutName">
-	
-		
-				<select name="exerciseId">
+	<br>
+				Exercise: <select name="exerciseId">
 					<c:forEach var="e" items="${exercises}">
 						<option value="${e.id}">${e.name}</option>
 					</c:forEach>
 				</select> 
+				<br>
 				Reps: <input type="text" name="reps"> <br>
 				Weight: <input type="text" name="weight"> <br>
 				Duration: <input type="text" name="duration"> <br>
 				
-				<input type = "submit" value="Complete Workout">
-		<!-- <button type="button" id="btnAddForm"
-			onclick="CloneForm('createWorkout');">Add</button> -->
-			
-			<%-- </form>
-			
-			<form name="createWorkout" action="completeWorkout.do" method="POST">
+			</div>
+<!-- 				<input type = "submit" value="Complete Workout">-->		
+			<div id="target">
+			</div>
+			<button type="button" id="btnAddForm"
+			onclick="CloneForm('createWorkout');">Add</button>
 			<input type="submit" value="Complete Workout">
-			</form> --%>
+			</form>
 			
-<!-- 		<script type="text/javascript">
-			function CloneForm(formName) {
-				var formCount = document.forms.length;
-				var oForm = document.forms[formName];
-				var clone = oForm.cloneNode(true);
-				clone.name += "_" + formCount;
-				document.body.appendChild(clone);
-			}
-		</script> -->
 
-	</div>
+			
+	<script type="text/javascript">
+			function CloneForm(formName) {
+				var div = document.getElementById("formelements");
+				var target = document.getElementById("target");
+				var clone = div.cloneNode(true);
+				
+				target.appendChild(clone);
+			}
+		</script> 
+
+	
 </body>
 </html>
