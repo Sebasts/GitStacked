@@ -1,6 +1,9 @@
 package controllers;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -155,11 +158,13 @@ public class WorkoutController {
 			@ModelAttribute("user") User user,
 			@RequestParam("reps") Integer reps, 
 			@RequestParam("weight") Integer weight,
+			@RequestParam("date") Date date,
 			@RequestParam(value = "workoutName", required = false) String workoutName,
 			@RequestParam(value = "newWorkoutName", required = false) String newWorkoutName,
 			@RequestParam(value = "duration", required = false) Integer duration) 
 	{
-		Workout workout = new Workout();
+		LocalDate ldate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		Workout workout = new Workout(ldate);
 		if (newWorkoutName.equals("")) {
 			for (Workout w : dao.getWorkoutsFromUser(user)) {
 				if (workoutName.equals(w.getName())) {
@@ -172,9 +177,9 @@ public class WorkoutController {
 		Exercise exercise = dao.getExerciseById(user, id);
 		WorkoutExercise workoutexercise = null;
 		if (duration == null) {
-			workoutexercise = new WorkoutExercise(exercise, reps, weight);
+			workoutexercise = new WorkoutExercise(exercise, reps, weight, ldate);
 		} else {
-			workoutexercise = new WorkoutExercise(exercise, reps, weight, duration);
+			workoutexercise = new WorkoutExercise(exercise, reps, weight, ldate, duration);
 		}
 		workoutexercise.setWorkout(workout);
 		workout.addWorkoutExercise(workoutexercise);
@@ -296,6 +301,21 @@ public class WorkoutController {
 		mv.addObject("users", dao.getAllUsers());
 		mv.addObject("exercises", dao.getAllExercises());
 		mv.setViewName("admin.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path = "pastWorkouts.do", method = RequestMethod.GET)
+	public ModelAndView pastWorkouts(@ModelAttribute("user") User user, WorkoutExercise workoutexercise) {
+		ModelAndView mv = new ModelAndView("pastWorkouts.jsp");
+		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
+		List<Workout> newlist = new ArrayList<>();
+		for (Workout workout : userWorkouts) {
+			if (dao.compareDate(workout.getDate()) > 0) {
+				System.out.println(workout.getDate());
+				newlist.add(workout);
+			}
+		}
+		mv.addObject("userWorkouts", newlist);
 		return mv;
 	}
 
