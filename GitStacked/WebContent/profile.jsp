@@ -14,7 +14,7 @@
 <body>
 	<jsp:include page="navbar.jsp" />
 	<form action="createWorkout.do" method="GET">
-		<input type="submit" value="Create Exercise">
+		<input type="submit" value="Create Workout">
 	</form>
 	<br> Welcome, ${user.getFName()}
 	<br>

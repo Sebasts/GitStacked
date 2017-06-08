@@ -11,16 +11,26 @@
 <body>
 	<jsp:include page="navbar.jsp" />
 	<div>
-		<form name="createWorkout" action="createWorkout.do" method="POST">
+	Choose from existing workout: 
+	<form name="createWorkout" action="createWorkout.do" method="POST">
+	<select name="workoutName">
+					<c:forEach var="w" items="${userWorkouts}">
+						<option value="${w.name}">${w.name}</option>
+					</c:forEach>
+				</select> 
+	
+	Or create a new workout<input type="text" name="newWorkoutName">
+	
+		
 				<select name="exerciseId">
 					<c:forEach var="e" items="${exercises}">
 						<option value="${e.id}">${e.name}</option>
 					</c:forEach>
 				</select> 
-				Reps: <input type="text" name="reps"> 
-				Weight: <input type="text" name="weight"> 
-				Duration: <input type="text" name="duration"> 
-				Create a name for your workout: <input type="text" name="name">
+				Reps: <input type="text" name="reps"> <br>
+				Weight: <input type="text" name="weight"> <br>
+				Duration: <input type="text" name="duration"> <br>
+				
 				<input type = "submit" value="Complete Workout">
 		<!-- <button type="button" id="btnAddForm"
 			onclick="CloneForm('createWorkout');">Add</button> -->

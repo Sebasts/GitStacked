@@ -163,26 +163,9 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		em.remove(workout);
 	}
 
-//	@Override
-//	public User persistWorkouts(Workout w) {
-//		// User tempUser = em.find(w.getUser().getClass(), w.getUser().getId());
-//		// System.out.println(tempUser);
-//		// System.out.println(tempUser.getWorkouts());
-//		// tempUser.setFName(user.getFName());
-//		// tempUser.setLName(user.getLName());
-//		// tempUser.setHeightFeet(user.getHeightFeet());
-//		// tempUser.setHeightInch(user.getHeightInch());
-//		// tempUser.setPassword(user.getPassword());
-//		// tempUser.setUserWeight(user.getUserWeight());
-//		// tempUser.setWorkouts(user.getWorkouts());
-//		// tempUser.setLoginUsertype(user.getLoginUsertype());
-//
-//		em.persist(w);
-//		em.flush();
-//		// em.persist(tempUser);
-//		// System.out.println(user.getWorkouts().size());
-//		return w.getUser();
-//	}
+
+	
+
 
 	@Override
 	public List<User> getAllUsers() {

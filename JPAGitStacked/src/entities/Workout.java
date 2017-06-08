@@ -69,6 +69,7 @@ public class Workout {
 	}
 	@Override
 	public String toString() {
-		return "Workout [id=" + id + ", date=" + date + "]";
+		return "Workout [id=" + id + ", date=" + date + ", name=" + name + ", user=" + user.getFName() + ", workoutExercise="
+				+ workoutExercise.size() + "]";
 	}
 }
