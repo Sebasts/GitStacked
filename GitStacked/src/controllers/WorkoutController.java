@@ -182,7 +182,8 @@ public class WorkoutController {
 		dao.persistWorkouts(workout);
 		ModelAndView mv = new ModelAndView("profile.jsp");
 		if (dao.getWorkoutsFromUser(user) != null) {
-			mv.addObject("userWorkouts", dao.getWorkoutsFromUser(user));
+		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
+		mv.addObject("userWorkouts", userWorkouts);
 		}
 		mv.addObject("user", user);
 		return mv;
