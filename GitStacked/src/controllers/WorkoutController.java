@@ -154,7 +154,7 @@ public class WorkoutController {
 	//Route to create workout from workoutBuilder jsp
 	//Checks for changes to existing workout or build a new workout
 	@RequestMapping(path = "createWorkout.do", method = RequestMethod.POST)
-	public ModelAndView publishWorkout(@RequestParam("exerciseId") Integer id, 
+	public String publishWorkout(@RequestParam("exerciseId") Integer id, 
 			@ModelAttribute("user") User user,
 			@RequestParam("reps") Integer reps, 
 			@RequestParam("weight") Integer weight,
@@ -185,13 +185,9 @@ public class WorkoutController {
 		workout.addWorkoutExercise(workoutexercise);
 		workout.setUser(user);
 		dao.persistWorkouts(workout);
-		ModelAndView mv = new ModelAndView("profile.jsp");
-		if (dao.getWorkoutsFromUser(user) != null) {
-		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
-		mv.addObject("userWorkouts", userWorkouts);
-		}
-		mv.addObject("user", user);
-		return mv;
+
+		
+		return "redirect:workoutRedirect.do";
 	}
 
 	//User adds WorkoutExercise and redirected to workoutBuilder jsp
@@ -249,6 +245,20 @@ public class WorkoutController {
 		mv.addObject(userWorkoutExercises);
 		mv.addObject("exercises", dao.getListOfExercises());
 		mv.setViewName("workoutBuilder.jsp");
+		return mv;
+	}
+	@RequestMapping(path = "workoutRedirect.do")
+	public ModelAndView workoutRedirect(@ModelAttribute("user") User user,
+			@ModelAttribute("userWorkoutExercises") List<WorkoutExercise> userWorkoutExercises) {
+		ModelAndView mv = new ModelAndView();
+		if (dao.getWorkoutsFromUser(user) != null) {
+			List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
+			mv.addObject("userWorkouts", userWorkouts);
+			}
+			mv.addObject("user", user);
+		mv.addObject(userWorkoutExercises);
+		mv.addObject("exercises", dao.getListOfExercises());
+		mv.setViewName("profile.jsp");
 		return mv;
 	}
 
