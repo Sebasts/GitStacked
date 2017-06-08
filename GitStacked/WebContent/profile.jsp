@@ -52,6 +52,10 @@
 					<td><img src="${we.exercise.imageUrl}" alt="exercise image" />
 					</td>
 					<td>${we.exercise.description}</td>
+					<td><form action="removeWorkoutExercise.do" method="POST">
+		<input type="hidden" name="id" value="${we.id}">
+		<input type="submit" value="Remove Exercise">
+		</form></td>
 				</tr>
 			</table>
 		</c:forEach>

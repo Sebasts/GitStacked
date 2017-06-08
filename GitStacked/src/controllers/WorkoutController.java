@@ -173,12 +173,14 @@ public class WorkoutController {
 		System.out.println("***********" + workout);
 		dao.persistWorkouts(workout);
 		ModelAndView mv = new ModelAndView("profile.jsp");
+		if (dao.getWorkoutsFromUser(user) != null) {
 		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
 		mv.addObject("userWorkouts", userWorkouts);
-		mv.addObject("user", user);
-		for (Workout workout2 : user.getWorkouts()) {
-			System.out.println(workout2);
 		}
+		mv.addObject("user", user);
+//		for (Workout workout2 : user.getWorkouts()) {
+//			System.out.println(workout2);
+//		}
 		return mv;
 	}
 
@@ -269,11 +271,21 @@ public class WorkoutController {
 
 	@RequestMapping(path = "removeWorkout.do", method = RequestMethod.POST)
 	public ModelAndView removeWorkout(@ModelAttribute("user") User user, Integer id) {
-		dao.removeWorkout(id);
 		System.out.println("%%%%%%%%%%%%%%%%%" + id);
+		dao.removeWorkout(id);
 		ModelAndView mv = new ModelAndView();
 		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
 		System.out.println("^^^^^^^^^^^^^^^^^^^^" + userWorkouts);
+		mv.addObject("userWorkouts", userWorkouts);
+		mv.setViewName("profile.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path = "removeWorkoutExercise.do", method = RequestMethod.POST)
+	public ModelAndView removeWorkoutExercise(@ModelAttribute("user") User user, Integer id) {
+		dao.removeWorkoutExercise(id);
+		ModelAndView mv = new ModelAndView();
+		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
 		mv.addObject("userWorkouts", userWorkouts);
 		mv.setViewName("profile.jsp");
 		return mv;

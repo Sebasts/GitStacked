@@ -32,6 +32,7 @@ public interface PersistenceDAO {
 	void removeWorkout(int id);
 	List<Exercise> getAllExercises();
 	int getCaloriesByWorkout(Workout workout);
+	void removeWorkoutExercise(int id);
 
 		
 }
