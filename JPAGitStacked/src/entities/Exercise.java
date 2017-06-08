@@ -9,6 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/*
+ * Entity to represent Exercise table in database
+ */
+
 @Entity
 @Table(name="exercise")
 public class Exercise {
@@ -16,21 +20,21 @@ public class Exercise {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int active;
+	private String name;
+	private String description;
+	private String imageUrl;
+	private int calories;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="muscleGroup")
+	private MuscleGroup muscleGroup;
+	
 	public int getActive() {
 		return active;
 	}
 	public void setActive(int active) {
 		this.active = active;
 	}
-	private String name;
-	private String description;
-	private String imageUrl;
-	private int calories;
-	@Enumerated(EnumType.STRING)
-	@Column(name="muscleGroup")
-	private MuscleGroup muscleGroup;
-//	@OneToOne(mappedBy="exercise")
-//	private WorkoutExercise workoutExercise;
 	
 	public String getName() {
 		return name;
@@ -62,12 +66,7 @@ public class Exercise {
 	public void setMuscleGroup(MuscleGroup muscleGroup) {
 		this.muscleGroup = muscleGroup;
 	}
-//	public WorkoutExercise getWorkoutExercise() {
-//		return workoutExercise;
-//	}
-//	public void setWorkoutExercise(WorkoutExercise workoutExercise) {
-//		this.workoutExercise = workoutExercise;
-//	}
+
 	public int getId() {
 		return id;
 	}

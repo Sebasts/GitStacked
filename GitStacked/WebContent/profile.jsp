@@ -13,15 +13,14 @@
 </head>
 <body>
 	<jsp:include page="navbar.jsp" />
-	<form action="createWorkout.do" method="GET">
-		<input type="submit" value="Create Workout">
-	</form>
+	
 	<br> 
 	<h3>Welcome, ${user.getFName()}</h3>
 	<br>
-	<br>
 	<div>
-		<a href="createWorkout.do">Create new workout</a>
+		<form action="createWorkout.do" method="GET">
+		<input type="submit" value="Create Workout">
+	</form>
 	</div>
 	<div>
 		<a href="">Previous workouts</a>
@@ -29,7 +28,6 @@
 	<div>
 		<a href="">Planned workouts</a>
 	</div>
-	<----- Links for other website functionality ----->
 	<br>
 	<label>Search Through Workouts: <input id="search" type="text"></label>
 

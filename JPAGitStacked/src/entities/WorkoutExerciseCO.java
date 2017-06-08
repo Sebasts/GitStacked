@@ -3,6 +3,11 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * WorkoutExercise Command Object for constructing multiple WorkoutExercises
+ * Takes in String[] from jsp form and creates command objects
+ */
+
 public class WorkoutExerciseCO {
 	
 	private String reps;

@@ -15,6 +15,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/*
+ * WorkoutExercise entity represents join table between Exercise and Workout in the database
+ * WorkoutExercise has an exercise with other relevant data such as reps and weight
+ * Many to One relationship with Workout
+ */
+
 @Entity
 @Table(name="workoutexercise")
 public class WorkoutExercise {

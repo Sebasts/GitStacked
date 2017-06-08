@@ -15,6 +15,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/*
+ * This Entity represents users for the web app
+ * Represented by User table in gitstacked database
+ */
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -23,15 +28,18 @@ public class User {
 	private int id;
 	private String fName;
 	private String lName;
+	
 	@Column(name="weight")
 	private int userWeight;
 	private int heightFeet;
 	private int heightInch;
 	private String username;
 	private String password;
+	
 	@Enumerated(EnumType.STRING)
 	@Column(name="usertype")
 	public LoginUserType loginUserType;
+	
 	@OneToMany(mappedBy = "user", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Workout> workouts;
 

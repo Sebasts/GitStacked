@@ -22,10 +22,6 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	@PersistenceContext
 	private EntityManager em;
 
-	// EntityManagerFactory emf =
-	// Persistence.createEntityManagerFactory("GitStacked");
-	// EntityManager em = emf.createEntityManager();
-
 	@Override
 	public User createNewUser(User user) {
 		if (em == null) {
@@ -39,6 +35,8 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		return user;
 	}
 
+	// Logs in user and populates user object with database contents upon
+	// successful login
 	@Override
 	public User login(User user) {
 		String qry = "select u from User u where u.username = :username";
@@ -51,36 +49,7 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		return null;
 	}
 
-	@Override
-	public User updateUserWeight(User user, int weight) {
-		return user;
-
-	}
-
-	@Override
-	public void changePassword(User user, String newPass) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void updateUserHeight(User user, int newHeight) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void createWorkout(User user) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void createWorkoutExercise(User user) {
-		// TODO Auto-generated method stub
-
-	}
-
+	// User can search for an exercise
 	@Override
 	public Exercise getExerciseByName(String exerciseName) {
 		// TODO Auto-generated method stub
@@ -94,6 +63,8 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		return exercises;
 	}
 
+	// Method to persist Workout created to the database so it may be added to
+	// User view
 	@Override
 	public Workout persistWorkout(Workout workout) {
 		Workout tempWorkout = new Workout();
@@ -109,47 +80,34 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		return workout;
 	}
 
+	// Method to persist created User to database for future access
 	@Override
 	public User persistUser(User user) {
-		user.getWorkouts().size();
-		User tempUser = em.find(user.getClass(), user.getId());
-		System.out.println(tempUser);
-		System.out.println(tempUser.getWorkouts());
-		tempUser.setFName(user.getFName());
-		tempUser.setLName(user.getLName());
-		tempUser.setHeightFeet(user.getHeightFeet());
-		tempUser.setHeightInch(user.getHeightInch());
-		tempUser.setPassword(user.getPassword());
-		tempUser.setUserWeight(user.getUserWeight());
-		tempUser.setWorkouts(user.getWorkouts());
-		tempUser.setLoginUsertype(user.getLoginUsertype());
-
 		em.merge(user);
 		em.flush();
-		// em.persist(tempUser);
-		System.out.println(user.getWorkouts().size());
 		return user;
 	}
 
+	// Method implements SQL query to remove a workout from a user in the
+	// database
 	@Override
 	public void removeWorkout(int id) {
-		System.out.println("***********" + id);
-		Workout workout = em.find(Workout.class, id);
 		String sql = "delete from Workout where id = :id";
 		em.createQuery(sql).setParameter("id", id).executeUpdate();
 	}
+
+	// Method removes a single WorkoutExercise from User Workout
 	@Override
 	public void removeWorkoutExercise(int id) {
 		String sql = "delete from WorkoutExercise where id = :id";
 		em.createQuery(sql).setParameter("id", id).executeUpdate();
 	}
 
+	// Method to persist Workout created by User into database
 	@Override
 	public User persistWorkouts(Workout w) {
 		em.merge(w);
 		em.flush();
-		// em.persist(tempUser);
-		// System.out.println(user.getWorkouts().size());
 		return w.getUser();
 	}
 
@@ -175,29 +133,16 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	}
 
 	@Override
-	public Exercise createExercise() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Exercise getExerciseById(User user, int id) {
 		String query = "select e from Exercise e where e.id = :id";
 		Exercise exercise = em.createQuery(query, Exercise.class).setParameter("id", id).getSingleResult();
 		return exercise;
-
 	}
 
 	@Override
 	public void createExercise(Exercise exercise) {
-		if (em == null) {
-			System.out.println("em is null");
-		}
-		System.out.println(exercise);
 		em.persist(exercise);
 		em.flush();
-		System.out.println("exercise created");
-
 	}
 
 	@Override
@@ -205,9 +150,7 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		List<Workout> userWorkouts = new ArrayList<>();
 		try {
 			String query = "select u from User u join fetch u.workouts where u.id = :id";
-			System.out.println(user);
 			User userWorkout = em.createQuery(query, User.class).setParameter("id", user.getId()).getSingleResult();
-			System.out.println(userWorkout);
 			userWorkouts = userWorkout.getWorkouts();
 		} catch (Exception e) {
 			User tempUser = em.find(User.class, user.getId());
@@ -220,15 +163,11 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	@Override
 	public void deleteExercise(Exercise exercise, String choice) {
 		if (choice.equals("ACTIVE")) {
-
 			Exercise ex = em.find(Exercise.class, getExerciseIdByName(exercise.getName()));
-			System.out.println(ex);
 			ex.setActive(1);
 			em.merge(ex);
-			//UPDATE exercise SET active = 0 WHERE id = 43;
 		} else {
 			Exercise ex = em.find(Exercise.class, getExerciseIdByName(exercise.getName()));
-			System.out.println(ex);
 			ex.setActive(0);
 			em.merge(ex);
 		}
@@ -243,19 +182,13 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 
 	@Override
 	public int getCaloriesByWorkout(Workout workout) {
-		// TODO Auto-generated method stub
-		return 0;
+		int id = workout.getId();
+		List<WorkoutExercise> we = workout.getWorkoutExercise();
+		String query = "select we from WorkoutExercise we join fetch we.exercises" + " where we.id = :id";
+		String query2 = "select we from WorkoutExercise we where = :name";
+		Exercise tempName = em.createQuery(query, Exercise.class).setParameter("name", workout.getName())
+				.getSingleResult();
+		return tempName.getId();
 	}
-	
-//	@Override
-//	public int getCaloriesByWorkout(Workout workout) {
-//		int id = workout.getId();
-//		List<WorkoutExercise> we = workout.getWorkoutExercise();
-//		String query = "select we from WorkoutExercise we join fetch we.exercises where we.id = :id";
-//		return 0;
-//		String query = "select we from WorkoutExercise we where  = :name";
-//		Exercise tempName = em.createQuery(query, Exercise.class).setParameter("name", name).getSingleResult();
-//		return tempName.getId();
-//	}
 
 }
