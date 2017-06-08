@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `workoutExercise` (
   PRIMARY KEY (`id`),
   INDEX `fk_workout_exercise_type1_idx` (`typeId` ASC),
   INDEX `fk_workout_exercise_workout1_idx` (`workoutId` ASC),
-  INDEX `fk_workout_exercise_exercise1_idx` (`exerciseId` ASC))
+  INDEX `fk_workoutExercise_exercise1_idx` (`exerciseId` ASC))
 ENGINE = InnoDB;
 
 SET SQL_MODE = '';
