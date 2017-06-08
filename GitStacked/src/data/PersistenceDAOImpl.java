@@ -1,5 +1,6 @@
 package data;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +55,24 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	public Exercise getExerciseByName(String exerciseName) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public int compareDate(LocalDate otherDate) {
+	    int cmp = (LocalDate.now().getYear() - otherDate.getYear());
+		System.out.println(LocalDate.now().getYear());
+		System.out.println(otherDate.getYear());
+	    if (cmp == 0) {
+	    	System.out.println(LocalDate.now().getMonthValue());
+	    	System.out.println(otherDate.getMonthValue());
+	        cmp = (LocalDate.now().getMonthValue() - otherDate.getMonthValue());
+	        if (cmp == 0) {
+	        	System.out.println(LocalDate.now().getDayOfMonth());
+	        	System.out.println(otherDate.getDayOfMonth());
+	            cmp = (LocalDate.now().getDayOfMonth() - otherDate.getDayOfMonth());
+	        }
+	    }
+	    return cmp;
 	}
 
 	@Override
@@ -144,6 +163,15 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		em.persist(exercise);
 		em.flush();
 	}
+	
+	@Override
+	public int getCaloriesByWorkout(Workout workout) {
+		int id = workout.getId();
+		List<WorkoutExercise> we = workout.getWorkoutExercise();
+		String query = "select we from WorkoutExercise we join fetch we.exercise where we.workoutId = :id";
+		Exercise tempName = em.createQuery(query, Exercise.class).setParameter("id", id).getSingleResult();
+		return 0;
+	}
 
 	@Override
 	public List<Workout> getWorkoutsFromUser(User user) {
@@ -180,13 +208,5 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		return tempName.getId();
 	}
 	
-	@Override
-	public int getCaloriesByWorkout(Workout workout) {
-		int id = workout.getId();
-		List<WorkoutExercise> we = workout.getWorkoutExercise();
-		String query = "select we from WorkoutExercise we join fetch we.exercise.calories where we.workoutId = :id";
-		Exercise tempName = em.createQuery(query, Exercise.class).setParameter("id", id).getSingleResult();
-		return 0;
-	}
 
 }

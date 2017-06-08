@@ -1,6 +1,9 @@
 package controllers;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -152,12 +155,17 @@ public class WorkoutController {
 	// Route to create workout from workoutBuilder jsp
 	// Checks for changes to existing workout or build a new workout
 	@RequestMapping(path = "createWorkout.do", method = RequestMethod.POST)
-	public ModelAndView publishWorkout(@RequestParam("exerciseId") Integer id, @ModelAttribute("user") User user,
-			@RequestParam("reps") Integer reps, @RequestParam("weight") Integer weight,
+	public String publishWorkout(@RequestParam("exerciseId") Integer id, 
+			@ModelAttribute("user") User user,
+			@RequestParam("reps") Integer reps, 
+			@RequestParam("weight") Integer weight,
+			@RequestParam("date") Date date,
 			@RequestParam(value = "workoutName", required = false) String workoutName,
 			@RequestParam(value = "newWorkoutName", required = false) String newWorkoutName,
-			@RequestParam(value = "duration", required = false) Integer duration) {
-		Workout workout = new Workout();
+			@RequestParam(value = "duration", required = false) Integer duration) 
+	{
+		LocalDate ldate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		Workout workout = new Workout(ldate);
 		if (newWorkoutName.equals("")) {
 			for (Workout w : dao.getWorkoutsFromUser(user)) {
 				if (workoutName.equals(w.getName())) {
@@ -170,21 +178,17 @@ public class WorkoutController {
 		Exercise exercise = dao.getExerciseById(user, id);
 		WorkoutExercise workoutexercise = null;
 		if (duration == null) {
-			workoutexercise = new WorkoutExercise(exercise, reps, weight);
+			workoutexercise = new WorkoutExercise(exercise, reps, weight, ldate);
 		} else {
-			workoutexercise = new WorkoutExercise(exercise, reps, weight, duration);
+			workoutexercise = new WorkoutExercise(exercise, reps, weight, ldate, duration);
 		}
 		workoutexercise.setWorkout(workout);
 		workout.addWorkoutExercise(workoutexercise);
 		workout.setUser(user);
 		dao.persistWorkouts(workout);
-		ModelAndView mv = new ModelAndView("profile.jsp");
-		if (dao.getWorkoutsFromUser(user) != null) {
-			List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
-			mv.addObject("userWorkouts", userWorkouts);
-		}
-		mv.addObject("user", user);
-		return mv;
+
+		
+		return "redirect:workoutRedirect.do";
 	}
 
 	// User adds WorkoutExercise and redirected to workoutBuilder jsp
@@ -290,6 +294,20 @@ public class WorkoutController {
 		mv.setViewName("workoutBuilder.jsp");
 		return mv;
 	}
+	@RequestMapping(path = "workoutRedirect.do")
+	public ModelAndView workoutRedirect(@ModelAttribute("user") User user,
+			@ModelAttribute("userWorkoutExercises") List<WorkoutExercise> userWorkoutExercises) {
+		ModelAndView mv = new ModelAndView();
+		if (dao.getWorkoutsFromUser(user) != null) {
+			List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
+			mv.addObject("userWorkouts", userWorkouts);
+			}
+			mv.addObject("user", user);
+		mv.addObject(userWorkoutExercises);
+		mv.addObject("exercises", dao.getListOfExercises());
+		mv.setViewName("profile.jsp");
+		return mv;
+	}
 
 	@RequestMapping(path = "logout.do")
 	public ModelAndView logoutUser(@ModelAttribute("user") User user) {
@@ -340,6 +358,21 @@ public class WorkoutController {
 		mv.addObject("users", dao.getAllUsers());
 		mv.addObject("exercises", dao.getAllExercises());
 		mv.setViewName("admin.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path = "pastWorkouts.do", method = RequestMethod.GET)
+	public ModelAndView pastWorkouts(@ModelAttribute("user") User user, WorkoutExercise workoutexercise) {
+		ModelAndView mv = new ModelAndView("pastWorkouts.jsp");
+		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
+		List<Workout> newlist = new ArrayList<>();
+		for (Workout workout : userWorkouts) {
+			if (dao.compareDate(workout.getDate()) > 0) {
+				System.out.println(workout.getDate());
+				newlist.add(workout);
+			}
+		}
+		mv.addObject("userWorkouts", newlist);
 		return mv;
 	}
 

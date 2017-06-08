@@ -1,8 +1,10 @@
 package entities;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -29,7 +31,7 @@ public class WorkoutExercise {
 	private int id;
 	private int reps;
 	private int duration;
-	private Date date;
+	private LocalDate date;
 	private int weight;
 	
 	@Enumerated(EnumType.STRING)
@@ -45,17 +47,24 @@ public class WorkoutExercise {
 	private Exercise exercise;
 	
 	public WorkoutExercise() {}
-	public WorkoutExercise(Exercise exercise, int reps, int weight) {
+	public WorkoutExercise(Exercise exercise, int reps, int weight, LocalDate date) {
 		this.exercise = exercise;
 		this.reps = reps;
 		this.weight = weight;
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
+		LocalDate p = LocalDate.parse(date.toString(), dtf);
+		this.date = p;
 	}
-	public WorkoutExercise(Exercise exercise, int reps, int weight, int duration) {
+	public WorkoutExercise(Exercise exercise, int reps, int weight, LocalDate date, int duration) {
 		this.exercise = exercise;
 		this.reps = reps;
 		this.weight = weight;
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate p = LocalDate.parse(date.toString(), dtf);
+		this.date = p;
 		this.duration = duration;
 	}
+	
 	public int getReps() {
 		return reps;
 	}
@@ -68,10 +77,10 @@ public class WorkoutExercise {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 	public int getWeight() {

@@ -1,6 +1,7 @@
 package entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class Workout {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private Date date;
+	private LocalDate date;
 	private String name;
 	@ManyToOne
 	@JoinColumn(name="userId")
@@ -35,6 +36,11 @@ public class Workout {
 	@OneToMany(mappedBy="workout", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<WorkoutExercise> workoutExercise;
 	
+	public Workout(LocalDate date) {
+		this.date = date;
+	}
+	public Workout() {
+	}
 	public String getName() {
 		return name;
 	}
@@ -62,10 +68,10 @@ public class Workout {
 	public void setWorkoutExercise(List<WorkoutExercise> workoutExercise) {
 		this.workoutExercise = workoutExercise;
 	}
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 	

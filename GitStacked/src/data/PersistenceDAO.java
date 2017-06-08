@@ -1,5 +1,6 @@
 package data;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import entities.Exercise;
@@ -31,6 +32,7 @@ public interface PersistenceDAO {
 	List<Exercise> getAllExercises();
 	int getCaloriesByWorkout(Workout workout);
 	void removeWorkoutExercise(int id);
+	int compareDate(LocalDate otherDate);
 
 		
 }
