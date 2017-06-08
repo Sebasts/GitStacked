@@ -34,7 +34,7 @@
 	<h2>Your List Of Workouts:</h2>
 	<c:forEach var="w" items="${userWorkouts}">
 		<h4>${w.name}</h4>
-		<h5>${w.date}</h5>
+		<h5>Date: ${w.date}</h5>
 		<form action="removeWorkout.do" method="POST">
 			<input type="hidden" name="id" value="${w.id}"> <input
 				type="submit" value="Delete Workout">
