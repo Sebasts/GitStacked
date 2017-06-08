@@ -1,0 +1,51 @@
+@CHARSET "UTF-8";
+
+* {
+	font-family: 'PT Sans', sans-serif;
+}
+
+nav {
+	display: block;
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #2372ba;
+	color: white;
+	font-size: 20px;
+}
+
+nav li {
+	float: left;
+}
+
+nav ul li:last-child {
+	float: right;
+}
+
+nav a {
+	display: block;
+	padding: 18px 20px;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+}
+
+nav a:hover {
+	background-color: rgb(59, 82, 119);
+}
+
+
+.button {
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 18px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
