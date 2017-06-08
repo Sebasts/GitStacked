@@ -16,7 +16,8 @@
 	<form action="createWorkout.do" method="GET">
 		<input type="submit" value="Create Workout">
 	</form>
-	<br> Welcome, ${user.getFName()}
+	<br> 
+	<h3>Welcome, ${user.getFName()}</h3>
 	<br>
 	<br>
 	<div>
