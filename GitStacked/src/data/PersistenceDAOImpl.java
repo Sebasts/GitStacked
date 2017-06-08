@@ -252,22 +252,14 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		Exercise tempName = em.createQuery(query, Exercise.class).setParameter("name", name).getSingleResult();
 		return tempName.getId();
 	}
-
+	
 	@Override
 	public int getCaloriesByWorkout(Workout workout) {
-		// TODO Auto-generated method stub
+		int id = workout.getId();
+		List<WorkoutExercise> we = workout.getWorkoutExercise();
+		String query = "select we from WorkoutExercise we join fetch we.exercise.calories where we.workoutId = :id";
+		Exercise tempName = em.createQuery(query, Exercise.class).setParameter("id", id).getSingleResult();
 		return 0;
 	}
-	
-//	@Override
-//	public int getCaloriesByWorkout(Workout workout) {
-//		int id = workout.getId();
-//		List<WorkoutExercise> we = workout.getWorkoutExercise();
-//		String query = "select we from WorkoutExercise we join fetch we.exercises where we.id = :id";
-//		return 0;
-//		String query = "select we from WorkoutExercise we where  = :name";
-//		Exercise tempName = em.createQuery(query, Exercise.class).setParameter("name", name).getSingleResult();
-//		return tempName.getId();
-//	}
 
 }

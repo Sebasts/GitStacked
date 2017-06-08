@@ -176,9 +176,6 @@ public class WorkoutController {
 		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
 		mv.addObject("userWorkouts", userWorkouts);
 		mv.addObject("user", user);
-		for (Workout workout2 : user.getWorkouts()) {
-			System.out.println(workout2);
-		}
 		return mv;
 	}
 

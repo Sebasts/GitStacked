@@ -3,12 +3,12 @@ $(function(){
 var $rows = $("tr");
 
 $("#search").keyup(function() {
-    var val = $.trim(this.value).toLowerCase();
+    var val = $.trim(this.value);
     if (val === "")
         $rows.show();
     else {
         $rows.hide();
-        $rows.has("td:contains(" + val.toLowerCase() + ")").show();
+        $rows.has("td:contains(" + val + ")").show();
     }
 });
 })
