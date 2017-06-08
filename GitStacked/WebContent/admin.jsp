@@ -68,6 +68,19 @@
 		<button type="submit">Make Change</button>
 	</form>
 	</div>
+	
+	<dvi>
+	<ul>
+	<c:if test="${sessionScope.user.username == null }">
+	<li><a href="login.do">Sign in</a></li>
+	</c:if>
+	<c:if test="${sessionScope.user.username != null }">
+	<li><a href="account.jsp">Edit Account</a></li>
+	<li><a href="logout.do">Logout</a></li>
+	</c:if>
+	</div>
+
+</ul>
 
 </body>
 </html>
