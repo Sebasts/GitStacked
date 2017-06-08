@@ -135,29 +135,17 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	public void removeWorkout(int id) {
 		System.out.println("***********" + id);
 		Workout workout = em.find(Workout.class, id);
-		System.out.println("&&&&&&&&&&&&" + workout);
-		em.remove(workout);
+		String sql = "delete from Workout where id = :id";
+		em.createQuery(sql).setParameter("id", id).executeUpdate();
+	}
+	@Override
+	public void removeWorkoutExercise(int id) {
+		String sql = "delete from WorkoutExercise where id = :id";
+		em.createQuery(sql).setParameter("id", id).executeUpdate();
 	}
 
 	@Override
 	public User persistWorkouts(Workout w) {
-		// User tempUser = em.find(w.getUser().getClass(), w.getUser().getId());
-		// System.out.println(tempUser);
-		// System.out.println(tempUser.getWorkouts());
-		// tempUser.setFName(user.getFName());
-		// tempUser.setLName(user.getLName());
-		// tempUser.setHeightFeet(user.getHeightFeet());
-		// tempUser.setHeightInch(user.getHeightInch());
-		// tempUser.setPassword(user.getPassword());
-		// tempUser.setUserWeight(user.getUserWeight());
-		// tempUser.setWorkouts(user.getWorkouts());
-		// tempUser.setLoginUsertype(user.getLoginUsertype());
-//		Workout tempWorkout = em.find(Workout.class,w.getId());
-//		System.out.println(tempWorkout);
-//		tempWorkout.setName(w.getName());
-//		tempWorkout.setUser(w.getUser());
-//		tempWorkout.setWorkoutExercise(w.getWorkoutExercise());
-
 		em.merge(w);
 		em.flush();
 		// em.persist(tempUser);
