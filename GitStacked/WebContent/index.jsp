@@ -11,17 +11,18 @@
 <div id="parent">
 <div id="opacity">
 <div id="child">
-Start building your own workout plan
+Click below to start your workout plan!
 <br>
 <form action = "createUser.do" method = "GET">
-<input type = "submit" value = "Sign Up">
+<input type="image" src="pics/logo.png" id ="logo"/>
 </form>
 Already have an account?
 <form action = "login.do" method = "POST">
-<input type="text" name="username"><br>
-<input type="text" name="password"><br>
+<input type="text" name="username" placeholder="Username"><br>
+<input type="password" name="password" placeholder="Password"><br>
 <input type= "submit" value= "Log In">
 </form>
+</div>
 </div>
 <br>
 </div>
