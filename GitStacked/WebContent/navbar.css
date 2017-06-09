@@ -14,7 +14,7 @@ nav {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: rgb(33, 63, 112);
+	background-color: #233e5c;
 	color: white;
 	font-size: 20px;
 	vertical-align: middle;
@@ -29,7 +29,7 @@ nav ul {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: rgb(33, 63, 112);
+	background-color: #233e5c;
 	color: white;
 	font-size: 20px;
 }
@@ -62,11 +62,11 @@ nav a {
 } 
 
 a:hover {
-	background-color: rgb(59, 82, 119);
+	background-color: #789a9c;
 }
 
 .button {
-    background-color: #4CAF50; 
+    background-color: #233e5c; 
     border: none;
     color: white;
     padding: 18px 20px;

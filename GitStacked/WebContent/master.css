@@ -6,7 +6,7 @@
 }
 
 body {
-	background-color: #bfcedf;
+	background-color: #dfdfdf;
 	margin: 0;
 }
 
@@ -38,13 +38,18 @@ table {
     background-color: #ebebeb;
 }
 
+table th {
+	color: white;
+	font-size: 18px;
+}
+
 table, th, td {
 	border: 1px solid black;
 }
 
 table th {
 	height: 30px;
-	background-color: rgb(101, 117, 142);
+	background-color: #7e2d2d;
 	font-size: 16px;
 	font-weight: bold;
 }
@@ -60,3 +65,5 @@ table #remove {
     margin-right:auto;
 }
 
+width: 150px;
+}
