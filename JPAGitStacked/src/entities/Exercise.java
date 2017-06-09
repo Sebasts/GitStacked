@@ -1,5 +1,8 @@
 package entities;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -28,6 +31,13 @@ public class Exercise {
 	@Enumerated(EnumType.STRING)
 	@Column(name="muscleGroup")
 	private MuscleGroup muscleGroup;
+	
+	public String getTodaysDate() {
+		System.out.println("************" + new Date());
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
+        String dateString = sdf.format(new Date());
+		return dateString;
+	}
 	
 	public int getActive() {
 		return active;
