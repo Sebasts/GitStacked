@@ -10,12 +10,18 @@
   <script>
   $( function() {
     $( "#datepicker" ).datepicker();
+    var date = new Date().toLocaleDateString(),
+    field = document.querySelector('#datepicker');
+	field.value = date;
+
+
   } );
   </script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Build Workout</title>
 </head>
-<body>
+<body onload = "dateSetter();">
 	<jsp:include page="navbar.jsp" />
 	Choose from existing workout: 
 	<form name="createWorkout" action="createWorkout2.do" method="POST">
@@ -26,7 +32,7 @@
 					</c:forEach>
 				</select> 
 	<br>
-	Or create a new workout<input type="text" name="newWorkoutName">
+	Or create a new workout<input type="text" name="newWorkoutName" value=" ">
 	<br>
 				Exercise: <select name="exerciseId">
 					<c:forEach var="e" items="${exercises}">
@@ -42,6 +48,7 @@
 <!-- 				<input type = "submit" value="Complete Workout">-->		
 			<div id="target">
 			Date: <input type="text" id="datepicker" name="date"></p>
+			
 			</div>
 			<button type="button" id="btnAddForm"
 			onclick="CloneForm('createWorkout');">Add</button>

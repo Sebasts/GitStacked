@@ -228,7 +228,7 @@ public class WorkoutController {
 	@RequestMapping(path = "createWorkout2.do", method = RequestMethod.POST)
 	public ModelAndView createWorkout(@RequestParam(value = "workoutName", required = false) String workoutName,
 			@RequestParam("exerciseId") Integer id,
-			@RequestParam("date") Date date,
+			@RequestParam(value="date", required = false) Date date,
 			@RequestParam(value = "newWorkoutName", required = false) String newWorkoutName,
 			@ModelAttribute("user") User user, WorkoutExerciseCO workoutExerciseCO) {
 		LocalDate ldate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -237,7 +237,7 @@ public class WorkoutController {
 		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
 
 		String[] name = null;
-		if (newWorkoutName.equals("")) {
+		if (newWorkoutName.equals(" ")) {
 			for (Workout w : userWorkouts) {
 				if (workoutName.equals(w.getName())) {
 					workout = w;
@@ -267,6 +267,7 @@ public class WorkoutController {
 		dao.persistWorkouts(workout);
 
 		mv.setViewName("profile.jsp");
+		mv.addObject("ex",dao.getWorkoutsFromUser(user).get(0).getWorkoutExercise().get(0).getExercise());
 		mv.addObject("userWorkouts", dao.getWorkoutsFromUser(user));
 		return mv;
 
