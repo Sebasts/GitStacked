@@ -32,39 +32,43 @@
 	
 	<c:forEach var="w" items="${userWorkouts}">
 	<table>
-	<col width="auto">
-	<col width="auto">
-	<col width="auto">
-	<col width="auto">
 		<tr>
-		<th>${w.name}</th>
-		<th>Date: ${w.date}</th>
-		<th><form action="removeWorkout.do" method="POST">
+		<th colspan="2">${w.name}
+		<form action="removeWorkout.do" method="POST">
 			<input type="hidden" name="id" value="${w.id}"> 
 			<input type="submit" value="Delete Workout"> 
-		</form> </th>
+		</form> 
+		</th>
+		<th colspan="2">${w.date}</th>
 		</tr>
 		<tr>
 					<th>Exercise Name</th>
 					<th>Image</th>
 					<th>Description</th>
+					<th>Details</th>
 				</tr>
 		<c:forEach var="we" items="${w.workoutExercise}">
 			
 				
 				<tr>
-					<td>${we.exercise.name}</td>
-					<td><img src="${we.exercise.imageUrl}" alt="exercise image" />
-					</td>
-					<td>${we.exercise.description}</td>
-					<td id="remove"><form action="removeWorkoutExercise.do" method="POST">
+					<td>${we.exercise.name}
+					<br>
+					<form action="removeWorkoutExercise.do" method="POST">
 							<input type="hidden" name="id" value="${we.id}"> 
 							<input type="submit" value="Remove Exercise"> 
 						</form>
+						</td>
+					<td><img src="${we.exercise.imageUrl}" alt="exercise image" />
+					</td>
+					<td>${we.exercise.description}</td>
+					<td>Reps: ${we.reps}<br>
+						Sets: ${we.duration}<br>
+						Weight: ${we.weight}<br>
 					</td>
 				</tr>
 		</c:forEach>
 			</table>
+			<br>
 	</c:forEach>
 
 </body>
