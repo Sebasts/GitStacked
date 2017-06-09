@@ -6,6 +6,22 @@
 
 nav {
 	display: block;
+
+}
+
+#searchbar {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #2372ba;
+	color: white;
+	font-size: 20px;
+	vertical-align: middle;
+	float: left;
+	position: relative;
+	top: 50%;
+	transform: translateY(67%);
 }
 
 nav ul {
@@ -26,15 +42,26 @@ nav ul li:last-child {
 	float: right;
 }
 
-nav a {
+nav .navlink {
 	display: block;
-	padding: 18px 20px;
 	color: white;
+	/* display: inline-block; */
+	vertical-align: middle;
 	text-align: center;
 	text-decoration: none;
+	float:left;
 }
 
-nav a:hover {
+nav a {
+	color: white;
+	text-decoration: none;
+	display: block;
+	padding: 18px 20px;
+	vertical-align: middle;
+	float:left;
+} 
+
+a:hover {
 	background-color: rgb(59, 82, 119);
 }
 
@@ -47,4 +74,5 @@ nav a:hover {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    vertical-align: middle;
 }
