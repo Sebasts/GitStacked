@@ -16,7 +16,7 @@
 
 	<br>
 	<c:if test="${sessionScope.user.username != null }">
-	<h2>Welcome, ${user.getFName()}</h2>
+	<h2>Welcome, ${user.getFName()}!</h2>
 	</c:if>
 	
 	<br>
