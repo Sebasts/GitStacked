@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+body {
+	background-image: url("pics/stackedweights.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	margin: 0;
+}
+
+div#opacity {
+	
+}
+
+div#child {
+	background: rgba(119, 136, 153, .8);
+	border-radius: 25px;
+	border: 2px solid;
+	position: absolute;
+	margin-left: 42%;
+	margin-top: 25%;
+	margin-right: 25%;
+	text-align: center;
+}
