@@ -14,7 +14,7 @@ nav {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: #2372ba;
+	background-color: rgb(33, 63, 112);
 	color: white;
 	font-size: 20px;
 	vertical-align: middle;
@@ -29,7 +29,7 @@ nav ul {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: #2372ba;
+	background-color: rgb(33, 63, 112);
 	color: white;
 	font-size: 20px;
 }

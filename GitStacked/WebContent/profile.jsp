@@ -32,6 +32,10 @@
 	
 	<c:forEach var="w" items="${userWorkouts}">
 	<table>
+	<col width="auto">
+	<col width="auto">
+	<col width="auto">
+	<col width="auto">
 		<tr>
 		<th>${w.name}</th>
 		<th>Date: ${w.date}</th>
@@ -53,9 +57,9 @@
 					<td><img src="${we.exercise.imageUrl}" alt="exercise image" />
 					</td>
 					<td>${we.exercise.description}</td>
-					<td><form action="removeWorkoutExercise.do" method="POST">
+					<td id="remove"><form action="removeWorkoutExercise.do" method="POST">
 							<input type="hidden" name="id" value="${we.id}"> 
-							<input type="submit" value="Remove Exercise">
+							<input type="submit" value="Remove Exercise"> 
 						</form>
 					</td>
 				</tr>
