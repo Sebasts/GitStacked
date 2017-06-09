@@ -60,15 +60,9 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 	@Override
 	public int compareDate(LocalDate otherDate) {
 	    int cmp = (LocalDate.now().getYear() - otherDate.getYear());
-		System.out.println(LocalDate.now().getYear());
-		System.out.println(otherDate.getYear());
 	    if (cmp == 0) {
-	    	System.out.println(LocalDate.now().getMonthValue());
-	    	System.out.println(otherDate.getMonthValue());
 	        cmp = (LocalDate.now().getMonthValue() - otherDate.getMonthValue());
 	        if (cmp == 0) {
-	        	System.out.println(LocalDate.now().getDayOfMonth());
-	        	System.out.println(otherDate.getDayOfMonth());
 	            cmp = (LocalDate.now().getDayOfMonth() - otherDate.getDayOfMonth());
 	        }
 	    }
@@ -92,7 +86,6 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 			tempWorkout.setDate(workout.getDate());
 		}
 		else {tempWorkout.setDate(LocalDate.now());}
-		System.out.println(tempWorkout);
 		tempWorkout.setUser(workout.getUser());
 		tempWorkout.setWorkoutExercise(workout.getWorkoutExercise());
 		em.merge(workout);
