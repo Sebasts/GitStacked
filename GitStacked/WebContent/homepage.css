@@ -1,23 +1,51 @@
 @CHARSET "UTF-8";
-
-body {
-	background-image: url("pics/stackedweights.jpg");
-	background-size: 100%;
-	background-repeat: no-repeat;
-	margin: 0;
+* {
+	font-family: 'Baloo Bhaina', cursive;
 }
-
-div#opacity {
-	
+body {
+	top: 0;
+	left: 0;
+	background-image: url("pics/stackedweights.jpg");
+	background-size: cover;
+	position: fixed;
+	background-repeat:repeat-y;
+	width: 100%;
+	height: 100%;
 }
 
 div#child {
+	font-size: 20px;
 	background: rgba(119, 136, 153, .8);
 	border-radius: 25px;
 	border: 2px solid;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;	
 	position: absolute;
-	margin-left: 42%;
-	margin-top: 25%;
-	margin-right: 25%;
-	text-align: center;
+	width: 250px;
+	height: 350px;
+}
+input[type=submit] {
+    width: 100px;
+    background-color: #b3b3b3;
+    color: white;
+    padding: 8px 20px;
+    margin: 8px;
+    border: 2px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+}
+input[type=submit]:hover {
+    background-color: #4c4c4c;
+    
+}
+input[type=text], select {
+    width: 55%;
+    padding: 2px 12px;
+    margin: 4px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
