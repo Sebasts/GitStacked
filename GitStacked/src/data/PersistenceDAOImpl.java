@@ -91,6 +91,7 @@ public class PersistenceDAOImpl implements PersistenceDAO {
 		if (workout.getDate() != null) {
 			tempWorkout.setDate(workout.getDate());
 		}
+		else {tempWorkout.setDate(LocalDate.now());}
 		System.out.println(tempWorkout);
 		tempWorkout.setUser(workout.getUser());
 		tempWorkout.setWorkoutExercise(workout.getWorkoutExercise());

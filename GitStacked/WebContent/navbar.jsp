@@ -15,17 +15,21 @@
 <nav>
 <ul>
 	<c:if test="${sessionScope.user.username != null }">
-	<li><a href="home.do">Home</a></li>
+	<li><label class="navlink"><a href="home.do">Home</a></label></li>
+	<li><label class="navlink"><a href="account.jsp">Edit Account</a></label></li>
+	<li><label class="navlink"><a href="createWorkout.do">Create Workout</a></label></li>
+	<li><label id="searchbar">Search Workouts: <input id="search" type="text"></label></li>
 	</c:if>
 	<c:if test="${sessionScope.user.username == null }">
-	<li><a href="login.do">Sign in</a></li>
+	<li><label class="navlink"><a href="login.do">Sign in</a></label></li>
 	</c:if>
 	<c:if test="${sessionScope.user.username != null }">
-	<li><a href="account.jsp">Edit Account</a></li>
-	<li><a href="logout.do">Logout</a></li>
+	<li><label class="navlink"><a href="logout.do">Logout</a></label></li>
 	</c:if>
 
 </ul>
 </nav>
+
+	<script src="test.js"></script>
 </body>
 </html>
