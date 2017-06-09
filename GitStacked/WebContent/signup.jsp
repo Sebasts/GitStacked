@@ -7,13 +7,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="homepage.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Sign Up</title>
 </head>
 <body>
 	<jsp:include page="navbar.jsp"/> 
-	<div class="form">
+	<div class="child">
 	<form:form action = "createUser.do" method = "POST" modelAttribute="user">
 	<form:label path = "fName">First Name:</form:label>
 	<form:input path = "fName"/>

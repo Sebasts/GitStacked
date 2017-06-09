@@ -15,7 +15,8 @@
 <nav>
 <ul>
 	<c:if test="${sessionScope.user.username != null }">
-	<li><label class="navlink"><a href="home.do">Home</a></label></li>
+	<li> <img src="pics/logo.png" id="navlogo"/> </li>
+	<li><label type="image" src="pics/logo.png" class="navlink"><a href="home.do">Home</a></label></li>
 	<li><label class="navlink"><a href="account.jsp">Edit Account</a></label></li>
 	<li><label class="navlink"><a href="createWorkout.do">Create Workout</a></label></li>
 	<li><label id="searchbar">Search Workouts: <input id="search" type="text"></label></li>
