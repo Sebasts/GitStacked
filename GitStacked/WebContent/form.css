@@ -10,7 +10,7 @@ input[type=text], select {
 }
 
 input[type=submit] {
-    width: 100%;
+    width: 100px;
     background-color: #b3b3b3;
     color: white;
     padding: 14px 20px;
@@ -24,6 +24,10 @@ form {
 	width: 100px;
 	margin-left: 30%;
 	position:relative;    
+}
+
+div#logintext {
+	width: 150px;
 }
 
 input[type=submit]:hover {
