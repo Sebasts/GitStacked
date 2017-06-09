@@ -47,21 +47,15 @@ public class WorkoutExercise {
 	private Exercise exercise;
 	
 	public WorkoutExercise() {}
-	public WorkoutExercise(Exercise exercise, int reps, int weight, LocalDate date) {
+	public WorkoutExercise(Exercise exercise, int reps, int weight) {
 		this.exercise = exercise;
 		this.reps = reps;
 		this.weight = weight;
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
-		LocalDate p = LocalDate.parse(date.toString(), dtf);
-		this.date = p;
 	}
-	public WorkoutExercise(Exercise exercise, int reps, int weight, LocalDate date, int duration) {
+	public WorkoutExercise(Exercise exercise, int reps, int weight, int duration) {
 		this.exercise = exercise;
 		this.reps = reps;
 		this.weight = weight;
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate p = LocalDate.parse(date.toString(), dtf);
-		this.date = p;
 		this.duration = duration;
 	}
 	

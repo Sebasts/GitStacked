@@ -34,7 +34,6 @@
 					</c:forEach>
 				</select> 
 				<br>
-				Date: <input type="text" id="datepicker" name="date"></p>
 				Reps: <input type="text" name="reps"> <br>
 				Weight: <input type="text" name="weight"> <br>
 				Duration: <input type="text" name="duration"> <br>
@@ -42,6 +41,7 @@
 			</div>
 <!-- 				<input type = "submit" value="Complete Workout">-->		
 			<div id="target">
+			Date: <input type="text" id="datepicker" name="date"></p>
 			</div>
 			<button type="button" id="btnAddForm"
 			onclick="CloneForm('createWorkout');">Add</button>

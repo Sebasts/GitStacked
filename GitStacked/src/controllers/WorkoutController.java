@@ -162,8 +162,7 @@ public class WorkoutController {
 			@RequestParam("date") Date date,
 			@RequestParam(value = "workoutName", required = false) String workoutName,
 			@RequestParam(value = "newWorkoutName", required = false) String newWorkoutName,
-			@RequestParam(value = "duration", required = false) Integer duration) 
-	{
+			@RequestParam(value = "duration", required = false) Integer duration) {
 		LocalDate ldate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		Workout workout = new Workout(ldate);
 		if (newWorkoutName.equals("")) {
@@ -178,16 +177,17 @@ public class WorkoutController {
 		Exercise exercise = dao.getExerciseById(user, id);
 		WorkoutExercise workoutexercise = null;
 		if (duration == null) {
-			workoutexercise = new WorkoutExercise(exercise, reps, weight, ldate);
+			workoutexercise = new WorkoutExercise(exercise, reps, weight);
 		} else {
-			workoutexercise = new WorkoutExercise(exercise, reps, weight, ldate, duration);
+			workoutexercise = new WorkoutExercise(exercise, reps, weight, duration);
 		}
 		workoutexercise.setWorkout(workout);
 		workout.addWorkoutExercise(workoutexercise);
 		workout.setUser(user);
 		dao.persistWorkouts(workout);
 
-		
+		System.err.println("Date"+date);
+
 		return "redirect:workoutRedirect.do";
 	}
 
@@ -228,11 +228,12 @@ public class WorkoutController {
 	@RequestMapping(path = "createWorkout2.do", method = RequestMethod.POST)
 	public ModelAndView createWorkout(@RequestParam(value = "workoutName", required = false) String workoutName,
 			@RequestParam("exerciseId") Integer id,
+			@RequestParam("date") Date date,
 			@RequestParam(value = "newWorkoutName", required = false) String newWorkoutName,
 			@ModelAttribute("user") User user, WorkoutExerciseCO workoutExerciseCO) {
+		LocalDate ldate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		Workout workout = new Workout(ldate);
 		ModelAndView mv = new ModelAndView();
-
-		Workout workout = new Workout();
 		List<Workout> userWorkouts = dao.getWorkoutsFromUser(user);
 
 		String[] name = null;

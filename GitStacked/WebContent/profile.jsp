@@ -34,7 +34,7 @@
 	<table>
 		<tr>
 		<th>${w.name}</th>
-		<th>${w.date}</th>
+		<th>Date: ${w.date}</th>
 		<th><form action="removeWorkout.do" method="POST">
 			<input type="hidden" name="id" value="${w.id}"> 
 			<input type="submit" value="Delete Workout"> 
