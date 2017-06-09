@@ -32,10 +32,6 @@
 	
 	<c:forEach var="w" items="${userWorkouts}">
 	<table>
-	<col width="auto">
-	<col width="auto">
-	<col width="auto">
-	<col width="auto">
 		<tr>
 		<th>${w.name}</th>
 		<th>Date: ${w.date}</th>
@@ -43,11 +39,13 @@
 			<input type="hidden" name="id" value="${w.id}"> 
 			<input type="submit" value="Delete Workout"> 
 		</form> </th>
+		<th></th>
 		</tr>
 		<tr>
 					<th>Exercise Name</th>
 					<th>Image</th>
 					<th>Description</th>
+					<th></th>
 				</tr>
 		<c:forEach var="we" items="${w.workoutExercise}">
 			
@@ -65,6 +63,7 @@
 				</tr>
 		</c:forEach>
 			</table>
+			<br>
 	</c:forEach>
 
 </body>
