@@ -42,7 +42,7 @@
 				<br>
 				Reps: <input type="text" name="reps"> <br>
 				Weight: <input type="text" name="weight"> <br>
-				Duration: <input type="text" name="duration"> <br>
+				Sets: <input type="text" name="duration"> <br>
 				
 			</div>
 <!-- 				<input type = "submit" value="Complete Workout">-->		
