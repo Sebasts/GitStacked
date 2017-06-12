@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="navbar.jsp" />
+
 	<c:forEach var="w" items="${userWorkouts}">
 		<h4>${w.name}</h4>
 		<h5>${w.date}</h5>
