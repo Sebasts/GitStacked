@@ -1,78 +1,28 @@
-@CHARSET "UTF-8";
-
-* {
-	font-family: 'PT Sans', sans-serif;
-}
-
-nav {
-	display: block;
-
-}
-
-#searchbar {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #233e5c;
+.navbar ul {
+	width: 100%;
+	height: 80px;
+	background: #666666;
+	line-height: 80px;
 	color: white;
-	font-size: 20px;
-	vertical-align: middle;
-	float: left;
-	position: relative;
-	top: 50%;
-	transform: translateY(67%);
 }
 
-nav ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #233e5c;
-	color: white;
-	font-size: 20px;
-}
-
-nav li {
-	float: left;
-}
-
-nav ul li:last-child {
-	float: right;
-}
-
-nav .navlink {
-	display: block;
-	color: white;
-	/* display: inline-block; */
-	vertical-align: middle;
-	text-align: center;
+.navbar ul a {
 	text-decoration: none;
-	float:left;
+	color:white;
+	padding: 20px;
 }
 
-nav a {
-	color: white;
-	text-decoration: none;
-	display: block;
-	padding: 18px 20px;
-	vertical-align: middle;
-	float:left;
-} 
-
-a:hover {
-	background-color: #789a9c;
+.navbar ul li {
+	list-style: none;
+	float: left;
+	display: inline-block;
 }
 
-.button {
-    background-color: #233e5c; 
-    border: none;
-    color: white;
-    padding: 18px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    vertical-align: middle;
+.navbar ul li:hover {
+	background: #3982a9;
+}
+
+.logo {
+	width: 80px;
+	float: left;
 }

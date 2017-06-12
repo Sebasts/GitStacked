@@ -19,7 +19,6 @@
 	<h2>Welcome, ${user.getFName()}!</h2>
 	</c:if>
 	
-	<br>
 <!-- 	<div>
 		<a href="pastWorkouts.do">Previous workouts</a>
 	</div>
@@ -29,7 +28,7 @@
 
 	<h3>Your List Of Workouts:</h3>
 	
-	
+	<label id="searchbar">Search Workouts: <input id="search" type="text"></label>
 	<c:forEach var="w" items="${userWorkouts}">
 	<table>
 		<tr>

@@ -2,16 +2,17 @@
 
 * {
 	font-family: 'Droid Sans', sans-serif;
-	font-style: bold;
+	padding: 0px;
+	margin:0px;
 }
 
 body {
 	background-color: #dfdfdf;
-	margin: 0;
 }
 
 img {
 	size: 40%;
+	position: center;
 }
 
 .left {

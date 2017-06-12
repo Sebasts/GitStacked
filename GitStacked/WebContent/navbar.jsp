@@ -12,20 +12,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-<nav>
+<nav class="navbar">
+	
 <ul>
+	<li><img class="logo" src="pics/logo.png"/></li>
 	<c:if test="${sessionScope.user.username != null }">
-	<li> <img src="pics/logo.png" id="navlogo"/> </li>
-	<li><label type="image" src="pics/logo.png" class="navlink"><a href="home.do">Home</a></label></li>
-	<li><label class="navlink"><a href="account.jsp">Edit Account</a></label></li>
-	<li><label class="navlink"><a href="createWorkout.do">Create Workout</a></label></li>
-	<li><label id="searchbar">Search Workouts: <input id="search" type="text"></label></li>
+	<li><a href="home.do">Home</a></li>
+	<li><a href="account.jsp">Edit Account</a></label></li>
+	<li><a href="createWorkout.do">Create Workout</a></label></li>
 	</c:if>
 	<c:if test="${sessionScope.user.username == null }">
-	<li><label class="navlink"><a href="login.do">Sign in</a></label></li>
+	<li><a href="login.do">Sign in</a></label></li>
 	</c:if>
 	<c:if test="${sessionScope.user.username != null }">
-	<li><label class="navlink"><a href="logout.do">Logout</a></label></li>
+	<li><a href="logout.do">Logout</a></label></li>
 	</c:if>
 
 </ul>
