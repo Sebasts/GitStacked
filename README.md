@@ -1,4 +1,4 @@
-## Git Stacked
+## Git Stacked WO Javascript. The focus of this project will be the middleware and MySql backend.
 
 Nancy Tran
 Paul Pistorius
